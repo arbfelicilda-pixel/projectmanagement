@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meeting ROI Calculator — Free Tool — Arnie Rose Felicilda</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--black:#111111;--white:#FFFFFF;--gray-light:#F5F5F5;--gray-mid:#E5E5E5;--gray-text:#666666;--blue:#1D6FA4;--blue-dark:#155a87;--heading:'DM Serif Display',Georgia,serif;--body:'DM Sans',sans-serif;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--body);background:var(--gray-light);color:var(--black);-webkit-font-smoothing:antialiased;min-height:100vh}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--white);border-bottom:1px solid var(--gray-mid);padding:0 60px;height:60px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:var(--body);font-size:13px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--black);text-decoration:none}
+.nav-logo span{color:var(--blue)}
+.nav-back{font-family:var(--body);font-size:12px;color:var(--gray-text);text-decoration:none}
+.nav-back:hover{color:var(--black)}
+.tool-wrap{max-width:760px;margin:0 auto;padding:80px 40px 60px}
+.tool-header{margin-bottom:40px}
+.tool-eyebrow{font-family:var(--body);font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--blue);margin-bottom:12px;display:flex;align-items:center;gap:10px}
+.tool-eyebrow::before{content:'';display:block;width:20px;height:1.5px;background:var(--blue)}
+.tool-title{font-family:'DM Serif Display',Georgia,serif;font-size:clamp(28px,4vw,42px);font-weight:400;color:var(--black);margin-bottom:10px;line-height:1.15}
+.tool-desc{font-family:var(--body);font-size:16px;font-weight:300;color:var(--gray-text);line-height:1.7;max-width:560px}
+.tool-card{background:var(--white);padding:36px;margin-bottom:20px;border-top:3px solid var(--blue)}
+.field-label{font-family:var(--body);font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--black);display:block;margin-bottom:8px}
+.field-sub{font-family:var(--body);font-size:13px;font-weight:300;color:var(--gray-text);margin-bottom:10px;line-height:1.5}
+input[type=text],input[type=number],select{width:100%;padding:12px 14px;font-family:var(--body);font-size:15px;border:1px solid var(--gray-mid);background:var(--white);color:var(--black);outline:none;margin-bottom:20px}
+input:focus,select:focus{border-color:var(--blue)}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.btn-calc{background:var(--blue);color:var(--white);font-family:var(--body);font-size:13px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;padding:14px 32px;border:none;cursor:pointer;width:100%;margin-top:8px}
+.btn-calc:hover{background:var(--blue-dark)}
+.btn-reset{background:transparent;color:var(--gray-text);font-family:var(--body);font-size:12px;font-weight:500;padding:10px 24px;border:1px solid var(--gray-mid);cursor:pointer;width:100%;margin-top:8px}
+.result-box{display:none;background:var(--black);padding:32px;margin-top:24px}
+.result-box.show{display:block}
+.result-label{font-family:var(--body);font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--blue);margin-bottom:8px}
+.result-score{font-family:'DM Serif Display',Georgia,serif;font-size:52px;font-weight:400;color:var(--white);line-height:1;margin-bottom:6px}
+.result-status{font-family:var(--body);font-size:14px;font-weight:600;margin-bottom:16px}
+.result-desc{font-family:var(--body);font-size:14px;font-weight:300;color:rgba(255,255,255,0.6);line-height:1.7}
+.result-rows{margin-top:20px;display:flex;flex-direction:column;gap:1px}
+.result-row{display:flex;justify-content:space-between;padding:12px 16px;background:rgba(255,255,255,0.05)}
+.result-row-label{font-family:var(--body);font-size:13px;color:rgba(255,255,255,0.6)}
+.result-row-val{font-family:var(--body);font-size:13px;font-weight:600;color:var(--white)}
+.risk-low{color:#4CAF50}
+.risk-med{color:#FF9800}
+.risk-high{color:#f44336}
+.cta-bar{background:var(--white);border-top:3px solid var(--blue);padding:28px 36px;margin-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.cta-bar p{font-family:var(--body);font-size:14px;font-weight:300;color:var(--gray-text)}
+.cta-bar a{font-family:var(--body);font-size:12px;font-weight:600;color:var(--white);background:var(--blue);padding:10px 20px;text-decoration:none;letter-spacing:0.04em;text-transform:uppercase}
+.cta-bar a:hover{background:var(--blue-dark)}
+footer{background:var(--black);padding:32px 60px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;margin-top:60px}
+.footer-copy{font-family:var(--body);font-size:12px;color:rgba(255,255,255,0.25)}
+.footer-back{font-family:var(--body);font-size:12px;color:rgba(255,255,255,0.35);text-decoration:none}
+@media(max-width:768px){nav{padding:0 20px}.tool-wrap{padding:80px 20px 40px}.field-row{grid-template-columns:1fr}footer{padding:24px 20px}.cta-bar{flex-direction:column}}
+</style>
+</head>
+<body>
+<nav><a href="/" class="nav-logo">Arnie Rose <span>·</span> Project Management</a><a href="/" class="nav-back">← Back to Home</a></nav>
+<div class="tool-wrap">
+  <div class="tool-header">
+    <p class="tool-eyebrow">Free Gated Tool 03</p>
+    <h1 class="tool-title">Meeting ROI Calculator</h1>
+    <p class="tool-desc">Calculate the true cost of your meetings and find out which ones are worth keeping. Enter your meeting details and get an ROI score with a clear recommendation.</p>
+  </div>
+  
+<div class="tool-card">
+  <label class="field-label">Meeting name</label>
+  <input type="text" id="meetName" placeholder="e.g. Weekly Project Status">
+
+  <div class="field-row">
+    <div>
+      <label class="field-label">Number of attendees</label>
+      <input type="number" id="attendees" placeholder="e.g. 6" min="1" max="50">
+    </div>
+    <div>
+      <label class="field-label">Average hourly rate per person ($)</label>
+      <p class="field-sub">Use fully loaded cost including benefits. Estimate $50/hr if unsure.</p>
+      <input type="number" id="hourlyRate" placeholder="e.g. 50" min="1">
+    </div>
+  </div>
+
+  <div class="field-row">
+    <div>
+      <label class="field-label">Meeting duration (minutes)</label>
+      <input type="number" id="duration" placeholder="e.g. 60" min="5">
+    </div>
+    <div>
+      <label class="field-label">How often does it occur?</label>
+      <select id="frequency">
+        <option value="">Select</option>
+        <option value="52">Weekly</option>
+        <option value="26">Bi-weekly</option>
+        <option value="12">Monthly</option>
+        <option value="4">Quarterly</option>
+        <option value="1">One-off</option>
+      </select>
+    </div>
+  </div>
+
+  <label class="field-label">What is the primary purpose of this meeting?</label>
+  <select id="purpose">
+    <option value="">Select</option>
+    <option value="decision">Decision making</option>
+    <option value="status">Status update only</option>
+    <option value="problem">Problem solving</option>
+    <option value="brainstorm">Brainstorming or planning</option>
+    <option value="info">Information sharing only</option>
+  </select>
+
+  <label class="field-label">Does this meeting have a fixed agenda sent before it starts?</label>
+  <select id="agenda">
+    <option value="">Select</option>
+    <option value="yes">Yes — always</option>
+    <option value="sometimes">Sometimes</option>
+    <option value="no">No</option>
+  </select>
+
+  <label class="field-label">Does the meeting consistently end with clear action items and owners?</label>
+  <select id="actions">
+    <option value="">Select</option>
+    <option value="yes">Yes — always</option>
+    <option value="sometimes">Sometimes</option>
+    <option value="no">No</option>
+  </select>
+
+  <button class="btn-calc" onclick="calcROI()">Calculate Meeting ROI</button>
+  <button class="btn-reset" onclick="resetROI()">Reset</button>
+
+  <div class="result-box" id="roiResult">
+    <p class="result-label">Meeting ROI Analysis</p>
+    <div id="roiOutput"></div>
+  </div>
+</div>
+
+<script>
+function calcROI(){
+  var name=document.getElementById('meetName').value||'This Meeting';
+  var att=parseFloat(document.getElementById('attendees').value);
+  var rate=parseFloat(document.getElementById('hourlyRate').value);
+  var dur=parseFloat(document.getElementById('duration').value);
+  var freq=parseFloat(document.getElementById('frequency').value);
+  var purpose=document.getElementById('purpose').value;
+  var agenda=document.getElementById('agenda').value;
+  var actions=document.getElementById('actions').value;
+  if(!att||!rate||!dur||!freq||!purpose||!agenda||!actions){alert('Please fill in all fields.');return;}
+  var costPerMeeting=att*(rate*(dur/60));
+  var annualCost=costPerMeeting*freq;
+  var roiScore=100;
+  if(purpose==='status')roiScore-=30;
+  if(purpose==='info')roiScore-=40;
+  if(agenda==='sometimes')roiScore-=15;
+  if(agenda==='no')roiScore-=30;
+  if(actions==='sometimes')roiScore-=15;
+  if(actions==='no')roiScore-=30;
+  if(dur>60)roiScore-=10;
+  if(att>8)roiScore-=10;
+  roiScore=Math.max(0,roiScore);
+  var rec,recColor;
+  if(roiScore>=70){rec='Keep this meeting. It has clear purpose and good structure.';recColor='#4CAF50';}
+  else if(roiScore>=40){rec='Improve before keeping. Fix the agenda and action item process first.';recColor='#FF9800';}
+  else{rec='Consider cancelling or replacing with an async update.';recColor='#f44336';}
+  var alt='';
+  if(purpose==='status')alt='Replace with a weekly written update. Saves $'+Math.round(annualCost*0.8).toLocaleString()+' per year.';
+  if(purpose==='info')alt='Replace with a recorded Loom video or email. Saves the full $'+Math.round(annualCost).toLocaleString()+' per year.';
+  document.getElementById('roiOutput').innerHTML=
+    '<div style="margin-bottom:20px;">'
+    +'<span style="font-family:var(--body);font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.4);display:block;margin-bottom:4px;">'+name+'</span>'
+    +'<div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-bottom:16px;">'
+    +'<div style="background:rgba(255,255,255,0.06);padding:16px;"><span style="font-family:var(--body);font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.4);display:block;margin-bottom:4px;">Cost Per Meeting</span><span style="font-family:var(--heading);font-size:28px;color:var(--white);">$'+Math.round(costPerMeeting).toLocaleString()+'</span></div>'
+    +'<div style="background:rgba(255,255,255,0.06);padding:16px;"><span style="font-family:var(--body);font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.4);display:block;margin-bottom:4px;">Annual Cost</span><span style="font-family:var(--heading);font-size:28px;color:var(--white);">$'+Math.round(annualCost).toLocaleString()+'</span></div>'
+    +'</div>'
+    +'<div style="background:rgba(255,255,255,0.06);padding:16px;margin-bottom:2px;">'
+    +'<span style="font-family:var(--body);font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.4);display:block;margin-bottom:4px;">ROI Score</span>'
+    +'<span style="font-family:var(--heading);font-size:36px;color:'+recColor+';">'+roiScore+'/100</span>'
+    +'</div>'
+    +'<div style="background:rgba(255,255,255,0.06);padding:16px;margin-bottom:2px;">'
+    +'<span style="font-family:var(--body);font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.4);display:block;margin-bottom:4px;">Recommendation</span>'
+    +'<span style="font-family:var(--body);font-size:14px;font-weight:500;color:'+recColor+';">'+rec+'</span>'
+    +'</div>'
+    +(alt?'<div style="background:rgba(255,255,255,0.06);padding:16px;"><span style="font-family:var(--body);font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.4);display:block;margin-bottom:4px;">Alternative</span><span style="font-family:var(--body);font-size:14px;font-weight:300;color:rgba(255,255,255,0.7);">'+alt+'</span></div>':'')
+    +'</div>';
+  document.getElementById('roiResult').classList.add('show');
+  document.getElementById('roiResult').scrollIntoView({behavior:'smooth'});
+}
+function resetROI(){
+  ['meetName','attendees','hourlyRate','duration'].forEach(function(id){document.getElementById(id).value='';});
+  ['frequency','purpose','agenda','actions'].forEach(function(id){document.getElementById(id).value='';});
+  document.getElementById('roiResult').classList.remove('show');
+}
+</script>
+
+  <div class="cta-bar">
+    <p>Get the full project management system — free tools, sprint templates, and AI prompts.</p>
+    <a href="/">Get Free Tools</a>
+  </div>
+</div>
+<footer>
+  <span class="footer-copy">© 2026 Arnie Rose Felicilda. Keystone Books.</span>
+  <a href="/" class="footer-back">projectmanagement.arniefelicilda.com →</a>
+</footer>
+</body></html>

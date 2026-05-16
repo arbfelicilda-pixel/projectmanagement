@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scope Creep Risk Checker — Free Tool — Arnie Rose Felicilda</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--black:#111111;--white:#FFFFFF;--gray-light:#F5F5F5;--gray-mid:#E5E5E5;--gray-text:#666666;--blue:#1D6FA4;--blue-dark:#155a87;--heading:'DM Serif Display',Georgia,serif;--body:'DM Sans',sans-serif;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--body);background:var(--gray-light);color:var(--black);-webkit-font-smoothing:antialiased;min-height:100vh}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--white);border-bottom:1px solid var(--gray-mid);padding:0 60px;height:60px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:var(--body);font-size:13px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--black);text-decoration:none}
+.nav-logo span{color:var(--blue)}
+.nav-back{font-family:var(--body);font-size:12px;color:var(--gray-text);text-decoration:none}
+.nav-back:hover{color:var(--black)}
+.tool-wrap{max-width:760px;margin:0 auto;padding:80px 40px 60px}
+.tool-header{margin-bottom:40px}
+.tool-eyebrow{font-family:var(--body);font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--blue);margin-bottom:12px;display:flex;align-items:center;gap:10px}
+.tool-eyebrow::before{content:'';display:block;width:20px;height:1.5px;background:var(--blue)}
+.tool-title{font-family:'DM Serif Display',Georgia,serif;font-size:clamp(28px,4vw,42px);font-weight:400;color:var(--black);margin-bottom:10px;line-height:1.15}
+.tool-desc{font-family:var(--body);font-size:16px;font-weight:300;color:var(--gray-text);line-height:1.7;max-width:560px}
+.tool-card{background:var(--white);padding:36px;margin-bottom:20px;border-top:3px solid var(--blue)}
+.field-label{font-family:var(--body);font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--black);display:block;margin-bottom:8px}
+.field-sub{font-family:var(--body);font-size:13px;font-weight:300;color:var(--gray-text);margin-bottom:10px;line-height:1.5}
+input[type=text],input[type=number],select{width:100%;padding:12px 14px;font-family:var(--body);font-size:15px;border:1px solid var(--gray-mid);background:var(--white);color:var(--black);outline:none;margin-bottom:20px}
+input:focus,select:focus{border-color:var(--blue)}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.btn-calc{background:var(--blue);color:var(--white);font-family:var(--body);font-size:13px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;padding:14px 32px;border:none;cursor:pointer;width:100%;margin-top:8px}
+.btn-calc:hover{background:var(--blue-dark)}
+.btn-reset{background:transparent;color:var(--gray-text);font-family:var(--body);font-size:12px;font-weight:500;padding:10px 24px;border:1px solid var(--gray-mid);cursor:pointer;width:100%;margin-top:8px}
+.result-box{display:none;background:var(--black);padding:32px;margin-top:24px}
+.result-box.show{display:block}
+.result-label{font-family:var(--body);font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--blue);margin-bottom:8px}
+.result-score{font-family:'DM Serif Display',Georgia,serif;font-size:52px;font-weight:400;color:var(--white);line-height:1;margin-bottom:6px}
+.result-status{font-family:var(--body);font-size:14px;font-weight:600;margin-bottom:16px}
+.result-desc{font-family:var(--body);font-size:14px;font-weight:300;color:rgba(255,255,255,0.6);line-height:1.7}
+.result-rows{margin-top:20px;display:flex;flex-direction:column;gap:1px}
+.result-row{display:flex;justify-content:space-between;padding:12px 16px;background:rgba(255,255,255,0.05)}
+.result-row-label{font-family:var(--body);font-size:13px;color:rgba(255,255,255,0.6)}
+.result-row-val{font-family:var(--body);font-size:13px;font-weight:600;color:var(--white)}
+.risk-low{color:#4CAF50}
+.risk-med{color:#FF9800}
+.risk-high{color:#f44336}
+.cta-bar{background:var(--white);border-top:3px solid var(--blue);padding:28px 36px;margin-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.cta-bar p{font-family:var(--body);font-size:14px;font-weight:300;color:var(--gray-text)}
+.cta-bar a{font-family:var(--body);font-size:12px;font-weight:600;color:var(--white);background:var(--blue);padding:10px 20px;text-decoration:none;letter-spacing:0.04em;text-transform:uppercase}
+.cta-bar a:hover{background:var(--blue-dark)}
+footer{background:var(--black);padding:32px 60px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;margin-top:60px}
+.footer-copy{font-family:var(--body);font-size:12px;color:rgba(255,255,255,0.25)}
+.footer-back{font-family:var(--body);font-size:12px;color:rgba(255,255,255,0.35);text-decoration:none}
+@media(max-width:768px){nav{padding:0 20px}.tool-wrap{padding:80px 20px 40px}.field-row{grid-template-columns:1fr}footer{padding:24px 20px}.cta-bar{flex-direction:column}}
+</style>
+</head>
+<body>
+<nav><a href="/" class="nav-logo">Arnie Rose <span>·</span> Project Management</a><a href="/" class="nav-back">← Back to Home</a></nav>
+<div class="tool-wrap">
+  <div class="tool-header">
+    <p class="tool-eyebrow">Free Gated Tool 01</p>
+    <h1 class="tool-title">Scope Creep Risk Checker</h1>
+    <p class="tool-desc">Answer 8 questions about your current project. Get a scope creep risk score and a specific action plan based on your results.</p>
+  </div>
+  
+<div class="tool-card">
+  <label class="field-label">Project name</label>
+  <input type="text" id="projName" placeholder="e.g. Website Redesign Q3">
+
+  <label class="field-label">Question 1 — Do you have a written project charter signed by your sponsor?</label>
+  <select id="q1"><option value="">Select answer</option><option value="0">Yes — written and signed</option><option value="2">Yes — written but not signed</option><option value="4">No — only verbal agreement</option><option value="5">No charter at all</option></select>
+
+  <label class="field-label">Question 2 — Do you have a formal change request process?</label>
+  <select id="q2"><option value="">Select answer</option><option value="0">Yes — written process with approvals</option><option value="2">Informal — verbal approvals only</option><option value="4">No process — changes are added as requested</option><option value="5">No process and no visibility on changes</option></select>
+
+  <label class="field-label">Question 3 — How often do stakeholders send requests directly to your team, bypassing you?</label>
+  <select id="q3"><option value="">Select answer</option><option value="0">Never — all requests go through me</option><option value="2">Rarely — once or twice per project</option><option value="4">Sometimes — a few times per week</option><option value="5">Often — it is the default way work gets added</option></select>
+
+  <label class="field-label">Question 4 — How many times has the project deadline shifted since kickoff?</label>
+  <select id="q4"><option value="">Select answer</option><option value="0">Zero — no date changes</option><option value="2">Once — with documented reason</option><option value="3">Once — no documented reason</option><option value="5">Multiple times</option></select>
+
+  <label class="field-label">Question 5 — Does your project charter include an explicit out-of-scope section?</label>
+  <select id="q5"><option value="">Select answer</option><option value="0">Yes — clearly defined</option><option value="3">Partially — some items listed</option><option value="5">No — scope is only defined by what is in, not what is out</option></select>
+
+  <label class="field-label">Question 6 — When was the last time you referenced the original scope document?</label>
+  <select id="q6"><option value="">Select answer</option><option value="0">This week</option><option value="2">This month</option><option value="4">At kickoff — not since</option><option value="5">There is no scope document to reference</option></select>
+
+  <label class="field-label">Question 7 — How is the current project workload compared to the original plan?</label>
+  <select id="q7"><option value="">Select answer</option><option value="0">On track — same as planned</option><option value="2">Slightly more — about 10 to 20 percent more work</option><option value="4">Significantly more — over 30 percent above plan</option><option value="5">Much more — the project is unrecognizable from the original plan</option></select>
+
+  <label class="field-label">Question 8 — Does your team know what they are NOT responsible for delivering?</label>
+  <select id="q8"><option value="">Select answer</option><option value="0">Yes — clearly communicated</option><option value="3">Partially — some ambiguity exists</option><option value="5">No — the team is unsure what is in and out of scope</option></select>
+
+  <button class="btn-calc" onclick="calcScope()">Check My Scope Risk</button>
+  <button class="btn-reset" onclick="resetScope()">Reset</button>
+
+  <div class="result-box" id="scopeResult">
+    <p class="result-label">Your Scope Creep Risk Score</p>
+    <div class="result-score" id="scopeScore"></div>
+    <div class="result-status" id="scopeStatus"></div>
+    <div class="result-desc" id="scopeDesc"></div>
+    <div class="result-rows" id="scopeRows"></div>
+  </div>
+</div>
+
+<script>
+function calcScope(){
+  var ids=['q1','q2','q3','q4','q5','q6','q7','q8'];
+  var score=0; var missing=false;
+  ids.forEach(function(id){
+    var v=document.getElementById(id).value;
+    if(v===''){missing=true;}else{score+=parseInt(v);}
+  });
+  if(missing){alert('Please answer all 8 questions.');return;}
+  var box=document.getElementById('scopeResult');
+  var name=document.getElementById('projName').value||'Your Project';
+  document.getElementById('scopeScore').textContent=score+'/40';
+  var status,desc,color;
+  if(score<=8){status='Low Risk';color='#4CAF50';desc=name+' has strong scope controls in place. Keep referencing the charter weekly and maintain your change request process consistently.';}
+  else if(score<=20){status='Medium Risk';color='#FF9800';desc=name+' has some scope vulnerabilities. Review your change request process and ensure all stakeholders know the out-of-scope boundaries before the next milestone.';}
+  else{status='High Risk';color='#f44336';desc=name+' is at high risk of scope creep. Immediate action needed: schedule a scope alignment meeting with your sponsor this week and create or reinforce your change request process.';}
+  document.getElementById('scopeStatus').textContent=status;
+  document.getElementById('scopeStatus').style.color=color;
+  document.getElementById('scopeDesc').textContent=desc;
+  var actions=[];
+  if(parseInt(document.getElementById('q1').value)>=3)actions.push({l:'Create a written project charter',v:'This week'});
+  if(parseInt(document.getElementById('q2').value)>=3)actions.push({l:'Build a formal change request process',v:'This week'});
+  if(parseInt(document.getElementById('q3').value)>=3)actions.push({l:'Brief team — all requests go through you',v:'Today'});
+  if(parseInt(document.getElementById('q5').value)>=3)actions.push({l:'Add explicit out-of-scope section to charter',v:'This week'});
+  if(parseInt(document.getElementById('q6').value)>=3)actions.push({l:'Schedule weekly scope review',v:'Recurring'});
+  var rows=document.getElementById('scopeRows');
+  rows.innerHTML='';
+  actions.forEach(function(a){rows.innerHTML+='<div class="result-row"><span class="result-row-label">'+a.l+'</span><span class="result-row-val">'+a.v+'</span></div>';});
+  box.classList.add('show');
+  box.scrollIntoView({behavior:'smooth'});
+}
+function resetScope(){
+  ['q1','q2','q3','q4','q5','q6','q7','q8'].forEach(function(id){document.getElementById(id).value='';});
+  document.getElementById('projName').value='';
+  document.getElementById('scopeResult').classList.remove('show');
+}
+</script>
+
+  <div class="cta-bar">
+    <p>Get the full project management system — free tools, sprint templates, and AI prompts.</p>
+    <a href="/">Get Free Tools</a>
+  </div>
+</div>
+<footer>
+  <span class="footer-copy">© 2026 Arnie Rose Felicilda. Keystone Books.</span>
+  <a href="/" class="footer-back">projectmanagement.arniefelicilda.com →</a>
+</footer>
+</body></html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stakeholder Communication Planner — Free Tool — Arnie Rose Felicilda</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--black:#111111;--white:#FFFFFF;--gray-light:#F5F5F5;--gray-mid:#E5E5E5;--gray-text:#666666;--blue:#1D6FA4;--blue-dark:#155a87;--heading:'DM Serif Display',Georgia,serif;--body:'DM Sans',sans-serif;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--body);background:var(--gray-light);color:var(--black);-webkit-font-smoothing:antialiased;min-height:100vh}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--white);border-bottom:1px solid var(--gray-mid);padding:0 60px;height:60px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:var(--body);font-size:13px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--black);text-decoration:none}
+.nav-logo span{color:var(--blue)}
+.nav-back{font-family:var(--body);font-size:12px;color:var(--gray-text);text-decoration:none}
+.nav-back:hover{color:var(--black)}
+.tool-wrap{max-width:760px;margin:0 auto;padding:80px 40px 60px}
+.tool-header{margin-bottom:40px}
+.tool-eyebrow{font-family:var(--body);font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--blue);margin-bottom:12px;display:flex;align-items:center;gap:10px}
+.tool-eyebrow::before{content:'';display:block;width:20px;height:1.5px;background:var(--blue)}
+.tool-title{font-family:'DM Serif Display',Georgia,serif;font-size:clamp(28px,4vw,42px);font-weight:400;color:var(--black);margin-bottom:10px;line-height:1.15}
+.tool-desc{font-family:var(--body);font-size:16px;font-weight:300;color:var(--gray-text);line-height:1.7;max-width:560px}
+.tool-card{background:var(--white);padding:36px;margin-bottom:20px;border-top:3px solid var(--blue)}
+.field-label{font-family:var(--body);font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--black);display:block;margin-bottom:8px}
+.field-sub{font-family:var(--body);font-size:13px;font-weight:300;color:var(--gray-text);margin-bottom:10px;line-height:1.5}
+input[type=text],input[type=number],select{width:100%;padding:12px 14px;font-family:var(--body);font-size:15px;border:1px solid var(--gray-mid);background:var(--white);color:var(--black);outline:none;margin-bottom:20px}
+input:focus,select:focus{border-color:var(--blue)}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.btn-calc{background:var(--blue);color:var(--white);font-family:var(--body);font-size:13px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;padding:14px 32px;border:none;cursor:pointer;width:100%;margin-top:8px}
+.btn-calc:hover{background:var(--blue-dark)}
+.btn-reset{background:transparent;color:var(--gray-text);font-family:var(--body);font-size:12px;font-weight:500;padding:10px 24px;border:1px solid var(--gray-mid);cursor:pointer;width:100%;margin-top:8px}
+.result-box{display:none;background:var(--black);padding:32px;margin-top:24px}
+.result-box.show{display:block}
+.result-label{font-family:var(--body);font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--blue);margin-bottom:8px}
+.result-score{font-family:'DM Serif Display',Georgia,serif;font-size:52px;font-weight:400;color:var(--white);line-height:1;margin-bottom:6px}
+.result-status{font-family:var(--body);font-size:14px;font-weight:600;margin-bottom:16px}
+.result-desc{font-family:var(--body);font-size:14px;font-weight:300;color:rgba(255,255,255,0.6);line-height:1.7}
+.result-rows{margin-top:20px;display:flex;flex-direction:column;gap:1px}
+.result-row{display:flex;justify-content:space-between;padding:12px 16px;background:rgba(255,255,255,0.05)}
+.result-row-label{font-family:var(--body);font-size:13px;color:rgba(255,255,255,0.6)}
+.result-row-val{font-family:var(--body);font-size:13px;font-weight:600;color:var(--white)}
+.risk-low{color:#4CAF50}
+.risk-med{color:#FF9800}
+.risk-high{color:#f44336}
+.cta-bar{background:var(--white);border-top:3px solid var(--blue);padding:28px 36px;margin-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.cta-bar p{font-family:var(--body);font-size:14px;font-weight:300;color:var(--gray-text)}
+.cta-bar a{font-family:var(--body);font-size:12px;font-weight:600;color:var(--white);background:var(--blue);padding:10px 20px;text-decoration:none;letter-spacing:0.04em;text-transform:uppercase}
+.cta-bar a:hover{background:var(--blue-dark)}
+footer{background:var(--black);padding:32px 60px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;margin-top:60px}
+.footer-copy{font-family:var(--body);font-size:12px;color:rgba(255,255,255,0.25)}
+.footer-back{font-family:var(--body);font-size:12px;color:rgba(255,255,255,0.35);text-decoration:none}
+@media(max-width:768px){nav{padding:0 20px}.tool-wrap{padding:80px 20px 40px}.field-row{grid-template-columns:1fr}footer{padding:24px 20px}.cta-bar{flex-direction:column}}
+</style>
+</head>
+<body>
+<nav><a href="/" class="nav-logo">Arnie Rose <span>·</span> Project Management</a><a href="/" class="nav-back">← Back to Home</a></nav>
+<div class="tool-wrap">
+  <div class="tool-header">
+    <p class="tool-eyebrow">Free Gated Tool 02</p>
+    <h1 class="tool-title">Stakeholder Communication Planner</h1>
+    <p class="tool-desc">Map up to 6 stakeholders by power and interest. Get a tailored communication plan for each one — how often to update them and what to say.</p>
+  </div>
+  
+<div class="tool-card">
+  <p class="field-label">Add up to 6 stakeholders</p>
+  <p class="field-sub">For each stakeholder, rate their power (ability to affect the project) and interest (how much they care about the outcome) from 1 to 5.</p>
+
+  <div id="stakeholderRows">
+  </div>
+  <button class="btn-calc" onclick="addStakeholder()" style="margin-bottom:12px;background:var(--gray-light);color:var(--black);border:1px solid var(--gray-mid)">+ Add Stakeholder</button>
+  <button class="btn-calc" onclick="calcStakeholders()">Generate Communication Plan</button>
+  <button class="btn-reset" onclick="resetStakeholders()">Reset</button>
+
+  <div class="result-box" id="stakeholderResult">
+    <p class="result-label">Your Stakeholder Communication Plan</p>
+    <div id="stakeholderOutput"></div>
+  </div>
+</div>
+
+<script>
+var count=0;
+function addStakeholder(){
+  if(count>=6){alert('Maximum 6 stakeholders.');return;}
+  count++;
+  var id=count;
+  var div=document.createElement('div');
+  div.id='sh-'+id;
+  div.style.cssText='background:var(--gray-light);padding:20px;margin-bottom:12px;';
+  div.innerHTML='<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;"><span style="font-family:var(--body);font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--blue);">Stakeholder '+id+'</span><button onclick="removeStakeholder('+id+')" style="background:none;border:none;cursor:pointer;font-size:18px;color:var(--gray-text);">×</button></div>'
+  +'<label class="field-label">Name or Role</label><input type="text" id="shName'+id+'" placeholder="e.g. Project Sponsor" style="margin-bottom:12px;">'
+  +'<div class="field-row"><div><label class="field-label">Power (1-5)</label><p class="field-sub">Can they block or approve the project?</p><select id="shPow'+id+'"><option value="">Select</option><option value="1">1 — Very low</option><option value="2">2 — Low</option><option value="3">3 — Medium</option><option value="4">4 — High</option><option value="5">5 — Very high</option></select></div><div><label class="field-label">Interest (1-5)</label><p class="field-sub">How much do they care about the outcome?</p><select id="shInt'+id+'"><option value="">Select</option><option value="1">1 — Very low</option><option value="2">2 — Low</option><option value="3">3 — Medium</option><option value="4">4 — High</option><option value="5">5 — Very high</option></select></div></div>';
+  document.getElementById('stakeholderRows').appendChild(div);
+}
+function removeStakeholder(id){
+  var el=document.getElementById('sh-'+id);
+  if(el)el.remove();
+}
+function calcStakeholders(){
+  var output='';
+  var found=false;
+  for(var i=1;i<=count;i++){
+    var nameEl=document.getElementById('shName'+i);
+    var powEl=document.getElementById('shPow'+i);
+    var intEl=document.getElementById('shInt'+i);
+    if(!nameEl)continue;
+    var name=nameEl.value||'Stakeholder '+i;
+    var pow=parseInt(powEl.value)||0;
+    var intr=parseInt(intEl.value)||0;
+    if(!pow||!intr){continue;}
+    found=true;
+    var category,freq,approach,channel;
+    if(pow>=4&&intr>=4){category='Manage Closely';freq='Weekly — direct update';approach='Involve in key decisions. Provide full project detail. Weekly 1:1 or written update every Monday.';channel='Direct email or 1:1 meeting';}
+    else if(pow>=4&&intr<4){category='Keep Informed';freq='Milestone updates only';approach='Brief updates at key milestones. Keep it short. Do not overwhelm with operational detail.';channel='Short email at each milestone';}
+    else if(pow<4&&intr>=4){category='Keep Engaged';freq='Bi-weekly update';approach='Regular but brief updates. Respond to questions within 24 hours. These are your project allies.';channel='Email or group update';}
+    else{category='Monitor';freq='Monthly or at project close';approach='Minimal communication. Update at project completion. Monitor for changes in their interest level.';channel='Project newsletter or summary';}
+    output+='<div style="margin-bottom:2px;"><div style="background:rgba(255,255,255,0.06);padding:20px;">'
+    +'<div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;margin-bottom:12px;">'
+    +'<span style="font-family:var(--body);font-size:15px;font-weight:600;color:var(--white);">'+name+'</span>'
+    +'<span style="font-family:var(--body);font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--blue);background:rgba(29,111,164,0.2);padding:3px 10px;">'+category+'</span>'
+    +'</div>'
+    +'<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;">'
+    +'<div><span style="font-family:var(--body);font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.4);display:block;margin-bottom:4px;">Power / Interest</span><span style="font-family:var(--body);font-size:14px;color:var(--white);">'+pow+' / '+intr+'</span></div>'
+    +'<div><span style="font-family:var(--body);font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.4);display:block;margin-bottom:4px;">Update Frequency</span><span style="font-family:var(--body);font-size:14px;color:var(--white);">'+freq+'</span></div>'
+    +'</div>'
+    +'<div style="margin-bottom:8px;"><span style="font-family:var(--body);font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.4);display:block;margin-bottom:4px;">Approach</span><span style="font-family:var(--body);font-size:14px;font-weight:300;color:rgba(255,255,255,0.7);line-height:1.6;">'+approach+'</span></div>'
+    +'<div><span style="font-family:var(--body);font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.4);display:block;margin-bottom:4px;">Recommended Channel</span><span style="font-family:var(--body);font-size:14px;color:var(--white);">'+channel+'</span></div>'
+    +'</div></div>';
+  }
+  if(!found){alert('Please add at least one stakeholder with power and interest scores.');return;}
+  document.getElementById('stakeholderOutput').innerHTML=output;
+  document.getElementById('stakeholderResult').classList.add('show');
+  document.getElementById('stakeholderResult').scrollIntoView({behavior:'smooth'});
+}
+function resetStakeholders(){
+  document.getElementById('stakeholderRows').innerHTML='';
+  count=0;
+  document.getElementById('stakeholderResult').classList.remove('show');
+}
+// Add first stakeholder row on load
+addStakeholder();
+addStakeholder();
+</script>
+
+  <div class="cta-bar">
+    <p>Get the full project management system — free tools, sprint templates, and AI prompts.</p>
+    <a href="/">Get Free Tools</a>
+  </div>
+</div>
+<footer>
+  <span class="footer-copy">© 2026 Arnie Rose Felicilda. Keystone Books.</span>
+  <a href="/" class="footer-back">projectmanagement.arniefelicilda.com →</a>
+</footer>
+</body></html>

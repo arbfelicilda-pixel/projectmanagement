@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project Budget Variance Tracker — Free Tool — Arnie Rose Felicilda</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--black:#111111;--white:#FFFFFF;--gray-light:#F5F5F5;--gray-mid:#E5E5E5;--gray-text:#666666;--blue:#1D6FA4;--blue-dark:#155a87;--heading:'DM Serif Display',Georgia,serif;--body:'DM Sans',sans-serif;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--body);background:var(--gray-light);color:var(--black);-webkit-font-smoothing:antialiased;min-height:100vh}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--white);border-bottom:1px solid var(--gray-mid);padding:0 60px;height:60px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:var(--body);font-size:13px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--black);text-decoration:none}
+.nav-logo span{color:var(--blue)}
+.nav-back{font-family:var(--body);font-size:12px;color:var(--gray-text);text-decoration:none}
+.nav-back:hover{color:var(--black)}
+.tool-wrap{max-width:760px;margin:0 auto;padding:80px 40px 60px}
+.tool-header{margin-bottom:40px}
+.tool-eyebrow{font-family:var(--body);font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--blue);margin-bottom:12px;display:flex;align-items:center;gap:10px}
+.tool-eyebrow::before{content:'';display:block;width:20px;height:1.5px;background:var(--blue)}
+.tool-title{font-family:'DM Serif Display',Georgia,serif;font-size:clamp(28px,4vw,42px);font-weight:400;color:var(--black);margin-bottom:10px;line-height:1.15}
+.tool-desc{font-family:var(--body);font-size:16px;font-weight:300;color:var(--gray-text);line-height:1.7;max-width:560px}
+.tool-card{background:var(--white);padding:36px;margin-bottom:20px;border-top:3px solid var(--blue)}
+.field-label{font-family:var(--body);font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--black);display:block;margin-bottom:8px}
+.field-sub{font-family:var(--body);font-size:13px;font-weight:300;color:var(--gray-text);margin-bottom:10px;line-height:1.5}
+input[type=text],input[type=number],select{width:100%;padding:12px 14px;font-family:var(--body);font-size:15px;border:1px solid var(--gray-mid);background:var(--white);color:var(--black);outline:none;margin-bottom:20px}
+input:focus,select:focus{border-color:var(--blue)}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.btn-calc{background:var(--blue);color:var(--white);font-family:var(--body);font-size:13px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;padding:14px 32px;border:none;cursor:pointer;width:100%;margin-top:8px}
+.btn-calc:hover{background:var(--blue-dark)}
+.btn-reset{background:transparent;color:var(--gray-text);font-family:var(--body);font-size:12px;font-weight:500;padding:10px 24px;border:1px solid var(--gray-mid);cursor:pointer;width:100%;margin-top:8px}
+.result-box{display:none;background:var(--black);padding:32px;margin-top:24px}
+.result-box.show{display:block}
+.result-label{font-family:var(--body);font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--blue);margin-bottom:8px}
+.result-score{font-family:'DM Serif Display',Georgia,serif;font-size:52px;font-weight:400;color:var(--white);line-height:1;margin-bottom:6px}
+.result-status{font-family:var(--body);font-size:14px;font-weight:600;margin-bottom:16px}
+.result-desc{font-family:var(--body);font-size:14px;font-weight:300;color:rgba(255,255,255,0.6);line-height:1.7}
+.result-rows{margin-top:20px;display:flex;flex-direction:column;gap:1px}
+.result-row{display:flex;justify-content:space-between;padding:12px 16px;background:rgba(255,255,255,0.05)}
+.result-row-label{font-family:var(--body);font-size:13px;color:rgba(255,255,255,0.6)}
+.result-row-val{font-family:var(--body);font-size:13px;font-weight:600;color:var(--white)}
+.risk-low{color:#4CAF50}
+.risk-med{color:#FF9800}
+.risk-high{color:#f44336}
+.cta-bar{background:var(--white);border-top:3px solid var(--blue);padding:28px 36px;margin-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.cta-bar p{font-family:var(--body);font-size:14px;font-weight:300;color:var(--gray-text)}
+.cta-bar a{font-family:var(--body);font-size:12px;font-weight:600;color:var(--white);background:var(--blue);padding:10px 20px;text-decoration:none;letter-spacing:0.04em;text-transform:uppercase}
+.cta-bar a:hover{background:var(--blue-dark)}
+footer{background:var(--black);padding:32px 60px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;margin-top:60px}
+.footer-copy{font-family:var(--body);font-size:12px;color:rgba(255,255,255,0.25)}
+.footer-back{font-family:var(--body);font-size:12px;color:rgba(255,255,255,0.35);text-decoration:none}
+@media(max-width:768px){nav{padding:0 20px}.tool-wrap{padding:80px 20px 40px}.field-row{grid-template-columns:1fr}footer{padding:24px 20px}.cta-bar{flex-direction:column}}
+</style>
+</head>
+<body>
+<nav><a href="/" class="nav-logo">Arnie Rose <span>·</span> Project Management</a><a href="/" class="nav-back">← Back to Home</a></nav>
+<div class="tool-wrap">
+  <div class="tool-header">
+    <p class="tool-eyebrow">Free Gated Tool 04</p>
+    <h1 class="tool-title">Project Budget Variance Tracker</h1>
+    <p class="tool-desc">Track planned versus actual spend per milestone. Get a budget health score and automatic flag when variance exceeds your threshold.</p>
+  </div>
+  
+<div class="tool-card">
+  <label class="field-label">Project name</label>
+  <input type="text" id="budgetProjName" placeholder="e.g. ERP Implementation">
+
+  <div class="field-row">
+    <div>
+      <label class="field-label">Total project budget ($)</label>
+      <input type="number" id="totalBudget" placeholder="e.g. 50000" min="0">
+    </div>
+    <div>
+      <label class="field-label">Variance alert threshold (%)</label>
+      <p class="field-sub">Flag amber when variance exceeds this. Default: 10%</p>
+      <input type="number" id="threshold" placeholder="10" min="1" max="50" value="10">
+    </div>
+  </div>
+
+  <label class="field-label">Milestone budget entries</label>
+  <p class="field-sub">Enter planned and actual spend for each milestone completed so far.</p>
+
+  <div id="milestoneRows"></div>
+  <button onclick="addMilestone()" style="background:var(--gray-light);color:var(--black);border:1px solid var(--gray-mid);font-family:var(--body);font-size:12px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;padding:10px 20px;cursor:pointer;margin-bottom:20px;width:100%;">+ Add Milestone</button>
+
+  <button class="btn-calc" onclick="calcBudget()">Calculate Budget Health</button>
+  <button class="btn-reset" onclick="resetBudget()">Reset</button>
+
+  <div class="result-box" id="budgetResult">
+    <p class="result-label">Budget Health Report</p>
+    <div id="budgetOutput"></div>
+  </div>
+</div>
+
+<script>
+var mCount=0;
+function addMilestone(){
+  if(mCount>=10){alert('Maximum 10 milestones.');return;}
+  mCount++;
+  var id=mCount;
+  var div=document.createElement('div');
+  div.id='ms-'+id;
+  div.style.cssText='background:var(--gray-light);padding:16px;margin-bottom:8px;';
+  div.innerHTML='<div style="display:flex;justify-content:space-between;margin-bottom:10px;"><span style="font-family:var(--body);font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--blue);">Milestone '+id+'</span><button onclick="removeMilestone('+id+')" style="background:none;border:none;cursor:pointer;color:var(--gray-text);font-size:16px;">×</button></div>'
+  +'<input type="text" id="msName'+id+'" placeholder="Milestone name e.g. Design Phase" style="margin-bottom:8px;">'
+  +'<div class="field-row">'
+  +'<div><label class="field-label">Planned ($)</label><input type="number" id="msPlanned'+id+'" placeholder="0" min="0"></div>'
+  +'<div><label class="field-label">Actual ($)</label><input type="number" id="msActual'+id+'" placeholder="0" min="0"></div>'
+  +'</div>';
+  document.getElementById('milestoneRows').appendChild(div);
+}
+function removeMilestone(id){
+  var el=document.getElementById('ms-'+id);
+  if(el)el.remove();
+}
+function calcBudget(){
+  var pName=document.getElementById('budgetProjName').value||'Project';
+  var total=parseFloat(document.getElementById('totalBudget').value)||0;
+  var thresh=parseFloat(document.getElementById('threshold').value)||10;
+  if(!total){alert('Please enter total project budget.');return;}
+  var totalPlanned=0,totalActual=0,rows='';
+  var found=false;
+  for(var i=1;i<=mCount;i++){
+    var nameEl=document.getElementById('msName'+i);
+    if(!nameEl)continue;
+    var name=nameEl.value||'Milestone '+i;
+    var planned=parseFloat(document.getElementById('msPlanned'+i).value)||0;
+    var actual=parseFloat(document.getElementById('msActual'+i).value)||0;
+    if(!planned&&!actual)continue;
+    found=true;
+    totalPlanned+=planned;totalActual+=actual;
+    var diff=actual-planned;
+    var pct=planned>0?Math.round((diff/planned)*100):0;
+    var color=Math.abs(pct)<=thresh?'#4CAF50':Math.abs(pct)<=thresh*2?'#FF9800':'#f44336';
+    var label=pct>0?'+'+pct+'% over':pct<0?Math.abs(pct)+'% under':'On budget';
+    rows+='<div style="background:rgba(255,255,255,0.06);padding:14px;margin-bottom:2px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">'
+    +'<span style="font-family:var(--body);font-size:14px;color:var(--white);">'+name+'</span>'
+    +'<div style="display:flex;gap:24px;align-items:center;">'
+    +'<span style="font-family:var(--body);font-size:13px;color:rgba(255,255,255,0.5);">Planned: $'+planned.toLocaleString()+'</span>'
+    +'<span style="font-family:var(--body);font-size:13px;color:rgba(255,255,255,0.5);">Actual: $'+actual.toLocaleString()+'</span>'
+    +'<span style="font-family:var(--body);font-size:13px;font-weight:600;color:'+color+';">'+label+'</span>'
+    +'</div></div>';
+  }
+  if(!found){alert('Please add at least one milestone with planned or actual spend.');return;}
+  var overallDiff=totalActual-totalPlanned;
+  var overallPct=totalPlanned>0?Math.round((overallDiff/totalPlanned)*100):0;
+  var remainingBudget=total-totalActual;
+  var healthColor=Math.abs(overallPct)<=thresh?'#4CAF50':Math.abs(overallPct)<=thresh*2?'#FF9800':'#f44336';
+  var healthLabel=Math.abs(overallPct)<=thresh?'On Track':Math.abs(overallPct)<=thresh*2?'Watch Closely':'Over Budget Alert';
+  document.getElementById('budgetOutput').innerHTML=
+    '<div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-bottom:16px;">'
+    +'<div style="background:rgba(255,255,255,0.06);padding:16px;"><span style="font-family:var(--body);font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.4);display:block;margin-bottom:4px;">Total Planned</span><span style="font-family:var(--heading);font-size:26px;color:var(--white);">$'+totalPlanned.toLocaleString()+'</span></div>'
+    +'<div style="background:rgba(255,255,255,0.06);padding:16px;"><span style="font-family:var(--body);font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.4);display:block;margin-bottom:4px;">Total Actual</span><span style="font-family:var(--heading);font-size:26px;color:var(--white);">$'+totalActual.toLocaleString()+'</span></div>'
+    +'<div style="background:rgba(255,255,255,0.06);padding:16px;"><span style="font-family:var(--body);font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.4);display:block;margin-bottom:4px;">Budget Remaining</span><span style="font-family:var(--heading);font-size:26px;color:var(--white);">$'+remainingBudget.toLocaleString()+'</span></div>'
+    +'<div style="background:rgba(255,255,255,0.06);padding:16px;"><span style="font-family:var(--body);font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.4);display:block;margin-bottom:4px;">Overall Variance</span><span style="font-family:var(--heading);font-size:26px;color:'+healthColor+';">'+(overallPct>0?'+':'')+overallPct+'%</span></div>'
+    +'</div>'
+    +'<div style="background:rgba(255,255,255,0.06);padding:16px;margin-bottom:16px;">'
+    +'<span style="font-family:var(--body);font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.4);display:block;margin-bottom:6px;">Budget Health — '+pName+'</span>'
+    +'<span style="font-family:var(--body);font-size:18px;font-weight:600;color:'+healthColor+';">'+healthLabel+'</span>'
+    +'</div>'
+    +rows;
+  document.getElementById('budgetResult').classList.add('show');
+  document.getElementById('budgetResult').scrollIntoView({behavior:'smooth'});
+}
+function resetBudget(){
+  document.getElementById('budgetProjName').value='';
+  document.getElementById('totalBudget').value='';
+  document.getElementById('threshold').value='10';
+  document.getElementById('milestoneRows').innerHTML='';
+  mCount=0;
+  document.getElementById('budgetResult').classList.remove('show');
+  addMilestone();addMilestone();addMilestone();
+}
+addMilestone();addMilestone();addMilestone();
+</script>
+
+  <div class="cta-bar">
+    <p>Get the full project management system — free tools, sprint templates, and AI prompts.</p>
+    <a href="/">Get Free Tools</a>
+  </div>
+</div>
+<footer>
+  <span class="footer-copy">© 2026 Arnie Rose Felicilda. Keystone Books.</span>
+  <a href="/" class="footer-back">projectmanagement.arniefelicilda.com →</a>
+</footer>
+</body></html>
