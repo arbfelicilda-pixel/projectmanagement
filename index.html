@@ -134,9 +134,17 @@ footer{background:var(--black);padding:40px 60px;display:flex;justify-content:sp
 .footer-links{display:flex;gap:24px}
 .footer-links a{font-family:var(--body);font-size:12px;color:rgba(255,255,255,0.35);text-decoration:none}
 .footer-links a:hover{color:var(--white)}
+.nav-hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
+.nav-hamburger span{display:block;width:20px;height:1px;background:var(--black)}
+.nav-mobile{display:none;position:fixed;top:60px;left:0;right:0;background:var(--white);border-bottom:1px solid var(--gray-mid);flex-direction:column;z-index:99}
+.nav-mobile.open{display:flex}
+.nav-mobile a{font-family:var(--body);font-size:12px;color:var(--gray-text);text-decoration:none;padding:14px 24px;border-bottom:1px solid var(--gray-mid);transition:color 0.2s}
+.nav-mobile a:hover{color:var(--black)}
 @media(max-width:900px){
   nav{padding:0 20px}
   .nav-links{display:none}
+  .nav-hamburger{display:flex}
+}
   .hero{grid-template-columns:1fr;padding:90px 20px 60px;gap:48px}
   .book-card{padding:32px 24px}
   .section-wrap,.gate-inner,.blogs-inner{padding:60px 20px}
@@ -154,11 +162,23 @@ footer{background:var(--black);padding:40px 60px;display:flex;justify-content:sp
   <a href="/" class="nav-logo">Arnie Rose <span>·</span> Project Management</a>
   <div class="nav-links">
     <a href="#tools">Free Tools</a>
+    <a href="#books">Books</a>
     <a href="#blog">Blog</a>
-    <a href="https://arniefelicilda.com" target="_blank">Main Site</a>
-    <a href="#subscribe" class="nav-cta">Get Free Tools</a>
+    <a href="https://arniefelicilda.com" target="_blank" rel="noopener">Author Site</a>
+    <a href="#subscribe" class="nav-cta">Subscribe</a>
   </div>
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<div class="nav-mobile" id="nav-mobile">
+  <a href="#tools">Free Tools</a>
+  <a href="#books">Books</a>
+  <a href="#blog">Blog</a>
+  <a href="https://arniefelicilda.com" target="_blank" rel="noopener">Author Site</a>
+  <a href="#subscribe">Subscribe</a>
+</div>
 
 <!-- HERO -->
 <section>
@@ -173,7 +193,7 @@ footer{background:var(--black);padding:40px 60px;display:flex;justify-content:sp
         <div class="stat-item"><span class="stat-num">6</span><span class="stat-label">Free tools included</span></div>
       </div>
       <div class="hero-cta">
-        <a href="#subscribe" class="btn-primary">Get Free Tools</a>
+        <a href="#subscribe" class="btn-primary">Subscribe</a>
         <a href="#tools" class="btn-secondary">Browse Tools</a>
       </div>
     </div>
@@ -198,11 +218,11 @@ footer{background:var(--black);padding:40px 60px;display:flex;justify-content:sp
 <section id="subscribe" class="subscribe-gate">
   <div class="subscribe-inner">
     <p class="sub-eyebrow">Free Access</p>
-    <h2 class="sub-title">5 free project management tools. Enter your email.</h2>
-    <p class="sub-desc">Charter template, sprint system, progress dashboard, recovery checklist, and AI prompt library. All free. Delivered to your inbox immediately.</p>
+    <h2 class="sub-title">Get the free tools.</h2>
+    <p class="sub-desc">Charter template, sprint system, progress dashboard, recovery checklist, and AI prompt library. Delivered to your inbox immediately.</p>
     <form action="https://app.kit.com/forms/9449931/subscriptions" method="post" class="kit-form">
       <input name="email_address" type="email" placeholder="Your email address" required>
-      <button type="submit">Send Me the Tools</button>
+      <button type="submit">Subscribe</button>
     </form>
     <p class="sub-note">Free. No spam. Unsubscribe anytime.</p>
   </div>
@@ -319,6 +339,29 @@ footer{background:var(--black);padding:40px 60px;display:flex;justify-content:sp
   </div>
 </section>
 
+<!-- BOOKS -->
+<section id="books" style="background:var(--black);padding:80px 60px">
+  <div style="max-width:1100px;margin:0 auto">
+    <p class="section-label" style="color:var(--blue)">Coming Books</p>
+    <h2 class="section-title" style="color:var(--white);margin-bottom:12px">The books project managers actually needed.</h2>
+    <p style="font-family:var(--body);font-size:16px;font-weight:300;color:rgba(255,255,255,0.5);margin-bottom:48px;max-width:560px;line-height:1.7">Two books in progress. Subscribe to be first when they drop and get the free tools now while you wait.</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,0.08)">
+      <div style="background:rgba(255,255,255,0.04);padding:32px 28px">
+        <p style="font-family:var(--body);font-size:10px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--blue);margin-bottom:12px">PM · Book 02</p>
+        <p style="font-family:'DM Serif Display',Georgia,serif;font-size:26px;font-weight:400;color:var(--white);margin-bottom:10px;line-height:1.2">Scope Creep to Scope Keeper</p>
+        <p style="font-family:var(--body);font-size:13px;font-weight:300;color:rgba(255,255,255,0.5);line-height:1.7;margin-bottom:20px">How to lock project scope, manage change requests, and deliver without the constant additions that push every deadline back.</p>
+        <a href="#subscribe" style="font-family:var(--body);font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--blue);text-decoration:none;border-bottom:1px solid rgba(29,111,164,0.4);padding-bottom:2px">Join the waitlist →</a>
+      </div>
+      <div style="background:rgba(255,255,255,0.04);padding:32px 28px">
+        <p style="font-family:var(--body);font-size:10px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--blue);margin-bottom:12px">PM · Book 03</p>
+        <p style="font-family:'DM Serif Display',Georgia,serif;font-size:26px;font-weight:400;color:var(--white);margin-bottom:10px;line-height:1.2">The AI Project Manager</p>
+        <p style="font-family:var(--body);font-size:13px;font-weight:300;color:rgba(255,255,255,0.5);line-height:1.7;margin-bottom:20px">AI workflows, prompts, and systems for project managers who want leverage without complexity.</p>
+        <a href="#subscribe" style="font-family:var(--body);font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--blue);text-decoration:none;border-bottom:1px solid rgba(29,111,164,0.4);padding-bottom:2px">Join the waitlist →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- BLOG -->
 <section class="blogs-section">
   <div class="blogs-inner">
@@ -343,11 +386,22 @@ footer{background:var(--black);padding:40px 60px;display:flex;justify-content:sp
 <footer>
   <span class="footer-copy">© 2026 Arnie Rose Felicilda. Keystone Books.</span>
   <div class="footer-links">
-    <a href="https://arniefelicilda.com">Main Site</a>
+    <a href="https://arniefelicilda.com">Author Site</a>
     <a href="https://supplychain.arniefelicilda.com">Supply Chain</a>
     <a href="https://youwereneverseries.arniefelicilda.com">YWN Series</a>
   </div>
 </footer>
 
+<script>
+(function(){
+  var h=document.getElementById('nav-hamburger');
+  var m=document.getElementById('nav-mobile');
+  if(h&&m){
+    h.addEventListener('click',function(e){e.stopPropagation();m.classList.toggle('open');});
+    document.querySelectorAll('.nav-mobile a').forEach(function(a){a.addEventListener('click',function(){m.classList.remove('open');});});
+    document.addEventListener('click',function(){m.classList.remove('open');});
+  }
+})();
+</script>
 </body>
 </html>
