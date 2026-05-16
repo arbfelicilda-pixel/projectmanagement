@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What Is Scope Creep and How to Stop It</title>
+<meta name="description" content="Scope creep kills more projects than missed deadlines. Learn what scope creep is, how to spot it early, and how to stop it before it derails your project.">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Arnie Rose Felicilda">
+<link rel="canonical" href="https://projectmanagement.arniefelicilda.com/what-is-scope-creep.html">
+<meta property="og:title" content="What Is Scope Creep and How to Stop It">
+<meta property="og:description" content="Scope creep kills more projects than missed deadlines. Learn what scope creep is, how to spot it early, and how to stop it before it derails your project.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://projectmanagement.arniefelicilda.com/what-is-scope-creep.html">
+<meta property="og:image" content="https://projectmanagement.arniefelicilda.com/pm-blog-1-scope-creep.png">
+<meta property="og:image:width" content="1080"><meta property="og:image:height" content="1620">
+<meta property="og:site_name" content="Arnie Rose - Project Management">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"What Is Scope Creep and How to Stop It","description":"Scope creep kills more projects than missed deadlines. Learn what scope creep is, how to spot it early, and how to stop it before it derails your project.","image":"https://projectmanagement.arniefelicilda.com/pm-blog-1-scope-creep.png","author":{"@type":"Person","name":"Arnie Rose Felicilda","url":"https://arniefelicilda.com"},"publisher":{"@type":"Organization","name":"Keystone Books"},"datePublished":"2026-05-16","url":"https://projectmanagement.arniefelicilda.com/what-is-scope-creep.html","keywords":"what is scope creep, scope creep prevention, project management"}</script>
+<style>
+:root{--black:#111111;--white:#FFFFFF;--gray-light:#F5F5F5;--gray-mid:#E5E5E5;--gray-text:#666666;--blue:#1D6FA4;--blue-dark:#155a87;--heading:'DM Serif Display',Georgia,serif;--body:'DM Sans',sans-serif;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--body);background:var(--white);color:var(--black);-webkit-font-smoothing:antialiased}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--white);border-bottom:1px solid var(--gray-mid);padding:0 60px;height:60px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:var(--body);font-size:13px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--black);text-decoration:none}
+.nav-logo span{color:var(--blue)}
+.nav-back{font-family:var(--body);font-size:12px;color:var(--gray-text);text-decoration:none;transition:color 0.2s}
+.nav-back:hover{color:var(--black)}
+.post-hero{padding:100px 60px 48px;max-width:780px;margin:0 auto}
+.post-eyebrow{font-family:var(--body);font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--blue);margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.post-eyebrow::before{content:'';display:block;width:20px;height:1.5px;background:var(--blue)}
+.post-title{font-family:var(--heading);font-size:clamp(32px,5vw,52px);font-weight:400;line-height:1.1;color:var(--black);margin-bottom:20px}
+.post-meta{font-family:var(--body);font-size:13px;color:var(--gray-text);margin-bottom:32px;display:flex;gap:20px;flex-wrap:wrap}
+.post-image{width:100%;max-width:780px;margin:0 auto 48px;padding:0 60px}
+.post-image img{width:100%;height:auto;display:block}
+.post-body{max-width:680px;margin:0 auto;padding:0 60px 80px}
+.post-body p{font-family:var(--body);font-size:17px;line-height:1.85;color:#333;margin-bottom:22px}
+.post-body p:first-child{font-size:19px;color:var(--black);font-weight:400}
+.post-body h2{font-family:var(--heading);font-size:clamp(22px,3vw,30px);font-weight:400;color:var(--black);margin:40px 0 16px;line-height:1.2}
+.post-body h3{font-family:var(--body);font-size:18px;font-weight:600;color:var(--black);margin:32px 0 12px}
+.post-body ul{margin:0 0 22px 20px}
+.post-body ul li{font-family:var(--body);font-size:17px;line-height:1.8;color:#333;margin-bottom:8px}
+.post-body strong{font-weight:600;color:var(--black)}
+.post-divider{width:32px;height:2px;background:var(--blue);margin:40px 0}
+.highlight-box{background:var(--gray-light);border-left:3px solid var(--blue);padding:24px 28px;margin:32px 0}
+.highlight-box p{font-family:var(--body);font-size:16px;line-height:1.7;color:var(--black);margin:0}
+.step-list{margin:32px 0}
+.step-item{display:flex;gap:20px;margin-bottom:28px;padding-bottom:28px;border-bottom:1px solid var(--gray-mid)}
+.step-item:last-child{border-bottom:none}
+.step-num{font-family:var(--heading);font-size:32px;font-weight:400;color:var(--blue);line-height:1;min-width:36px}
+.step-content h3{font-family:var(--body);font-size:17px;font-weight:600;color:var(--black);margin-bottom:8px}
+.step-content p{font-family:var(--body);font-size:15px;line-height:1.7;color:#444;margin:0}
+.risk-table{width:100%;border-collapse:collapse;margin:32px 0}
+.risk-table th{font-family:var(--body);font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--white);background:var(--black);padding:12px 16px;text-align:left}
+.risk-table td{font-family:var(--body);font-size:15px;color:#333;padding:14px 16px;border-bottom:1px solid var(--gray-mid)}
+.risk-table tr:nth-child(even) td{background:var(--gray-light)}
+.internal-link{color:var(--blue);text-decoration:none;font-weight:500;border-bottom:1px solid rgba(29,111,164,0.3)}
+.internal-link:hover{border-color:var(--blue)}
+.kit-links{background:var(--gray-light);padding:28px;margin:40px 0;border-left:3px solid var(--blue)}
+.kit-links p{font-family:var(--body);font-size:13px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--gray-text);margin-bottom:14px}
+.kit-links ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.kit-links ul li a{font-family:var(--body);font-size:15px;color:var(--blue);text-decoration:none;font-weight:500;border-bottom:1px solid rgba(29,111,164,0.3)}
+.kit-main-link{display:block;margin-top:14px;font-family:var(--body);font-size:13px;color:var(--gray-text);text-decoration:none}
+.cta-section{background:var(--black);padding:48px;margin:48px 0 0}
+.cta-label{font-family:var(--body);font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--blue);margin-bottom:12px}
+.cta-heading{font-family:var(--heading);font-size:clamp(22px,3vw,32px);font-weight:400;color:var(--white);margin-bottom:10px}
+.cta-sub{font-family:var(--body);font-size:15px;font-weight:300;color:rgba(255,255,255,0.5);margin-bottom:28px;line-height:1.7}
+.kit-form{display:flex;gap:0;flex-wrap:wrap}
+.kit-form input{flex:1;min-width:220px;padding:14px 16px;font-family:var(--body);font-size:14px;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.06);color:var(--white);outline:none}
+.kit-form input::placeholder{color:rgba(255,255,255,0.35)}
+.kit-form button{background:var(--blue);color:var(--white);font-family:var(--body);font-size:12px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;padding:14px 24px;border:none;cursor:pointer;white-space:nowrap}
+.kit-form button:hover{background:var(--blue-dark)}
+.share-bar{padding:32px 60px;border-top:1px solid var(--gray-mid);display:flex;align-items:center;gap:16px;flex-wrap:wrap;max-width:780px;margin:0 auto}
+.share-label{font-family:var(--body);font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--gray-text)}
+.share-btn{font-family:var(--body);font-size:12px;font-weight:500;padding:8px 18px;text-decoration:none}
+.btn-pinterest{background:#E60023;color:var(--white)}
+.btn-pinterest:hover{background:#ad081b}
+.related{padding:48px 60px;background:var(--gray-light);border-top:1px solid var(--gray-mid)}
+.related-inner{max-width:780px;margin:0 auto}
+.related-label{font-family:var(--body);font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--blue);margin-bottom:24px}
+.related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--gray-mid)}
+.related-card{background:var(--white);padding:24px 20px;text-decoration:none;color:inherit;display:block;transition:background 0.2s}
+.related-card:hover{background:var(--gray-light)}
+.related-cat{font-family:var(--body);font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--blue);margin-bottom:8px}
+.related-title{font-family:var(--heading);font-size:17px;font-weight:400;color:var(--black);line-height:1.3}
+footer{background:var(--black);padding:40px 60px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.footer-copy{font-family:var(--body);font-size:12px;color:rgba(255,255,255,0.25)}
+.footer-back{font-family:var(--body);font-size:12px;color:rgba(255,255,255,0.35);text-decoration:none}
+.footer-back:hover{color:var(--white)}
+@media(max-width:768px){nav{padding:0 20px}.post-hero{padding:80px 20px 32px}.post-image{padding:0 20px}.post-body{padding:0 20px 60px}.cta-section{padding:32px 20px}.share-bar{padding:24px 20px}.related{padding:40px 20px}.related-grid{grid-template-columns:1fr}footer{padding:32px 20px}.kit-form{flex-direction:column}.step-item{flex-direction:column;gap:8px}}
+</style>
+</head>
+<body>
+<nav><a href="/" class="nav-logo">Arnie Rose <span>·</span> Project Management</a><a href="/" class="nav-back">← Back to Home</a></nav>
+<article>
+<div class="post-hero">
+  <p class="post-eyebrow">Scope Management</p>
+  <h1 class="post-title">What Is Scope Creep and How to Stop It</h1>
+  <div class="post-meta"><span>By Arnie Rose Felicilda</span><span>Project Management</span><span>8 min read</span></div>
+</div>
+<div class="post-image"><img src="pm-blog-1-scope-creep.png" alt="what is scope creep and how to stop it" loading="lazy"></div>
+<div class="post-body">
+<p>Scope creep is what happens when a project grows beyond its original boundaries without a formal change process. It does not happen all at once. It happens one small addition at a time. A new feature here. A revised deliverable there. An extra report someone asked for in a meeting. Each one seems reasonable. Together, they push every deadline back and stretch every budget past its limit.</p>
+
+<p>It is one of the most common reasons projects run late, run over budget, or never finish at all. Understanding what it is and how to stop it early is the single most valuable skill a project manager can develop.</p>
+
+<div class="post-divider"></div>
+
+<h2>What Scope Creep Looks Like in Practice</h2>
+
+<p>Scope creep rarely announces itself. It shows up in small moments: a stakeholder asks if the team can "just add one thing," a sponsor says the original plan "needs a small update," or a team member assumes a new task is included without checking. None of these feel significant in the moment. That is what makes scope creep so effective at derailing projects.</p>
+
+<p>By the time most project managers notice the scope has expanded, three things have already happened: the timeline has shifted, the team is stretched, and the original deliverable has quietly changed into something different from what was agreed.</p>
+
+<div class="highlight-box"><p><strong>The definition that matters:</strong> Scope creep is any change to the agreed project scope that was not formally reviewed, approved, and documented. It does not matter how small the change is. If it was not written down and signed off, it is scope creep.</p></div>
+
+<h2>4 Signs Scope Creep Is Already Happening</h2>
+
+<h3>1. Tasks Keep Getting Added Without Removing Others</h3>
+<p>Every project has a fixed amount of capacity. When tasks are added without removing or reprioritizing others, the team absorbs the extra work silently. Deadlines slip. Quality drops. Burnout builds. The project manager is often the last to know because the team keeps saying yes to avoid conflict.</p>
+
+<h3>2. Deadlines Keep Shifting Without a Documented Reason</h3>
+<p>A deadline that moves once without explanation is a scope problem. A deadline that moves repeatedly is a system problem. Every date change should have a written reason tied to a specific change in scope, resource, or dependency. If you cannot document why a date moved, the project does not have a scope management process.</p>
+
+<h3>3. Stakeholders Are Sending Direct Requests to the Team</h3>
+<p>When stakeholders bypass the project manager and send requests directly to team members, scope gets added informally. Team members often say yes because they want to be helpful. The project manager finds out later, when the timeline is already affected. This is one of the most common scope creep patterns in organizations without a formal change request process.</p>
+
+<h3>4. The Project Charter Has Not Been Referenced Since Kickoff</h3>
+<p>The project charter defines the original scope. If no one has looked at it in weeks, it is not being used as a control document. Scope drifts when there is no active reference point for what the project is and is not supposed to deliver. Use the <a href="what-is-a-project-charter.html" class="internal-link">project charter</a> as a living document, not a kickoff artifact.</p>
+
+<div class="post-divider"></div>
+
+<h2>How to Stop Scope Creep Before It Starts</h2>
+
+<p>Scope creep prevention is not about saying no to stakeholders. It is about building a system where every change request goes through the same process: documented, assessed for impact, and approved in writing before any work begins.</p>
+
+<p>The system has three components.</p>
+
+<div class="step-list">
+<div class="step-item"><div class="step-num">1</div><div class="step-content"><h3>Define Scope in Writing Before Work Starts</h3><p>A project charter that clearly states what is in scope and what is explicitly out of scope is the foundation of scope management. The "out of scope" section is as important as the "in scope" section. If it is not written down, someone will assume it is included.</p></div></div>
+<div class="step-item"><div class="step-num">2</div><div class="step-content"><h3>Create a Written Change Request Process</h3><p>Every scope change request should follow the same path: written request, impact assessment covering time, cost, and resources, approval from the project sponsor before work begins. No exceptions. A verbal approval in a hallway is not an approved change request.</p></div></div>
+<div class="step-item"><div class="step-num">3</div><div class="step-content"><h3>Review Scope Weekly Against the Original Charter</h3><p>A weekly scope check takes five minutes. Compare what the team worked on this week against the original scope definition. Any work that is not in the charter gets flagged immediately. This keeps small additions from compounding into major scope expansion over time.</p></div></div>
+</div>
+
+<h2>How to Handle a Scope Change Request Professionally</h2>
+
+<p>When a stakeholder requests a change, the professional response is not a yes or a no. It is a process. Say this: "I need to assess the impact on our timeline, budget, and resources before we can commit to that change. I will come back to you within 24 hours with what it will take."</p>
+
+<p>That one sentence does three things. It acknowledges the request without committing to it. It signals that changes have real consequences. And it positions you as someone who manages projects deliberately rather than reactively.</p>
+
+<p>After the assessment, present the impact clearly: "This change adds three days to the timeline and requires four additional hours of design work. To include it, we need to either extend the deadline or remove an existing deliverable. Which would you prefer?" This framing keeps the decision with the stakeholder and ensures the project manager is not absorbing scope unilaterally.</p>
+
+<p>Use the <a href="gate-scope-creep.html" class="internal-link">free Scope Creep Risk Checker</a> to score your current project against the most common scope risk indicators. It takes under five minutes and tells you exactly where your project is vulnerable before a stakeholder meeting turns into a scope negotiation.</p>
+
+<p>Scope creep is preventable. Not by being difficult or uncooperative, but by having a clear system and using it consistently from the first day of the project through the last. Start with a written charter. Build a change request process. Review scope weekly. Those three habits prevent more project failures than any methodology, certification, or project management software on the market.</p>
+<div class="kit-links">
+  <p>More Project Management Reads</p>
+  <ul>
+    <li><a href="https://arfelicilda.kit.com/posts/why-your-project-scope-keeps-exploding-and-how-to-stop-it">How to Stop Scope Creep Before It Derails Your Project</a></li>
+    <li><a href="https://arfelicilda.kit.com/posts/still-running-projects-from-a-to-do-list">How to Manage Projects Without a PMP. The 15-Minute Sprint</a></li>
+    <li><a href="https://arfelicilda.kit.com/posts/why-most-project-managers-get-zero-value-from-ai">How Operations Managers Can Actually Use AI on Projects</a></li>
+    <li><a href="https://arfelicilda.kit.com/posts/the-difference-between-a-busy-project-and-a-healthy-one">The Difference Between a Busy Project and a Healthy One</a></li>
+    <li><a href="https://arfelicilda.kit.com/posts/your-project-isn-t-failed-it-s-derailed-here-s-the-difference">How to Recover a Project That Is Off the Rails</a></li>
+  </ul>
+  <a href="https://arfelicilda.kit.com" class="kit-main-link">Read more project management updates at arfelicilda.kit.com →</a>
+</div>
+<div class="cta-section">
+  <p class="cta-label">Free Project Management Tools</p>
+  <h2 class="cta-heading">Get free tools built for project managers who learned on the job.</h2>
+  <p class="cta-sub">Charter template, sprint system, dashboard, recovery checklist, and AI prompt library. All free. Delivered instantly.</p>
+  <form action="https://app.kit.com/forms/9449931/subscriptions" method="post" class="kit-form">
+    <input name="email_address" type="email" placeholder="Your email address" required>
+    <button type="submit">Send Me the Free Tools</button>
+  </form>
+</div>
+</div>
+</article>
+<div class="share-bar">
+  <span class="share-label">Save to Pinterest</span>
+  <a href="https://pinterest.com/pin/create/button/?url=https://projectmanagement.arniefelicilda.com/what-is-scope-creep.html&media=https://projectmanagement.arniefelicilda.com/pm-blog-1-scope-creep.png&description=What%20Is%20Scope%20Creep%20and%20How%20to%20Stop%20It" target="_blank" rel="noopener" class="share-btn btn-pinterest">Save to Pinterest</a>
+</div>
+<div class="related"><div class="related-inner"><p class="related-label">Read Next</p><div class="related-grid"><a href="what-is-a-project-charter.html" class="related-card"><p class="related-cat">Project Planning</p><p class="related-title">What Is a Project Charter</p></a><a href="how-to-recover-delayed-project.html" class="related-card"><p class="related-cat">Project Recovery</p><p class="related-title">How to Recover a Project Behind Schedule</p></a><a href="manage-projects-without-pmp.html" class="related-card"><p class="related-cat">Project Management Basics</p><p class="related-title">Manage Projects Without a PMP</p></a></div></div></div>
+<footer><span class="footer-copy">© 2026 Arnie Rose Felicilda. Keystone Books.</span><a href="/" class="footer-back">projectmanagement.arniefelicilda.com →</a></footer>
+</body></html>

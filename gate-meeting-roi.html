@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meeting ROI Calculator — Free Tool — Arnie Rose Felicilda</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--black:#111111;--white:#FFFFFF;--gray-light:#F5F5F5;--gray-mid:#E5E5E5;--gray-text:#666666;--blue:#1D6FA4;--blue-dark:#155a87;--heading:'DM Serif Display',Georgia,serif;--body:'DM Sans',sans-serif;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--body);background:var(--gray-light);color:var(--black);min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 20px}
+.gate-box{background:var(--white);max-width:520px;width:100%;padding:48px 40px;border-top:4px solid var(--blue)}
+.gate-num{font-family:var(--body);font-size:10px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--blue);margin-bottom:12px}
+.gate-title{font-family:var(--heading);font-size:clamp(26px,4vw,36px);font-weight:400;color:var(--black);margin-bottom:10px;line-height:1.2}
+.gate-desc{font-family:var(--body);font-size:15px;font-weight:300;color:var(--gray-text);line-height:1.7;margin-bottom:32px}
+.pin-label{font-family:var(--body);font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--black);display:block;margin-bottom:8px}
+.pin-input{width:100%;padding:14px 16px;font-family:var(--body);font-size:24px;font-weight:600;letter-spacing:0.2em;border:1px solid var(--gray-mid);outline:none;color:var(--black);text-align:center;margin-bottom:12px}
+.pin-input:focus{border-color:var(--blue)}
+.pin-btn{width:100%;background:var(--blue);color:var(--white);font-family:var(--body);font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:14px 24px;border:none;cursor:pointer;margin-bottom:16px}
+.pin-btn:hover{background:var(--blue-dark)}
+.pin-error{font-family:var(--body);font-size:13px;color:#c0392b;display:none;margin-bottom:12px;padding:10px 14px;background:#fde8e2;border-left:3px solid #c0392b}
+.gate-sub{font-family:var(--body);font-size:12px;color:var(--gray-text);line-height:1.6}
+.gate-sub a{color:var(--blue);text-decoration:none;font-weight:500}
+.back-link{margin-top:24px;font-family:var(--body);font-size:12px;color:var(--gray-text);text-decoration:none;display:inline-block}
+.back-link:hover{color:var(--black)}
+</style>
+</head>
+<body>
+<div class="gate-box">
+  <p class="gate-num">Free Tool — Tool 03</p>
+  <h1 class="gate-title">Meeting ROI Calculator</h1>
+  <p class="gate-desc">Calculate how much your meetings cost versus what they produce. Find meetings to cut, shorten, or replace. Subscribe to get your PIN delivered to your inbox instantly.</p>
+  <label class="pin-label">Enter your PIN to access this tool</label>
+  <input type="text" class="pin-input" id="pinInput" maxlength="4" placeholder="0000" inputmode="numeric">
+  <div class="pin-error" id="pinError">Incorrect PIN. Subscribe at the homepage to receive your PIN.</div>
+  <button class="pin-btn" onclick="checkPin()">Unlock Tool</button>
+  <p class="gate-sub">Don't have a PIN? <a href="/">Subscribe free</a> and your PIN arrives in your welcome email.</p>
+</div>
+<a href="/" class="back-link">← Back to projectmanagement.arniefelicilda.com</a>
+<script>
+function checkPin(){
+  var p=document.getElementById('pinInput').value.trim();
+  if(p==='2312'){window.location.href='meeting-roi-calculator.html';}
+  else{document.getElementById('pinError').style.display='block';document.getElementById('pinInput').value='';document.getElementById('pinInput').focus();}
+}
+document.getElementById('pinInput').addEventListener('keypress',function(e){if(e.key==='Enter')checkPin();});
+</script>
+</body>
+</html>

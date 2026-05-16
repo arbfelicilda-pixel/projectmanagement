@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Project Management Tools for Ops Managers — Arnie Rose Felicilda</title>
+<meta name="description" content="Free project management tools for ops managers who were never trained. Charter templates, sprint systems, dashboards, and AI prompts. No PMP required.">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Arnie Rose Felicilda">
+<meta name="p:domain_verify" content="7b1e064c1e30a5963cab42d655554e7e">
+<link rel="canonical" href="https://projectmanagement.arniefelicilda.com">
+<link rel="sitemap" type="application/xml" href="https://projectmanagement.arniefelicilda.com/sitemap.xml">
+<meta property="og:title" content="Free Project Management Tools — Arnie Rose Felicilda">
+<meta property="og:description" content="Free tools for project managers who learned on the job. Charter, sprint system, dashboard, recovery checklist, and AI prompts.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://projectmanagement.arniefelicilda.com">
+<meta property="og:image" content="https://projectmanagement.arniefelicilda.com/og-homepage.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Arnie Rose — Project Management">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","name":"Project Management Tools — Arnie Rose Felicilda","url":"https://projectmanagement.arniefelicilda.com","description":"Free project management tools for ops managers who learned on the job.","author":{"@type":"Person","name":"Arnie Rose Felicilda","url":"https://arniefelicilda.com"}}
+</script>
+<style>
+:root{--black:#111111;--white:#FFFFFF;--gray-light:#F5F5F5;--gray-mid:#E5E5E5;--gray-text:#666666;--blue:#1D6FA4;--blue-dark:#155a87;--heading:'DM Serif Display',Georgia,serif;--body:'DM Sans',sans-serif;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--body);background:var(--white);color:var(--black);-webkit-font-smoothing:antialiased}
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--white);border-bottom:1px solid var(--gray-mid);padding:0 60px;height:60px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:var(--body);font-size:13px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--black);text-decoration:none}
+.nav-logo span{color:var(--blue)}
+.nav-links{display:flex;gap:32px;align-items:center}
+.nav-links a{font-family:var(--body);font-size:13px;color:var(--gray-text);text-decoration:none;transition:color 0.2s}
+.nav-links a:hover{color:var(--black)}
+.nav-cta{background:var(--blue);color:var(--white) !important;padding:8px 20px;font-weight:600 !important;font-size:12px !important;letter-spacing:0.06em;text-transform:uppercase}
+.nav-cta:hover{background:var(--blue-dark) !important}
+/* HERO */
+.hero{padding:120px 60px 80px;max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 420px;gap:80px;align-items:center}
+.hero-eyebrow{font-family:var(--body);font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--blue);margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.hero-eyebrow::before{content:'';display:block;width:20px;height:1.5px;background:var(--blue)}
+.hero-title{font-family:var(--heading);font-size:clamp(38px,5vw,60px);font-weight:400;line-height:1.1;color:var(--black);margin-bottom:20px}
+.hero-title em{font-style:italic;color:var(--blue)}
+.hero-sub{font-family:var(--body);font-size:18px;font-weight:300;color:var(--gray-text);line-height:1.7;margin-bottom:32px;max-width:480px}
+.hero-stats{display:flex;gap:32px;margin-bottom:40px}
+.stat-item{display:flex;flex-direction:column;gap:4px}
+.stat-num{font-family:var(--heading);font-size:28px;font-weight:400;color:var(--blue);line-height:1}
+.stat-label{font-family:var(--body);font-size:12px;font-weight:300;color:var(--gray-text)}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap}
+.btn-primary{background:var(--blue);color:var(--white);font-family:var(--body);font-size:13px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;padding:14px 28px;text-decoration:none;display:inline-block;transition:background 0.2s}
+.btn-primary:hover{background:var(--blue-dark)}
+.btn-secondary{background:transparent;color:var(--black);font-family:var(--body);font-size:13px;font-weight:500;padding:14px 28px;text-decoration:none;border:1px solid var(--gray-mid);display:inline-block;transition:all 0.2s}
+.btn-secondary:hover{border-color:var(--black)}
+/* BOOK CARD */
+.book-card{background:var(--black);padding:40px 36px;position:relative}
+.book-badge{font-family:var(--body);font-size:10px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--blue);background:rgba(29,111,164,0.15);padding:4px 12px;display:inline-block;margin-bottom:20px}
+.book-cover{width:100%;max-width:220px;height:auto;display:block;margin-bottom:24px;box-shadow:-6px 8px 30px rgba(0,0,0,0.6)}
+.book-title{font-family:var(--heading);font-size:22px;font-weight:400;color:var(--white);line-height:1.2;margin-bottom:8px}
+.book-sub{font-family:var(--body);font-size:13px;font-weight:300;color:rgba(255,255,255,0.5);margin-bottom:20px;line-height:1.6}
+.book-features{list-style:none;margin-bottom:24px}
+.book-features li{font-family:var(--body);font-size:13px;color:rgba(255,255,255,0.7);padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;gap:8px}
+.book-features li::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--blue);flex-shrink:0}
+.btn-buy{display:block;background:var(--blue);color:var(--white);font-family:var(--body);font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:14px 24px;text-decoration:none;text-align:center;transition:background 0.2s;margin-bottom:10px}
+.btn-buy:hover{background:var(--blue-dark)}
+.book-price{font-family:var(--body);font-size:11px;color:rgba(255,255,255,0.3);text-align:center}
+/* SECTION SHARED */
+.section-wrap{padding:80px 60px;max-width:1100px;margin:0 auto}
+.section-label{font-family:var(--body);font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--blue);margin-bottom:12px;display:flex;align-items:center;gap:10px}
+.section-label::before{content:'';display:block;width:20px;height:1.5px;background:var(--blue)}
+.section-title{font-family:var(--heading);font-size:clamp(28px,4vw,42px);font-weight:400;color:var(--black);margin-bottom:12px;line-height:1.15}
+.section-sub{font-family:var(--body);font-size:16px;font-weight:300;color:var(--gray-text);margin-bottom:48px;max-width:560px;line-height:1.7}
+/* GATE SECTION */
+.gate-section{background:var(--gray-light);border-top:1px solid var(--gray-mid);padding:80px 60px}
+.gate-inner{max-width:1100px;margin:0 auto}
+.gate-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--gray-mid);margin-top:48px}
+.gate-card{background:var(--white);padding:36px 32px;display:flex;flex-direction:column;gap:12px}
+.gate-num{font-family:var(--body);font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--blue)}
+.gate-title{font-family:var(--heading);font-size:22px;font-weight:400;color:var(--black);line-height:1.2}
+.gate-desc{font-family:var(--body);font-size:14px;font-weight:300;color:var(--gray-text);line-height:1.7}
+.gate-badge{font-family:var(--body);font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--white);background:var(--blue);padding:3px 10px;display:inline-block;align-self:flex-start}
+/* FREE TOOLS */
+.tools-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--gray-mid)}
+.tool-card{background:var(--white);padding:32px 28px;display:flex;flex-direction:column;gap:10px;transition:background 0.2s}
+.tool-card:hover{background:var(--gray-light)}
+.tool-num{font-family:var(--body);font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--blue)}
+.tool-name{font-family:var(--heading);font-size:20px;font-weight:400;color:var(--black);line-height:1.2}
+.tool-desc{font-family:var(--body);font-size:14px;font-weight:300;color:var(--gray-text);line-height:1.6}
+.tool-link{font-family:var(--body);font-size:12px;font-weight:600;color:var(--blue);text-decoration:none;letter-spacing:0.04em;margin-top:4px}
+.tool-link:hover{color:var(--blue-dark)}
+/* SUBSCRIBE GATE */
+.subscribe-gate{background:var(--black);padding:80px 60px}
+.subscribe-inner{max-width:680px;margin:0 auto;text-align:center}
+.sub-eyebrow{font-family:var(--body);font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--blue);margin-bottom:16px}
+.sub-title{font-family:var(--heading);font-size:clamp(28px,4vw,44px);font-weight:400;color:var(--white);margin-bottom:12px;line-height:1.15}
+.sub-desc{font-family:var(--body);font-size:16px;font-weight:300;color:rgba(255,255,255,0.5);margin-bottom:36px;line-height:1.7}
+.kit-form{display:flex;gap:0;max-width:520px;margin:0 auto}
+.kit-form input{flex:1;padding:14px 16px;font-family:var(--body);font-size:14px;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.06);color:var(--white);outline:none}
+.kit-form input::placeholder{color:rgba(255,255,255,0.35)}
+.kit-form button{background:var(--blue);color:var(--white);font-family:var(--body);font-size:12px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;padding:14px 24px;border:none;cursor:pointer;white-space:nowrap}
+.kit-form button:hover{background:var(--blue-dark)}
+.sub-note{font-family:var(--body);font-size:12px;color:rgba(255,255,255,0.25);margin-top:16px}
+/* WAITLIST */
+.waitlist-section{padding:80px 60px;background:var(--white);border-top:1px solid var(--gray-mid)}
+.waitlist-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.waitlist-badge{font-family:var(--body);font-size:10px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--white);background:var(--blue);padding:4px 12px;display:inline-block;margin-bottom:20px}
+.waitlist-title{font-family:var(--heading);font-size:clamp(28px,3vw,38px);font-weight:400;color:var(--black);margin-bottom:12px;line-height:1.2}
+.waitlist-sub{font-family:var(--body);font-size:15px;font-weight:300;color:var(--gray-text);line-height:1.7;margin-bottom:8px}
+.waitlist-features{list-style:none;margin:24px 0 32px}
+.waitlist-features li{font-family:var(--body);font-size:14px;color:var(--black);padding:8px 0;border-bottom:1px solid var(--gray-mid);display:flex;align-items:center;gap:10px}
+.waitlist-features li::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--blue);flex-shrink:0}
+.waitlist-form-box{background:var(--gray-light);padding:40px 36px}
+.wf-title{font-family:var(--heading);font-size:22px;font-weight:400;color:var(--black);margin-bottom:8px}
+.wf-sub{font-family:var(--body);font-size:14px;font-weight:300;color:var(--gray-text);margin-bottom:24px;line-height:1.6}
+.wf-form{display:flex;flex-direction:column;gap:12px}
+.wf-form input{padding:13px 16px;font-family:var(--body);font-size:14px;border:1px solid var(--gray-mid);background:var(--white);color:var(--black);outline:none}
+.wf-form input:focus{border-color:var(--blue)}
+.wf-form button{background:var(--blue);color:var(--white);font-family:var(--body);font-size:12px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;padding:14px 24px;border:none;cursor:pointer}
+.wf-form button:hover{background:var(--blue-dark)}
+.wf-note{font-family:var(--body);font-size:11px;color:var(--gray-text);margin-top:8px}
+/* BLOGS */
+.blogs-section{padding:80px 60px;background:var(--gray-light);border-top:1px solid var(--gray-mid)}
+.blogs-inner{max-width:1100px;margin:0 auto}
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--gray-mid);margin-top:48px}
+.blog-card{background:var(--white);padding:28px 24px;text-decoration:none;color:inherit;display:block;transition:background 0.2s}
+.blog-card:hover{background:var(--gray-light)}
+.blog-cat{font-family:var(--body);font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--blue);margin-bottom:10px}
+.blog-title{font-family:var(--heading);font-size:19px;font-weight:400;color:var(--black);line-height:1.3;margin-bottom:10px}
+.blog-read{font-family:var(--body);font-size:12px;color:var(--gray-text)}
+/* FOOTER */
+footer{background:var(--black);padding:40px 60px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.footer-copy{font-family:var(--body);font-size:12px;color:rgba(255,255,255,0.25)}
+.footer-links{display:flex;gap:24px}
+.footer-links a{font-family:var(--body);font-size:12px;color:rgba(255,255,255,0.35);text-decoration:none}
+.footer-links a:hover{color:var(--white)}
+@media(max-width:900px){
+  nav{padding:0 20px}
+  .nav-links{display:none}
+  .hero{grid-template-columns:1fr;padding:90px 20px 60px;gap:48px}
+  .book-card{padding:32px 24px}
+  .section-wrap,.gate-inner,.blogs-inner{padding:60px 20px}
+  .gate-section,.subscribe-gate,.waitlist-section,.blogs-section{padding:60px 20px}
+  .gate-grid,.tools-grid,.blog-grid{grid-template-columns:1fr}
+  .waitlist-inner{grid-template-columns:1fr;gap:40px}
+  .kit-form{flex-direction:column}
+  footer{padding:32px 20px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">Arnie Rose <span>·</span> Project Management</a>
+  <div class="nav-links">
+    <a href="#tools">Free Tools</a>
+    <a href="#blog">Blog</a>
+    <a href="https://arniefelicilda.com" target="_blank">Main Site</a>
+    <a href="#subscribe" class="nav-cta">Get Free Tools</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section>
+  <div class="hero">
+    <div class="hero-left">
+      <p class="hero-eyebrow">Project Management</p>
+      <h1 class="hero-title">Manage Projects Without <em>a Manual.</em></h1>
+      <p class="hero-sub">Free tools, systems, and frameworks for project managers who learned on the job. No PMP required. No jargon. Just what works.</p>
+      <div class="hero-stats">
+        <div class="stat-item"><span class="stat-num">11.4%</span><span class="stat-label">Average waste reduced</span></div>
+        <div class="stat-item"><span class="stat-num">15 min</span><span class="stat-label">Daily system</span></div>
+        <div class="stat-item"><span class="stat-num">6</span><span class="stat-label">Free tools included</span></div>
+      </div>
+      <div class="hero-cta">
+        <a href="#subscribe" class="btn-primary">Get Free Tools</a>
+        <a href="#tools" class="btn-secondary">Browse Tools</a>
+      </div>
+    </div>
+    <div class="book-card">
+      <span class="book-badge">Book 01 — Available Now</span>
+      <img src="ACCIDENTAL_PM.png" alt="The Accidental Project Manager by Arnie Rose Felicilda" class="book-cover">
+      <p class="book-title">The Accidental Project Manager</p>
+      <p class="book-sub">How to deliver projects on time without a PMP and cut waste by 11.4% using AI workflows.</p>
+      <ul class="book-features">
+        <li>15-Minute Daily Sprint System</li>
+        <li>Scope Lock Framework</li>
+        <li>24 AI Prompts Included</li>
+        <li>7 Free Templates Inside</li>
+      </ul>
+      <a href="https://arfelicilda.gumroad.com/l/accidentalprojectmanager" target="_blank" class="btn-buy">Get the Book</a>
+      <p class="book-price">Available on Gumroad</p>
+    </div>
+  </div>
+</section>
+
+<!-- FREE TOOLS — subscribe gate -->
+<section id="subscribe" class="subscribe-gate">
+  <div class="subscribe-inner">
+    <p class="sub-eyebrow">Free Access</p>
+    <h2 class="sub-title">5 free project management tools. Enter your email.</h2>
+    <p class="sub-desc">Charter template, sprint system, progress dashboard, recovery checklist, and AI prompt library. All free. Delivered to your inbox immediately.</p>
+    <form action="https://app.kit.com/forms/9449931/subscriptions" method="post" class="kit-form">
+      <input name="email_address" type="email" placeholder="Your email address" required>
+      <button type="submit">Send Me the Tools</button>
+    </form>
+    <p class="sub-note">Free. No spam. Unsubscribe anytime.</p>
+  </div>
+</section>
+
+<!-- TOOLS OVERVIEW -->
+<section id="tools" class="section-wrap">
+  <p class="section-label">What You Get</p>
+  <h2 class="section-title">5 tools you can use this week.</h2>
+  <p class="section-sub">Subscribe above to unlock all five. Each tool is standalone. No software required beyond what you already have.</p>
+  <div class="tools-grid">
+    <div class="tool-card">
+      <p class="tool-num">Tool 01</p>
+      <p class="tool-name">15-Minute Daily Sprint</p>
+      <p class="tool-desc">Your daily project management system. Three priorities, one risk flag, one proactive update. Done in 15 minutes every morning.</p>
+      <a href="#subscribe" class="tool-link">Subscribe to Access →</a>
+    </div>
+    <div class="tool-card">
+      <p class="tool-num">Tool 02</p>
+      <p class="tool-name">Project Charter Workbook</p>
+      <p class="tool-desc">Fill this in before any project starts. Defines scope, milestones, approval process, and success criteria. Prevents scope creep from day one.</p>
+      <a href="#subscribe" class="tool-link">Subscribe to Access →</a>
+    </div>
+    <div class="tool-card">
+      <p class="tool-num">Tool 03</p>
+      <p class="tool-name">Weekly Progress Dashboard</p>
+      <p class="tool-desc">Track project health in 3 numbers. Green, amber, or red. Know your project status in under 5 minutes every Monday.</p>
+      <a href="#subscribe" class="tool-link">Subscribe to Access →</a>
+    </div>
+    <div class="tool-card">
+      <p class="tool-num">Tool 04</p>
+      <p class="tool-name">Project Recovery Checklist</p>
+      <p class="tool-desc">Your project went off track. This checklist recovers it in 48 hours. Three steps. Written plan. Approved restart.</p>
+      <a href="#subscribe" class="tool-link">Subscribe to Access →</a>
+    </div>
+    <div class="tool-card">
+      <p class="tool-num">Tool 05</p>
+      <p class="tool-name">AI Prompt Library</p>
+      <p class="tool-desc">24 AI prompts that replace 90 minutes of admin every week. Status updates, stakeholder emails, risk logs, and charter drafts.</p>
+      <a href="#subscribe" class="tool-link">Subscribe to Access →</a>
+    </div>
+    <div class="tool-card" style="background:var(--gray-light)">
+      <p class="tool-num">How It Works</p>
+      <p class="tool-name">Subscribe Once. Access All Five.</p>
+      <p class="tool-desc">Enter your email above. Your tools arrive immediately. No account. No app. No password. Just links that work.</p>
+      <a href="#subscribe" class="tool-link">Get Free Access →</a>
+    </div>
+  </div>
+</section>
+
+<!-- PIN-GATED TOOLS -->
+<section class="gate-section">
+  <div class="gate-inner">
+    <p class="section-label">Premium Free Tools</p>
+    <h2 class="section-title">4 advanced tools. Free with PIN.</h2>
+    <p class="section-sub">Subscribe to receive your PIN codes. Each tool unlocks instantly. No account required.</p>
+    <div class="gate-grid">
+      <div class="gate-card">
+        <p class="gate-num">Gated Tool 01</p>
+        <p class="gate-title">Scope Creep Risk Checker</p>
+        <p class="gate-desc">Enter your project details and get a scope risk score. Know before it happens whether your project is vulnerable to scope creep.</p>
+        <span class="gate-badge">PIN Required</span>
+        <a href="gate-scope-creep.html" style="font-family:var(--body);font-size:12px;font-weight:600;color:var(--blue);text-decoration:none;letter-spacing:0.04em">Enter PIN to Access →</a>
+      </div>
+      <div class="gate-card">
+        <p class="gate-num">Gated Tool 02</p>
+        <p class="gate-title">Stakeholder Communication Planner</p>
+        <p class="gate-desc">Map every stakeholder by power, interest, and influence. Know exactly who to update, how often, and what to say to each one.</p>
+        <span class="gate-badge">PIN Required</span>
+        <a href="gate-stakeholder.html" style="font-family:var(--body);font-size:12px;font-weight:600;color:var(--blue);text-decoration:none;letter-spacing:0.04em">Enter PIN to Access →</a>
+      </div>
+      <div class="gate-card">
+        <p class="gate-num">Gated Tool 03</p>
+        <p class="gate-title">Meeting ROI Calculator</p>
+        <p class="gate-desc">Calculate how much your meetings cost versus what they produce. Find the exact meetings you should cancel, shorten, or replace with an update.</p>
+        <span class="gate-badge">PIN Required</span>
+        <a href="gate-meeting-roi.html" style="font-family:var(--body);font-size:12px;font-weight:600;color:var(--blue);text-decoration:none;letter-spacing:0.04em">Enter PIN to Access →</a>
+      </div>
+      <div class="gate-card">
+        <p class="gate-num">Gated Tool 04</p>
+        <p class="gate-title">Project Budget Variance Tracker</p>
+        <p class="gate-desc">Track planned versus actual spend per milestone. Flags overspend automatically. Know your budget health before your sponsor asks.</p>
+        <span class="gate-badge">PIN Required</span>
+        <a href="gate-budget-variance.html" style="font-family:var(--body);font-size:12px;font-weight:600;color:var(--blue);text-decoration:none;letter-spacing:0.04em">Enter PIN to Access →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WAITLIST — Book 2 -->
+<section class="waitlist-section">
+  <div class="waitlist-inner">
+    <div>
+      <span class="waitlist-badge">Coming Soon — Book 02</span>
+      <h2 class="waitlist-title">Scope Creep to Scope Keeper</h2>
+      <p class="waitlist-sub">The complete guide to locking project scope, managing change requests, and delivering projects without the constant additions that push every deadline back.</p>
+      <ul class="waitlist-features">
+        <li>Scope lock system used on real projects</li>
+        <li>Change request framework with written approval flow</li>
+        <li>Scripts for saying no to stakeholders professionally</li>
+        <li>Templates included — ready to use immediately</li>
+      </ul>
+      <p style="font-family:var(--body);font-size:14px;font-weight:300;color:var(--gray-text);">Join the waitlist. First access when it launches.</p>
+    </div>
+    <div class="waitlist-form-box">
+      <p class="wf-title">Join the Waitlist</p>
+      <p class="wf-sub">Be first when Scope Creep to Scope Keeper launches. Waitlist gets early access and launch pricing.</p>
+      <form action="https://app.kit.com/forms/9449931/subscriptions" method="post" class="wf-form">
+        <input name="email_address" type="email" placeholder="Your email address" required>
+        <button type="submit">Join Waitlist</button>
+      </form>
+      <p class="wf-note">No spam. You will only hear about the book launch.</p>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG -->
+<section class="blogs-section">
+  <div class="blogs-inner">
+    <p class="section-label">Project Management Blog</p>
+    <h2 class="section-title">Learn the system. Use it today.</h2>
+    <p class="section-sub">Practical guides for project managers who run real projects without formal training.</p>
+    <div class="blog-grid">
+      <a href="what-is-scope-creep.html" class="blog-card"><p class="blog-cat">Scope Management</p><p class="blog-title">What Is Scope Creep and How to Stop It</p><p class="blog-read">8 min read</p></a>
+      <a href="manage-projects-without-pmp.html" class="blog-card"><p class="blog-cat">Project Management Basics</p><p class="blog-title">How to Manage Projects Without a PMP Certificate</p><p class="blog-read">7 min read</p></a>
+      <a href="what-is-a-project-charter.html" class="blog-card"><p class="blog-cat">Project Planning</p><p class="blog-title">What Is a Project Charter and Why Every Project Needs One</p><p class="blog-read">6 min read</p></a>
+      <a href="how-to-track-project-progress.html" class="blog-card"><p class="blog-cat">Project Tracking</p><p class="blog-title">How to Track Project Progress Without Expensive Software</p><p class="blog-read">7 min read</p></a>
+      <a href="what-is-stakeholder-management.html" class="blog-card"><p class="blog-cat">Stakeholder Management</p><p class="blog-title">What Is Stakeholder Management and How to Do It</p><p class="blog-read">8 min read</p></a>
+      <a href="how-to-recover-delayed-project.html" class="blog-card"><p class="blog-cat">Project Recovery</p><p class="blog-title">How to Recover a Project That Is Behind Schedule</p><p class="blog-read">6 min read</p></a>
+      <a href="project-status-meeting-15-minutes.html" class="blog-card"><p class="blog-cat">Meetings</p><p class="blog-title">How to Run a Project Status Meeting in 15 Minutes</p><p class="blog-read">5 min read</p></a>
+      <a href="what-is-project-risk.html" class="blog-card"><p class="blog-cat">Risk Management</p><p class="blog-title">What Is Project Risk and How to Manage It</p><p class="blog-read">7 min read</p></a>
+      <a href="how-to-use-ai-project-management.html" class="blog-card"><p class="blog-cat">AI for Project Managers</p><p class="blog-title">How to Use AI to Save Time on Project Management Tasks</p><p class="blog-read">8 min read</p></a>
+      <a href="15-minute-daily-sprint-system.html" class="blog-card"><p class="blog-cat">Daily Systems</p><p class="blog-title">The 15-Minute Daily Sprint System for Project Managers</p><p class="blog-read">6 min read</p></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-copy">© 2026 Arnie Rose Felicilda. Keystone Books.</span>
+  <div class="footer-links">
+    <a href="https://arniefelicilda.com">Main Site</a>
+    <a href="https://supplychain.arniefelicilda.com">Supply Chain</a>
+    <a href="https://youwereneverseries.arniefelicilda.com">YWN Series</a>
+  </div>
+</footer>
+
+</body>
+</html>
