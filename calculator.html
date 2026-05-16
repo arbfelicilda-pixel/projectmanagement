@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="p:domain_verify" content="7b1e064c1e30a5963cab42d655554e7e"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>15-Minute Daily Sprint Framework — Free Tool by Arnie Rose Felicilda</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --blue:#1D6FA4;
+  --blue-light:#e8f2fa;
+  --blue-mid:#b8d8f2;
+  --blue-dark:#155a87;
+  --black:#111111;
+  --dark:#111827;
+  --body:#374151;
+  --gray:#6B7280;
+  --light:#F9FAFB;
+  --white:#FFFFFF;
+  --border:#E5E7EB;
+  --red:#EF4444;
+  --amber:#F59E0B;
+  --green:#10B981;
+}
+html{scroll-behavior:smooth}
+body{padding-top:0;font-family:'DM Sans',sans-serif;background:#FFFFFF;color:var(--body);min-height:100vh}
+
+/* ── HERO ── */
+.hero{background:#111111;padding:64px 24px 56px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-60px;right:-60px;width:300px;height:300px;border:1px solid rgba(29,111,164,.15);border-radius:50%;pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:-80px;left:-40px;width:220px;height:220px;border:1px solid rgba(29,111,164,.1);border-radius:50%;pointer-events:none}
+.hero-badge{display:inline-block;background:rgba(29,111,164,.18);border:1px solid rgba(29,111,164,.35);color:#90c4e8;font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:22px}
+.hero h1{font-family:'DM Serif Display',Georgia,serif;font-size:clamp(28px,5vw,48px);font-weight:700;color:#fff;line-height:1.15;margin-bottom:16px;max-width:680px;margin-left:auto;margin-right:auto}
+.hero h1 em{font-style:italic;color:#90c4e8}
+.hero p{font-size:16px;color:rgba(255,255,255,.65);max-width:520px;margin:0 auto 32px;line-height:1.7}
+.hero-stats{display:flex;justify-content:center;gap:32px;flex-wrap:wrap}
+.stat{text-align:center}
+.stat-num{font-family:'DM Serif Display',Georgia,serif;font-size:28px;font-weight:700;color:#90c4e8;display:block}
+.stat-lbl{font-size:11px;color:rgba(255,255,255,.45);letter-spacing:.08em;text-transform:uppercase}
+
+/* ── MAIN ── */
+.main{max-width:760px;margin:0 auto;padding:48px 24px 80px}
+
+/* ── SECTION LABELS ── */
+.section-label{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.section-label .num{width:32px;height:32px;border-radius:50%;background:var(--blue);color:#fff;font-size:13px;font-weight:500;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.section-label h2{font-family:'DM Serif Display',Georgia,serif;font-size:22px;font-weight:600;color:var(--dark)}
+.section-label .time{font-size:12px;color:var(--blue);font-weight:500;background:#e8f2fa;padding:3px 10px;border-radius:12px;margin-left:auto;white-space:nowrap}
+
+/* ── CARDS ── */
+.card{background:#fff;border:1px solid var(--border);border-top:3px solid var(--blue);border-radius:0 0 12px 12px;padding:24px;margin-bottom:12px}
+.card+.card{margin-top:0}
+
+/* ── PRIORITY INPUTS ── */
+.priority-row{display:flex;align-items:flex-start;gap:12px;margin-bottom:14px}
+.priority-row:last-child{margin-bottom:0}
+.p-num{width:28px;height:28px;border-radius:50%;background:var(--blue);color:#fff;font-size:12px;font-weight:500;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:8px}
+.p-fields{flex:1;display:flex;flex-direction:column;gap:6px}
+.p-fields input,
+.p-fields select,
+.p-fields textarea{width:100%;border:1px solid var(--border);border-radius:6px;padding:8px 12px;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--dark);background:#fff;transition:border-color .2s,box-shadow .2s;outline:none;resize:none}
+.p-fields input:focus,
+.p-fields select:focus,
+.p-fields textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(29,111,164,.1)}
+.p-row2{display:flex;gap:8px}
+.p-row2 select{flex:1}
+label.field-label{font-size:11px;font-weight:500;color:var(--gray);letter-spacing:.06em;text-transform:uppercase;display:block;margin-bottom:4px}
+
+/* ── RISK BLOCK ── */
+.risk-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:520px){.risk-grid{grid-template-columns:1fr}}
+.risk-field label{font-size:11px;font-weight:500;color:var(--gray);letter-spacing:.06em;text-transform:uppercase;display:block;margin-bottom:4px}
+.risk-field input,.risk-field select,.risk-field textarea{width:100%;border:1px solid var(--border);border-radius:6px;padding:8px 12px;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--dark);background:#fff;transition:border-color .2s,box-shadow .2s;outline:none}
+.risk-field input:focus,.risk-field select:focus,.risk-field textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(29,111,164,.1)}
+.risk-level{display:flex;gap:8px;flex-wrap:wrap}
+.risk-btn{padding:6px 14px;border:1px solid var(--border);border-radius:20px;background:#fff;font-family:'DM Sans',sans-serif;font-size:12px;cursor:pointer;transition:all .2s;color:var(--gray)}
+.risk-btn.low.active{background:#DCFCE7;border-color:#10B981;color:#065F46}
+.risk-btn.med.active{background:#FEF9C3;border-color:#F59E0B;color:#78350F}
+.risk-btn.high.active{background:#FEE2E2;border-color:#EF4444;color:#7F1D1D}
+.risk-btn:hover{border-color:var(--blue);color:var(--blue)}
+
+/* ── UPDATE BLOCK ── */
+.update-tpl{background:var(--light);border:1px dashed var(--border);border-radius:8px;padding:16px;font-size:13px;line-height:1.8;color:var(--body);margin-top:12px;font-style:italic;min-height:80px}
+.update-tpl span{color:var(--blue);font-style:normal;font-weight:500}
+
+/* ── TIMER ── */
+.timer-wrap{display:flex;align-items:center;gap:16px;background:var(--light);border:1px solid var(--border);border-radius:10px;padding:16px 20px;margin-bottom:20px}
+.timer-display{font-family:'DM Serif Display',Georgia,serif;font-size:36px;font-weight:600;color:var(--dark);min-width:90px}
+.timer-display.running{color:var(--blue)}
+.timer-display.done{color:var(--green)}
+.timer-controls{display:flex;gap:8px;flex-wrap:wrap}
+.btn{padding:9px 18px;border-radius:6px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;cursor:pointer;transition:all .2s;border:none}
+.btn-teal{background:var(--blue);color:#fff}
+.btn-teal:hover{background:#155a87}
+.btn-outline{background:#fff;border:1px solid var(--border);color:var(--body)}
+.btn-outline:hover{border-color:var(--blue);color:var(--blue)}
+.btn-navy{background:#111111;color:#fff}
+.btn-navy:hover{background:#0d1320}
+.btn-full{width:100%;padding:14px;font-size:15px;border-radius:8px;text-align:center}
+.timer-label{font-size:12px;color:var(--gray)}
+
+/* ── WASTE CALCULATOR ── */
+.calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
+@media(max-width:480px){.calc-grid{grid-template-columns:1fr}}
+.calc-field label{font-size:11px;font-weight:500;color:var(--gray);letter-spacing:.06em;text-transform:uppercase;display:block;margin-bottom:4px}
+.calc-field input{width:100%;border:1px solid var(--border);border-radius:6px;padding:8px 12px;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--dark);background:#fff;outline:none;transition:border-color .2s}
+.calc-field input:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(29,111,164,.1)}
+.result-bar{display:none;gap:0;border-radius:10px;overflow:hidden;margin-top:4px}
+.result-bar.visible{display:grid;grid-template-columns:1fr 1fr 1fr}
+.res-cell{padding:16px 12px;text-align:center}
+.res-cell.loss{background:#FEE2E2}
+.res-cell.save{background:#DCFCE7}
+.res-cell.hrs{background:#e8f2fa}
+.res-val{font-family:'DM Serif Display',Georgia,serif;font-size:22px;font-weight:700;display:block;margin-bottom:2px}
+.res-cell.loss .res-val{color:#991B1B}
+.res-cell.save .res-val{color:#065F46}
+.res-cell.hrs .res-val{color:#155a87}
+.res-lbl{font-size:10px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--gray)}
+
+/* ── OUTPUT ── */
+.output-wrap{display:none;background:#111111;border-radius:12px;padding:28px;margin-top:24px}
+.output-wrap.visible{display:block;animation:fadeIn .4s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.output-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;flex-wrap:gap}
+.output-title{font-family:'DM Serif Display',Georgia,serif;font-size:18px;color:#fff;font-weight:600}
+.output-date{font-size:12px;color:rgba(255,255,255,.4)}
+.sprint-block{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:16px;margin-bottom:10px}
+.sprint-block h3{font-size:11px;font-weight:500;color:#90c4e8;letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px}
+.sprint-item{display:flex;align-items:flex-start;gap:10px;margin-bottom:8px;font-size:13px;color:rgba(255,255,255,.8);line-height:1.5}
+.sprint-item:last-child{margin-bottom:0}
+.sprint-dot{width:6px;height:6px;border-radius:50%;background:var(--blue);flex-shrink:0;margin-top:5px}
+.sprint-empty{font-size:13px;color:rgba(255,255,255,.3);font-style:italic}
+.copy-btn{background:rgba(29,111,164,.2);border:1px solid rgba(29,111,164,.35);color:#90c4e8;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;padding:7px 16px;border-radius:6px;cursor:pointer;transition:all .2s;margin-top:16px}
+.copy-btn:hover{background:rgba(29,111,164,.35)}
+
+/* ── CTA ── */
+.cta-box{background:linear-gradient(135deg,#155a87 0%,var(--blue) 100%);border-radius:12px;padding:32px 28px;text-align:center;margin-top:40px}
+.cta-box h3{font-family:'DM Serif Display',Georgia,serif;font-size:24px;font-weight:700;color:#fff;margin-bottom:10px}
+.cta-box p{font-size:14px;color:rgba(255,255,255,.8);margin-bottom:20px;line-height:1.6}
+.cta-items{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin-bottom:24px}
+.cta-item{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.2);color:#fff;font-size:12px;padding:5px 14px;border-radius:20px}
+.cta-input{width:100%;max-width:340px;border:none;border-radius:6px;padding:12px 16px;font-family:'DM Sans',sans-serif;font-size:14px;outline:none;margin-bottom:10px;display:block;margin-left:auto;margin-right:auto}
+.cta-submit{display:block;width:100%;max-width:340px;margin:0 auto;background:#111111;color:#fff;border:none;border-radius:6px;padding:13px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;cursor:pointer;transition:background .2s}
+.cta-submit:hover{background:#0d1320}
+.cta-fine{font-size:11px;color:rgba(255,255,255,.5);margin-top:10px}
+
+/* ── SPACER ── */
+.section-gap{margin-bottom:40px}
+.divider{height:1px;background:var(--border);margin:32px 0}
+
+/* ── PROGRESS ── */
+.progress-bar{height:4px;background:var(--border);border-radius:2px;margin-bottom:6px;overflow:hidden}
+.progress-fill{height:100%;background:var(--blue);border-radius:2px;transition:width .4s ease;width:0%}
+.progress-label{font-size:11px;color:var(--gray);text-align:right}
+
+/* ── TABS ── */
+.tabs{display:flex;gap:0;border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-bottom:24px}
+.tab{flex:1;padding:10px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;text-align:center;cursor:pointer;background:#fff;color:var(--gray);border:none;transition:all .2s}
+.tab.active{background:var(--blue);color:#fff}
+.tab-panel{display:none}
+.tab-panel.active{display:block}
+</style>
+</head>
+<body>
+<nav style="position:fixed;top:0;left:0;right:0;z-index:200;background:#111111;border-bottom:1px solid rgba(255,255,255,0.08);padding:0 40px;height:52px;display:flex;align-items:center;justify-content:space-between;">
+  <a href="/" style="font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#fff;text-decoration:none;">Arnie Rose <span style="color:#1D6FA4;">·</span> Project Management</a>
+  <a href="/" style="font-family:'DM Sans',sans-serif;font-size:12px;color:rgba(255,255,255,0.4);text-decoration:none;">← Back to Tools</a>
+</nav>
+<div style="height:52px;"></div>
+
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">Free Tool · Arnie Rose Felicilda, M.A.Ed</div>
+  <h1>The <em>15-Minute</em> Daily Sprint Framework</h1>
+  <p>Set your 3 priorities, flag one risk, generate your stakeholder update — all before your first meeting.</p>
+  <div class="hero-stats">
+    <div class="stat"><span class="stat-num">15 min</span><span class="stat-lbl">Daily system</span></div>
+    <div class="stat"><span class="stat-num">11.4%</span><span class="stat-lbl">Waste reduced</span></div>
+    <div class="stat"><span class="stat-num">6+ hrs</span><span class="stat-lbl">Saved per week</span></div>
+  </div>
+</div>
+
+<div class="main">
+
+  <!-- WASTE CALCULATOR -->
+  <div class="section-gap">
+    <div class="section-label">
+      <div class="num">0</div>
+      <h2>Project Waste Calculator</h2>
+      <span class="time">30 sec</span>
+    </div>
+    <div class="card">
+      <p style="font-size:13px;color:var(--gray);margin-bottom:16px">See exactly how much your current project is leaking — before you start the sprint.</p>
+      <div class="calc-grid">
+        <div class="calc-field">
+          <label>Total Project Budget ($)</label>
+          <input type="number" id="budget" placeholder="e.g. 50000" oninput="calcWaste()"/>
+        </div>
+        <div class="calc-field">
+          <label>Team Size (people)</label>
+          <input type="number" id="teamsize" placeholder="e.g. 6" oninput="calcWaste()"/>
+        </div>
+        <div class="calc-field">
+          <label>Avg. Hourly Rate ($)</label>
+          <input type="number" id="hourlyrate" placeholder="e.g. 45" oninput="calcWaste()"/>
+        </div>
+        <div class="calc-field">
+          <label>Weeks Remaining</label>
+          <input type="number" id="weeks" placeholder="e.g. 8" oninput="calcWaste()"/>
+        </div>
+      </div>
+      <div class="result-bar" id="wasteResult">
+        <div class="res-cell loss">
+          <span class="res-val" id="wasteLoss">—</span>
+          <span class="res-lbl">Projected Loss (11.4%)</span>
+        </div>
+        <div class="res-cell save">
+          <span class="res-val" id="wasteSave">—</span>
+          <span class="res-lbl">Recoverable with Sprint</span>
+        </div>
+        <div class="res-cell hrs">
+          <span class="res-val" id="wasteHrs">—</span>
+          <span class="res-lbl">Hours Saved / Week</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SPRINT TABS -->
+  <div class="section-gap">
+    <div class="section-label">
+      <div class="num">1</div>
+      <h2>Your Daily Sprint</h2>
+      <span class="time">15 min total</span>
+    </div>
+
+    <!-- PROGRESS -->
+    <div style="margin-bottom:20px">
+      <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+      <div class="progress-label" id="progressLabel">0 of 3 steps complete</div>
+    </div>
+
+    <div class="tabs">
+      <button class="tab active" onclick="switchTab(0)">① Plan <small style="opacity:.7">5 min</small></button>
+      <button class="tab" onclick="switchTab(1)">② Risk Flag <small style="opacity:.7">5 min</small></button>
+      <button class="tab" onclick="switchTab(2)">③ Update <small style="opacity:.7">5 min</small></button>
+    </div>
+
+    <!-- TAB 1: PLAN -->
+    <div class="tab-panel active" id="tab0">
+      <div class="card">
+        <p style="font-size:13px;color:var(--gray);margin-bottom:18px">Name your 3 non-negotiables for today. These are the tasks that, if left undone, put the project at risk.</p>
+
+        <div class="priority-row">
+          <div class="p-num">1</div>
+          <div class="p-fields">
+            <label class="field-label">Priority 1 — Most critical</label>
+            <input type="text" id="p1task" placeholder="e.g. Finalise scope document with Product team" oninput="updateOutput()"/>
+            <div class="p-row2">
+              <select id="p1owner" onchange="updateOutput()">
+                <option value="">Owner →</option>
+                <option>Me</option><option>Product</option><option>Engineering</option>
+                <option>Marketing</option><option>Design</option><option>Finance</option><option>Operations</option><option>External</option>
+              </select>
+              <select id="p1status" onchange="updateOutput()">
+                <option value="">Status →</option>
+                <option>Not started</option><option>In progress</option><option>Blocked</option><option>Done</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="priority-row">
+          <div class="p-num">2</div>
+          <div class="p-fields">
+            <label class="field-label">Priority 2</label>
+            <input type="text" id="p2task" placeholder="e.g. Review vendor proposal — decision needed by EOD" oninput="updateOutput()"/>
+            <div class="p-row2">
+              <select id="p2owner" onchange="updateOutput()"><option value="">Owner →</option><option>Me</option><option>Product</option><option>Engineering</option><option>Marketing</option><option>Design</option><option>Finance</option><option>Operations</option><option>External</option></select>
+              <select id="p2status" onchange="updateOutput()"><option value="">Status →</option><option>Not started</option><option>In progress</option><option>Blocked</option><option>Done</option></select>
+            </div>
+          </div>
+        </div>
+
+        <div class="priority-row">
+          <div class="p-num">3</div>
+          <div class="p-fields">
+            <label class="field-label">Priority 3</label>
+            <input type="text" id="p3task" placeholder="e.g. Send updated timeline to stakeholders" oninput="updateOutput()"/>
+            <div class="p-row2">
+              <select id="p3owner" onchange="updateOutput()"><option value="">Owner →</option><option>Me</option><option>Product</option><option>Engineering</option><option>Marketing</option><option>Design</option><option>Finance</option><option>Operations</option><option>External</option></select>
+              <select id="p3status" onchange="updateOutput()"><option value="">Status →</option><option>Not started</option><option>In progress</option><option>Blocked</option><option>Done</option></select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;justify-content:flex-end;margin-top:8px">
+        <button class="btn btn-teal" onclick="switchTab(1)">Next: Flag a Risk →</button>
+      </div>
+    </div>
+
+    <!-- TAB 2: RISK -->
+    <div class="tab-panel" id="tab1">
+      <div class="card">
+        <p style="font-size:13px;color:var(--gray);margin-bottom:18px">Name one thing most likely to cause a problem today. Named risks cost nothing. Unnamed ones cost everything.</p>
+        <div class="risk-grid">
+          <div class="risk-field" style="grid-column:1/-1">
+            <label>What is the risk?</label>
+            <input type="text" id="riskDesc" placeholder="e.g. Engineering team may not deliver API specs by 3pm" oninput="updateOutput()"/>
+          </div>
+          <div class="risk-field">
+            <label>Risk Level</label>
+            <div class="risk-level">
+              <button class="risk-btn low" onclick="setRisk('low',this)">Low</button>
+              <button class="risk-btn med" onclick="setRisk('med',this)">Medium</button>
+              <button class="risk-btn high" onclick="setRisk('high',this)">High</button>
+            </div>
+          </div>
+          <div class="risk-field">
+            <label>Owner / Who to flag</label>
+            <input type="text" id="riskOwner" placeholder="e.g. James / Engineering Lead" oninput="updateOutput()"/>
+          </div>
+          <div class="risk-field" style="grid-column:1/-1">
+            <label>Mitigation (what will you do about it?)</label>
+            <input type="text" id="riskMit" placeholder="e.g. Follow up at 1pm — if no response, escalate to sponsor" oninput="updateOutput()"/>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;justify-content:space-between;margin-top:8px">
+        <button class="btn btn-outline" onclick="switchTab(0)">← Back</button>
+        <button class="btn btn-teal" onclick="switchTab(2)">Next: Write Update →</button>
+      </div>
+    </div>
+
+    <!-- TAB 3: UPDATE -->
+    <div class="tab-panel" id="tab2">
+      <div class="card">
+        <p style="font-size:13px;color:var(--gray);margin-bottom:14px">Your stakeholder update is auto-generated below. Edit before sending.</p>
+        <label class="field-label" style="margin-bottom:8px">Recipient / Stakeholder name</label>
+        <input type="text" id="stakeholder" placeholder="e.g. Director Chen / Project Sponsor" style="width:100%;border:1px solid var(--border);border-radius:6px;padding:8px 12px;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--dark);outline:none;margin-bottom:14px" oninput="updateOutput()"/>
+        <label class="field-label" style="margin-bottom:8px">Auto-generated update — edit freely</label>
+        <div class="update-tpl" id="updatePreview">Fill in your priorities and risk above to generate your update.</div>
+      </div>
+      <div style="display:flex;justify-content:space-between;margin-top:8px;flex-wrap:wrap;gap:8px">
+        <button class="btn btn-outline" onclick="switchTab(1)">← Back</button>
+        <button class="btn btn-navy btn-full" style="max-width:220px" onclick="generateOutput()">Generate Sprint Summary ↓</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TIMER -->
+  <div class="section-gap">
+    <div class="section-label">
+      <div class="num">2</div>
+      <h2>Sprint Timer</h2>
+      <span class="time">Optional</span>
+    </div>
+    <div class="timer-wrap">
+      <div>
+        <div class="timer-display" id="timerDisplay">15:00</div>
+        <div class="timer-label" id="timerLabel">Ready to start</div>
+      </div>
+      <div class="timer-controls">
+        <button class="btn btn-teal" onclick="startTimer()">Start</button>
+        <button class="btn btn-outline" onclick="pauseTimer()">Pause</button>
+        <button class="btn btn-outline" onclick="resetTimer()">Reset</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- OUTPUT -->
+  <div class="output-wrap" id="outputWrap">
+    <div class="output-header">
+      <div class="output-title">Your Sprint Summary</div>
+      <div class="output-date" id="outputDate"></div>
+    </div>
+    <div class="sprint-block">
+      <h3>Today's 3 Priorities</h3>
+      <div id="outputPriorities"></div>
+    </div>
+    <div class="sprint-block">
+      <h3>Risk Flag</h3>
+      <div id="outputRisk"></div>
+    </div>
+    <div class="sprint-block">
+      <h3>Stakeholder Update (ready to send)</h3>
+      <div id="outputUpdate"></div>
+    </div>
+    <button class="copy-btn" onclick="copySummary()">Copy to Clipboard</button>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- CTA -->
+  <div class="cta-box">
+    <h3>Get the Full PM Toolkit — Free</h3>
+    <p>Get all 5 free tools — Sprint Template, Scope Lock Workbook, AI Prompts, Progress Dashboard, and Recovery Checklist. Enter your email on the next page.</p>
+    <div class="cta-items">
+      <span class="cta-item">✓ Notion Template</span>
+      <span class="cta-item">✓ Weekly Reset Checklist</span>
+      <span class="cta-item">✓ 5 Bonus AI Prompts</span>
+      <span class="cta-item">✓ Free forever</span>
+    </div>
+    <input class="cta-input" type="email" id="ctaEmail" placeholder="Your email address"/>
+    <button class="cta-submit" onclick="submitCTA()">Get All 5 Free Tools →</button>
+    <p class="cta-fine">No spam. Unsubscribe anytime. By Arnie Rose Felicilda · M.A.Ed</p>
+  </div>
+
+</div><!-- /main -->
+
+<script>
+// ── STATE ──────────────────────────────────────────────
+let currentTab = 0;
+let riskLevel = '';
+let timerInterval = null;
+let timerSeconds = 900;
+let timerRunning = false;
+const tabs = [0,1,2];
+const completedTabs = [false,false,false];
+
+// ── TABS ──────────────────────────────────────────────
+function switchTab(n){
+  completedTabs[currentTab] = true;
+  currentTab = n;
+  document.querySelectorAll('.tab').forEach((t,i)=>t.classList.toggle('active',i===n));
+  document.querySelectorAll('.tab-panel').forEach((p,i)=>p.classList.toggle('active',i===n));
+  updateProgress();
+}
+function updateProgress(){
+  const done = completedTabs.filter(Boolean).length;
+  const pct = Math.round((done/3)*100);
+  document.getElementById('progressFill').style.width = pct+'%';
+  document.getElementById('progressLabel').textContent = done+' of 3 steps complete';
+}
+
+// ── RISK LEVEL ─────────────────────────────────────────
+function setRisk(level, btn){
+  riskLevel = level;
+  document.querySelectorAll('.risk-btn').forEach(b=>{
+    b.classList.remove('active');
+  });
+  btn.classList.add('active');
+  updateOutput();
+}
+
+// ── WASTE CALC ─────────────────────────────────────────
+function calcWaste(){
+  const budget = parseFloat(document.getElementById('budget').value)||0;
+  const team   = parseFloat(document.getElementById('teamsize').value)||0;
+  const rate   = parseFloat(document.getElementById('hourlyrate').value)||0;
+  const weeks  = parseFloat(document.getElementById('weeks').value)||0;
+  if(budget>0){
+    const loss = budget*0.114;
+    const save = loss*0.78;
+    const hrs  = team>0 && rate>0 ? Math.round((save/weeks)/(rate*40)*40) : 6;
+    const r = document.getElementById('wasteResult');
+    r.classList.add('visible');
+    document.getElementById('wasteLoss').textContent = '$'+Math.round(loss).toLocaleString();
+    document.getElementById('wasteSave').textContent = '$'+Math.round(save).toLocaleString();
+    document.getElementById('wasteHrs').textContent = hrs+' hrs';
+  }
+}
+
+// ── UPDATE PREVIEW ─────────────────────────────────────
+function updateOutput(){
+  const p1 = v('p1task'), p2 = v('p2task'), p3 = v('p3task');
+  const risk = v('riskDesc'), mitigation = v('riskMit'), riskOwner = v('riskOwner');
+  const stakeholder = v('stakeholder')||'[Stakeholder]';
+  const today = new Date().toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'});
+
+  let updateText = `Hi ${stakeholder},\n\nQuick status update for ${today}:\n\n`;
+  if(p1) updateText += `✓ Priority today: ${p1}\n`;
+  if(p2) updateText += `✓ Also in progress: ${p2}\n`;
+  if(p3) updateText += `✓ Targeting: ${p3}\n`;
+  if(risk) updateText += `\n⚑ Risk flagged: ${risk}${riskOwner?' ('+riskOwner+')':''}.${mitigation?' Mitigation: '+mitigation:''}`;
+  updateText += `\n\nNo action needed from you today. Will update again tomorrow.\n\n— [Your name]`;
+
+  const preview = document.getElementById('updatePreview');
+  if(p1||p2||p3||risk){
+    preview.innerHTML = updateText.replace(/\n/g,'<br>').replace(/(✓[^<]+)/g,'<span>$1</span>').replace(/(⚑[^<]+)/g,'<span>$1</span>');
+  }
+}
+function v(id){return (document.getElementById(id)||{}).value||'';}
+
+// ── GENERATE SUMMARY ───────────────────────────────────
+function generateOutput(){
+  const wrap = document.getElementById('outputWrap');
+  wrap.classList.add('visible');
+
+  const today = new Date().toLocaleDateString('en-US',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
+  document.getElementById('outputDate').textContent = today;
+
+  // Priorities
+  const pOut = document.getElementById('outputPriorities');
+  const priorities = [
+    {t:v('p1task'),o:v('p1owner'),s:v('p1status')},
+    {t:v('p2task'),o:v('p2owner'),s:v('p2status')},
+    {t:v('p3task'),o:v('p3owner'),s:v('p3status')},
+  ].filter(p=>p.t);
+
+  if(priorities.length){
+    pOut.innerHTML = priorities.map((p,i)=>`
+      <div class="sprint-item">
+        <span class="sprint-dot"></span>
+        <span>${i+1}. ${p.t}${p.o?' · <em style="opacity:.6">${p.o}</em>':''}${p.s?' · <em style="opacity:.5">${p.s}</em>':''}</span>
+      </div>`).join('');
+  } else {
+    pOut.innerHTML = '<p class="sprint-empty">No priorities entered.</p>';
+  }
+
+  // Risk
+  const rOut = document.getElementById('outputRisk');
+  const risk = v('riskDesc');
+  if(risk){
+    const lvlColor = riskLevel==='high'?'#EF4444':riskLevel==='med'?'#F59E0B':'#10B981';
+    rOut.innerHTML = `
+      <div class="sprint-item">
+        <span class="sprint-dot" style="background:${lvlColor}"></span>
+        <span>${risk}${v('riskOwner')?' · Flag to: '+v('riskOwner'):''}${v('riskMit')?' · Action: '+v('riskMit'):''}</span>
+      </div>`;
+  } else {
+    rOut.innerHTML = '<p class="sprint-empty">No risk flagged today.</p>';
+  }
+
+  // Update
+  const uOut = document.getElementById('outputUpdate');
+  const today2 = new Date().toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'});
+  const sh = v('stakeholder')||'[Stakeholder]';
+  const p1 = v('p1task'), p2 = v('p2task'), p3 = v('p3task');
+  const riskD = v('riskDesc');
+  let msg = `Hi ${sh}, quick update for ${today2}: `;
+  if(p1) msg += `Priority today is ${p1}. `;
+  if(p2) msg += `Also: ${p2}. `;
+  if(riskD) msg += `Risk flagged: ${riskD}${v('riskMit')?' — '+v('riskMit'):'.'}`;
+  msg += ' No action needed. Will update tomorrow.';
+  uOut.innerHTML = `<div class="sprint-item"><span class="sprint-dot"></span><span>${msg}</span></div>`;
+
+  wrap.scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+// ── COPY ───────────────────────────────────────────────
+function copySummary(){
+  const text = document.getElementById('outputWrap').innerText;
+  navigator.clipboard.writeText(text).then(()=>{
+    const btn = document.querySelector('.copy-btn');
+    btn.textContent = 'Copied!';
+    setTimeout(()=>btn.textContent='Copy to Clipboard',2000);
+  });
+}
+
+// ── TIMER ──────────────────────────────────────────────
+function startTimer(){
+  if(timerRunning) return;
+  timerRunning = true;
+  document.getElementById('timerDisplay').classList.add('running');
+  document.getElementById('timerLabel').textContent = 'Sprint in progress...';
+  timerInterval = setInterval(()=>{
+    timerSeconds--;
+    if(timerSeconds<=0){
+      clearInterval(timerInterval);
+      timerRunning=false;
+      document.getElementById('timerDisplay').textContent='00:00';
+      document.getElementById('timerDisplay').classList.remove('running');
+      document.getElementById('timerDisplay').classList.add('done');
+      document.getElementById('timerLabel').textContent='Sprint complete!';
+      return;
+    }
+    const m=Math.floor(timerSeconds/60).toString().padStart(2,'0');
+    const s=(timerSeconds%60).toString().padStart(2,'0');
+    document.getElementById('timerDisplay').textContent=m+':'+s;
+  },1000);
+}
+function pauseTimer(){
+  clearInterval(timerInterval);
+  timerRunning=false;
+  document.getElementById('timerDisplay').classList.remove('running');
+  document.getElementById('timerLabel').textContent='Paused';
+}
+function resetTimer(){
+  clearInterval(timerInterval);
+  timerRunning=false;
+  timerSeconds=900;
+  document.getElementById('timerDisplay').textContent='15:00';
+  document.getElementById('timerDisplay').classList.remove('running','done');
+  document.getElementById('timerLabel').textContent='Ready to start';
+}
+
+// ── CTA ────────────────────────────────────────────────
+function submitCTA(){
+  const emailVal = document.getElementById('ctaEmail').value;
+  if(!emailVal||!emailVal.includes('@')){alert('Please enter a valid email.');return;}
+  const form = document.createElement('form');
+  form.method = 'post';
+  form.action = 'https://app.kit.com/forms/9449931/subscriptions';
+  form.target = '_blank';
+  const input = document.createElement('input');
+  input.type = 'hidden'; input.name = 'email_address'; input.value = emailVal;
+  form.appendChild(input); document.body.appendChild(form); form.submit();
+  return; //original below unused
+  function _orig(){
+  const email = document.getElementById('ctaEmail').value;
+  if(!email||!email.includes('@')){
+    alert('Please enter a valid email address.');
+    return;
+  }
+  window.location.href='/';
+}
+</script>
+</body>
+</html>

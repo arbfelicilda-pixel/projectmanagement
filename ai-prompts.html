@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AI Prompt Library — PM Edition · Arnie Rose Felicilda</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{padding-top:0;font-family:'DM Sans',sans-serif;background:#FFFFFF;color:#374151}
+
+.topbar{background:#1D6FA4;padding:10px 0;text-align:center}
+.topbar p{font-size:12px;font-weight:500;color:#fff;letter-spacing:.04em}
+
+.header{background:#111111;padding:48px 24px 40px;text-align:center;position:relative;overflow:hidden}
+.header::before{content:'';position:absolute;right:-60px;top:-60px;width:300px;height:300px;border:1px solid rgba(29,111,164,.08);border-radius:50%;pointer-events:none}
+.header::after{content:'';position:absolute;left:-40px;bottom:-60px;width:200px;height:200px;border:1px solid rgba(29,111,164,.05);border-radius:50%;pointer-events:none}
+.header-badge{display:inline-block;background:rgba(29,111,164,.18);border:1px solid rgba(29,111,164,.3);color:#90c4e8;font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:4px 14px;border-radius:20px;margin-bottom:16px}
+.header h1{font-family:'DM Serif Display',Georgia,serif;font-size:clamp(28px,4vw,42px);font-weight:700;color:#fff;line-height:1.15;margin-bottom:10px}
+.header h1 em{font-style:italic;color:#90c4e8}
+.header p{font-size:14px;color:rgba(255,255,255,.55);max-width:500px;margin:0 auto 24px;line-height:1.7}
+.header-stats{display:flex;justify-content:center;gap:32px;flex-wrap:wrap}
+.hstat-n{font-family:'DM Serif Display',Georgia,serif;font-size:24px;font-weight:700;color:#90c4e8;display:block;line-height:1}
+.hstat-l{font-size:10px;color:rgba(255,255,255,.35);letter-spacing:.08em;text-transform:uppercase;margin-top:3px;display:block}
+
+/* HOW TO USE */
+.how-to{background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:20px 24px;margin:32px auto;max-width:800px;display:flex;gap:24px;flex-wrap:wrap}
+.how-step{flex:1;min-width:160px;text-align:center}
+.how-step-num{width:32px;height:32px;border-radius:50%;background:#1D6FA4;color:#fff;font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center;margin:0 auto 8px}
+.how-step-title{font-size:13px;font-weight:600;color:#111827;margin-bottom:3px}
+.how-step-desc{font-size:11px;color:#6B7280;line-height:1.5}
+
+/* FILTER TABS */
+.filter-wrap{max-width:800px;margin:0 auto 32px;padding:0 24px}
+.filter-tabs{display:flex;gap:8px;flex-wrap:wrap}
+.filter-tab{padding:8px 16px;border-radius:20px;border:1px solid #E5E7EB;background:#fff;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;color:#6B7280;cursor:pointer;transition:all .2s}
+.filter-tab:hover{border-color:#1D6FA4;color:#1D6FA4}
+.filter-tab.active{background:#1D6FA4;border-color:#1D6FA4;color:#fff}
+
+/* MAIN */
+.main{max-width:800px;margin:0 auto;padding:0 24px 80px}
+
+/* CATEGORY */
+.category{margin-bottom:48px}
+.cat-header{display:flex;align-items:center;gap:12px;margin-bottom:20px;padding-bottom:12px;border-bottom:2px solid #1D6FA4}
+.cat-icon{width:36px;height:36px;border-radius:8px;background:#1D6FA4;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.cat-icon svg{width:18px;height:18px}
+.cat-title{font-family:'DM Serif Display',Georgia,serif;font-size:20px;font-weight:700;color:#111827}
+.cat-count{font-size:12px;color:#6B7280;margin-left:auto}
+
+/* PROMPT CARDS */
+.prompts-grid{display:flex;flex-direction:column;gap:16px}
+.prompt-card{background:#fff;border:1px solid #E5E7EB;border-radius:12px;overflow:hidden;transition:box-shadow .2s}
+.prompt-card:hover{box-shadow:0 4px 20px rgba(0,0,0,.08)}
+.prompt-card-header{padding:16px 20px 12px;display:flex;align-items:flex-start;gap:12px;cursor:pointer}
+.prompt-num{font-size:10px;font-weight:700;color:#1D6FA4;letter-spacing:.1em;background:#F0FDF9;padding:3px 8px;border-radius:10px;flex-shrink:0;margin-top:2px}
+.prompt-info{flex:1}
+.prompt-title{font-size:15px;font-weight:600;color:#111827;margin-bottom:4px}
+.prompt-what{font-size:12px;color:#6B7280;line-height:1.5}
+.prompt-expand{width:24px;height:24px;border-radius:50%;background:#F3F4F6;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s;margin-top:2px}
+.prompt-card.open .prompt-expand{background:#1D6FA4;transform:rotate(180deg)}
+.prompt-expand svg{width:12px;height:12px}
+.prompt-body{display:none;padding:0 20px 20px;border-top:1px solid #F3F4F6}
+.prompt-card.open .prompt-body{display:block}
+.prompt-label{font-size:10px;font-weight:700;color:#374151;letter-spacing:.1em;text-transform:uppercase;margin:14px 0 8px}
+.prompt-text{background:#FFFFFF;border:1px solid #E5E7EB;border-radius:8px;padding:16px;font-family:'DM Mono',monospace;font-size:12.5px;color:#374151;line-height:1.7;white-space:pre-wrap;position:relative}
+.copy-btn{display:flex;align-items:center;gap:6px;background:#1D6FA4;color:#fff;border:none;border-radius:6px;padding:8px 16px;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;cursor:pointer;transition:all .2s;margin-top:10px}
+.copy-btn:hover{background:#155a87}
+.copy-btn.copied{background:#155a87}
+.copy-btn svg{width:14px;height:14px}
+.prompt-tip{background:#FEF9C3;border:1px solid #F59E0B;border-radius:6px;padding:10px 14px;margin-top:12px;font-size:12px;color:#78350F;line-height:1.6}
+.prompt-tip strong{font-weight:600}
+
+/* CALLOUT */
+.callout{background:#F0FDF9;border:1px solid #e8f2fa;border-left:4px solid #1D6FA4;border-radius:0 8px 8px 0;padding:14px 18px;margin-bottom:24px}
+.callout p{font-size:13px;color:#155a87;line-height:1.6}
+
+/* FOOTER CTA */
+.footer-cta{background:#111111;border-radius:12px;padding:28px;text-align:center;margin-top:40px}
+</style>
+</head>
+<body>
+<nav style="position:fixed;top:0;left:0;right:0;z-index:200;background:#111111;border-bottom:1px solid rgba(255,255,255,0.08);padding:0 40px;height:52px;display:flex;align-items:center;justify-content:space-between;">
+  <a href="/" style="font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#fff;text-decoration:none;">Arnie Rose <span style="color:#1D6FA4;">·</span> Project Management</a>
+  <a href="/" style="font-family:'DM Sans',sans-serif;font-size:12px;color:rgba(255,255,255,0.4);text-decoration:none;">← Back to Tools</a>
+</nav>
+<div style="height:52px;"></div>
+
+
+<div class="topbar">
+  <p>Free Tool · The Accidental Project Manager · Arnie Rose Felicilda, M.A.Ed</p>
+</div>
+
+<div class="header">
+  <div class="header-badge">Free · 20 Prompts · PM Edition</div>
+  <h1>AI Prompt Library<br><em>Project Manager Edition</em></h1>
+  <p>20 Claude and ChatGPT prompts that write your status reports, identify risks, summarise meetings, and generate action items. Copy and paste — done.</p>
+  <div class="header-stats">
+    <div><span class="hstat-n">20</span><span class="hstat-l">Ready Prompts</span></div>
+    <div><span class="hstat-n">30%</span><span class="hstat-l">Admin Time Cut</span></div>
+    <div><span class="hstat-n">1 click</span><span class="hstat-l">Copy to AI</span></div>
+  </div>
+</div>
+
+<!-- HOW TO USE -->
+<div class="how-to">
+  <div class="how-step">
+    <div class="how-step-num">1</div>
+    <div class="how-step-title">Click a prompt</div>
+    <div class="how-step-desc">Expand any card to see the full prompt text</div>
+  </div>
+  <div class="how-step">
+    <div class="how-step-num">2</div>
+    <div class="how-step-title">Click Copy</div>
+    <div class="how-step-desc">One click copies the prompt to your clipboard</div>
+  </div>
+  <div class="how-step">
+    <div class="how-step-num">3</div>
+    <div class="how-step-title">Paste into AI</div>
+    <div class="how-step-desc">Paste into Claude or ChatGPT — fill in the brackets</div>
+  </div>
+  <div class="how-step">
+    <div class="how-step-num">4</div>
+    <div class="how-step-title">Get your output</div>
+    <div class="how-step-desc">Copy the AI response into your email, doc, or message</div>
+  </div>
+</div>
+
+<!-- FILTER -->
+<div class="filter-wrap">
+  <div class="filter-tabs">
+    <button class="filter-tab active" onclick="filterCat('all',this)">All 20</button>
+    <button class="filter-tab" onclick="filterCat('sprint',this)">Daily Sprint</button>
+    <button class="filter-tab" onclick="filterCat('meetings',this)">Meetings</button>
+    <button class="filter-tab" onclick="filterCat('status',this)">Status Reports</button>
+    <button class="filter-tab" onclick="filterCat('scope',this)">Scope & Risk</button>
+    <button class="filter-tab" onclick="filterCat('closeout',this)">Closeout</button>
+  </div>
+</div>
+
+<div class="main">
+
+<div class="callout">
+  <p><strong>How to use the brackets:</strong> Every prompt has [PLACEHOLDERS IN CAPS]. Replace each one with your actual project details before sending to the AI. The more specific you are, the better the output.</p>
+</div>
+
+<!-- ═══════════════════════════
+     CATEGORY 1 — DAILY SPRINT
+═══════════════════════════ -->
+<div class="category" data-cat="sprint">
+  <div class="cat-header">
+    <div class="cat-icon"><svg fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+    <div class="cat-title">Daily Sprint</div>
+    <div class="cat-count">4 prompts</div>
+  </div>
+  <div class="prompts-grid">
+
+    <div class="prompt-card" id="p1">
+      <div class="prompt-card-header" onclick="togglePrompt('p1')">
+        <span class="prompt-num">01</span>
+        <div class="prompt-info">
+          <div class="prompt-title">Generate my 3 daily priorities</div>
+          <div class="prompt-what">Turns your task list into 3 focused non-negotiables for today</div>
+        </div>
+        <div class="prompt-expand"><svg fill="none" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></div>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-label">Prompt — copy and paste into Claude or ChatGPT</div>
+        <div class="prompt-text" id="pt1">I am a project manager working on [PROJECT NAME]. Today is [DAY/DATE].
+
+Here is my current task list:
+[PASTE YOUR TASK LIST HERE]
+
+My project deadline is [DEADLINE].
+The most critical milestone this week is [MILESTONE].
+
+From this list, identify my 3 non-negotiable priorities for today. These should be the tasks that, if left undone, put the project at the greatest risk.
+
+For each priority, give me:
+1. The task
+2. Why it is the most important today
+3. The single next action to move it forward
+
+Keep it brief. I need clarity, not a lecture.</div>
+        <button class="copy-btn" onclick="copyPrompt('pt1',this)">
+          <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          Copy Prompt
+        </button>
+        <div class="prompt-tip"><strong>Pro tip:</strong> Paste your actual Notion or Trello task list directly into the prompt. The AI will rank by urgency and impact automatically.</div>
+      </div>
+    </div>
+
+    <div class="prompt-card" id="p2">
+      <div class="prompt-card-header" onclick="togglePrompt('p2')">
+        <span class="prompt-num">02</span>
+        <div class="prompt-info">
+          <div class="prompt-title">Flag today's biggest risk</div>
+          <div class="prompt-what">Identifies the one risk most likely to cause a problem today</div>
+        </div>
+        <div class="prompt-expand"><svg fill="none" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></div>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-label">Prompt</div>
+        <div class="prompt-text" id="pt2">I am managing [PROJECT NAME]. Today is [DATE].
+
+Current project status:
+- We are in [WEEK NUMBER] of [TOTAL WEEKS]
+- Deliverables due this week: [LIST DELIVERABLES]
+- Known blockers: [LIST ANY CURRENT BLOCKERS]
+- Team members involved today: [LIST NAMES/ROLES]
+
+Based on this situation, identify the single most likely risk that could cause a delay or problem TODAY. 
+
+Give me:
+1. The risk in one sentence
+2. Why it is the highest priority risk right now
+3. One specific action I can take in the next 2 hours to mitigate it
+4. Who I should flag this to</div>
+        <button class="copy-btn" onclick="copyPrompt('pt2',this)">
+          <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          Copy Prompt
+        </button>
+        <div class="prompt-tip"><strong>Pro tip:</strong> Run this every morning before your first meeting. A risk identified at 8AM costs almost nothing. The same risk at 4PM has already caused damage.</div>
+      </div>
+    </div>
+
+    <div class="prompt-card" id="p3">
+      <div class="prompt-card-header" onclick="togglePrompt('p3')">
+        <span class="prompt-num">03</span>
+        <div class="prompt-info">
+          <div class="prompt-title">Write my proactive stakeholder update</div>
+          <div class="prompt-what">Generates a 3-line status update before anyone asks</div>
+        </div>
+        <div class="prompt-expand"><svg fill="none" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></div>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-label">Prompt</div>
+        <div class="prompt-text" id="pt3">Write a brief project status update for [STAKEHOLDER NAME/ROLE].
+
+Project: [PROJECT NAME]
+Today's date: [DATE]
+Overall status: [ON TRACK / AT RISK / DELAYED]
+
+Progress today:
+- Completed: [WHAT WAS DONE]
+- In progress: [WHAT IS BEING WORKED ON]
+- Blocked: [ANYTHING BLOCKED — or write "nothing blocked"]
+
+Risk to flag: [ONE RISK OR "no risks today"]
+Decision needed from them: [SPECIFIC DECISION — or write "no decision needed"]
+
+Write this as a professional 4-6 line update. Direct tone. No jargon. Should take them less than 30 seconds to read. End with: "No action needed from you today" unless a decision is required.</div>
+        <button class="copy-btn" onclick="copyPrompt('pt3',this)">
+          <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          Copy Prompt
+        </button>
+        <div class="prompt-tip"><strong>Pro tip:</strong> Send this before 9AM, before anyone asks. Proactive updates build more credibility than any status meeting.</div>
+      </div>
+    </div>
+
+    <div class="prompt-card" id="p4">
+      <div class="prompt-card-header" onclick="togglePrompt('p4')">
+        <span class="prompt-num">04</span>
+        <div class="prompt-info">
+          <div class="prompt-title">End-of-day summary and tomorrow's prep</div>
+          <div class="prompt-what">Captures what happened today and sets up tomorrow's sprint</div>
+        </div>
+        <div class="prompt-expand"><svg fill="none" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></div>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-label">Prompt</div>
+        <div class="prompt-text" id="pt4">Help me close out today and prepare for tomorrow.
+
+Project: [PROJECT NAME]
+Date: [TODAY'S DATE]
+
+What I completed today: [LIST COMPLETED TASKS]
+What I did not finish: [LIST INCOMPLETE TASKS]
+New issues that came up: [ANY SURPRISES OR NEW PROBLEMS]
+Decisions made today: [LIST ANY DECISIONS]
+
+Based on this, give me:
+1. A one-paragraph end-of-day summary I can log in my project notes
+2. My recommended 3 priorities for tomorrow morning
+3. Any risks I should flag before I log off today
+4. Any stakeholders I should send a quick update to before tomorrow</div>
+        <button class="copy-btn" onclick="copyPrompt('pt4',this)">
+          <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          Copy Prompt
+        </button>
+        <div class="prompt-tip"><strong>Pro tip:</strong> Run this at 4:30PM every day. Takes 5 minutes. Means you start tomorrow already knowing your priorities.</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════
+     CATEGORY 2 — MEETINGS
+═══════════════════════════ -->
+<div class="category" data-cat="meetings">
+  <div class="cat-header">
+    <div class="cat-icon"><svg fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+    <div class="cat-title">Meeting Management</div>
+    <div class="cat-count">4 prompts</div>
+  </div>
+  <div class="prompts-grid">
+
+    <div class="prompt-card" id="p5">
+      <div class="prompt-card-header" onclick="togglePrompt('p5')">
+        <span class="prompt-num">05</span>
+        <div class="prompt-info">
+          <div class="prompt-title">Summarise meeting notes into action items</div>
+          <div class="prompt-what">Turns messy meeting notes into a clean action list with owners</div>
+        </div>
+        <div class="prompt-expand"><svg fill="none" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></div>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-label">Prompt</div>
+        <div class="prompt-text" id="pt5">Here are my notes from a project meeting. Please process them and give me a clean output.
+
+Meeting: [MEETING NAME]
+Date: [DATE]
+Attendees: [LIST NAMES AND ROLES]
+
+Raw notes:
+[PASTE YOUR RAW MEETING NOTES HERE]
+
+Please give me:
+1. A 3-sentence meeting summary (what was discussed, what was decided, what is next)
+2. Action items table with: Action / Owner / Deadline
+3. Decisions made (list each one clearly)
+4. Open questions that still need answers (and who owns answering them)
+5. Risks or blockers mentioned
+
+Format clearly. This will be sent to all attendees.</div>
+        <button class="copy-btn" onclick="copyPrompt('pt5',this)">
+          <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          Copy Prompt
+        </button>
+        <div class="prompt-tip"><strong>Pro tip:</strong> If you record meetings, paste the transcript directly. If not, even bullet-point notes work. The AI will structure them.</div>
+      </div>
+    </div>
+
+    <div class="prompt-card" id="p6">
+      <div class="prompt-card-header" onclick="togglePrompt('p6')">
+        <span class="prompt-num">06</span>
+        <div class="prompt-info">
+          <div class="prompt-title">Create a structured meeting agenda</div>
+          <div class="prompt-what">Builds a tight agenda that keeps meetings under 45 minutes</div>
+        </div>
+        <div class="prompt-expand"><svg fill="none" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></div>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-label">Prompt</div>
+        <div class="prompt-text" id="pt6">Create a structured meeting agenda for the following:
+
+Meeting type: [KICKOFF / STATUS UPDATE / DECISION MEETING / RETROSPECTIVE]
+Project: [PROJECT NAME]
+Duration: [LENGTH IN MINUTES]
+Attendees: [LIST ROLES — not names]
+Goal of this meeting: [WHAT MUST BE DECIDED OR RESOLVED]
+
+Topics to cover:
+[LIST YOUR TOPICS]
+
+For each agenda item include:
+- Time allocation (in minutes)
+- The specific question to be answered or decision to be made
+- Who leads that section
+- What preparation attendees need to do beforehand
+
+End the agenda with a "Decisions Required" section listing what must be agreed before the meeting closes.</div>
+        <button class="copy-btn" onclick="copyPrompt('pt6',this)">
+          <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          Copy Prompt
+        </button>
+        <div class="prompt-tip"><strong>Pro tip:</strong> Send the agenda 24 hours before the meeting. Meetings with pre-sent agendas run 40% shorter on average.</div>
+      </div>
+    </div>
+
+    <div class="prompt-card" id="p7">
+      <div class="prompt-card-header" onclick="togglePrompt('p7')">
+        <span class="prompt-num">07</span>
+        <div class="prompt-info">
+          <div class="prompt-title">Write the post-meeting follow-up email</div>
+          <div class="prompt-what">Professional follow-up with decisions, actions, and next steps</div>
+        </div>
+        <div class="prompt-expand"><svg fill="none" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></div>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-label">Prompt</div>
+        <div class="prompt-text" id="pt7">Write a professional post-meeting email to send to all attendees.
+
+Meeting: [MEETING NAME]
+Date: [DATE]
+Project: [PROJECT NAME]
+
+Decisions made:
+[LIST DECISIONS]
+
+Action items:
+[LIST: TASK — OWNER — DEADLINE]
+
+Next meeting: [DATE AND PURPOSE — or "TBC"]
+Anything requiring urgent response: [OR write "none"]
+
+Write this as a clear, professional email. Subject line included. Warm but direct tone. Should take under 60 seconds to read. Close with the next step everyone needs to take.</div>
+        <button class="copy-btn" onclick="copyPrompt('pt7',this)">
+          <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          Copy Prompt
+        </button>
+        <div class="prompt-tip"><strong>Pro tip:</strong> Send within 2 hours of the meeting. After 24 hours, people forget what was decided and the follow-up loses half its impact.</div>
+      </div>
+    </div>
+
+    <div class="prompt-card" id="p8">
+      <div class="prompt-card-header" onclick="togglePrompt('p8')">
+        <span class="prompt-num">08</span>
+        <div class="prompt-info">
+          <div class="prompt-title">Identify blockers from meeting transcript</div>
+          <div class="prompt-what">Extracts hidden blockers and unresolved issues from any meeting</div>
+        </div>
+        <div class="prompt-expand"><svg fill="none" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></div>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-label">Prompt</div>
+        <div class="prompt-text" id="pt8">Analyse these meeting notes and identify hidden blockers, unresolved issues, and risks that were mentioned but not fully addressed.
+
+Meeting notes / transcript:
+[PASTE MEETING NOTES OR TRANSCRIPT]
+
+Look specifically for:
+1. Things people said they were "waiting on" or "hoping for"
+2. Vague commitments without clear owners or deadlines
+3. Disagreements that were not fully resolved
+4. Risks mentioned in passing but not logged
+5. Dependencies that could delay other work
+
+For each item found, give me:
+- What was said (quote or paraphrase)
+- Why it is a potential blocker
+- Recommended next action
+- Who should own it</div>
+        <button class="copy-btn" onclick="copyPrompt('pt8',this)">
+          <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          Copy Prompt
+        </button>
+        <div class="prompt-tip"><strong>Pro tip:</strong> Run this on every status meeting. Most blockers are mentioned once and never followed up. This prompt catches them.</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════
+     CATEGORY 3 — STATUS REPORTS
+═══════════════════════════ -->
+<div class="category" data-cat="status">
+  <div class="cat-header">
+    <div class="cat-icon"><svg fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+    <div class="cat-title">Status Reports</div>
+    <div class="cat-count">4 prompts</div>
+  </div>
+  <div class="prompts-grid">
+
+    <div class="prompt-card" id="p9">
+      <div class="prompt-card-header" onclick="togglePrompt('p9')">
+        <span class="prompt-num">09</span>
+        <div class="prompt-info">
+          <div class="prompt-title">Write the weekly status report</div>
+          <div class="prompt-what">Full weekly report in 2 minutes — executive-ready</div>
+        </div>
+        <div class="prompt-expand"><svg fill="none" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></div>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-label">Prompt</div>
+        <div class="prompt-text" id="pt9">Write a professional weekly project status report.
+
+Project: [PROJECT NAME]
+Week ending: [DATE]
+Overall status: [GREEN — on track / AMBER — at risk / RED — off track]
+% complete: [PERCENTAGE]
+
+Accomplishments this week:
+[LIST WHAT WAS COMPLETED]
+
+Planned for next week:
+[LIST WHAT WILL BE DONE]
+
+Issues and risks:
+[LIST ANY PROBLEMS OR RISKS]
+
+Decisions needed:
+[LIST ANY DECISIONS REQUIRED FROM STAKEHOLDERS — or "none"]
+
+Budget status: [ON BUDGET / OVER BY X / UNDER BY X]
+
+Format as a professional status report. Include a one-paragraph executive summary at the top. Use clear headings. Should be readable in under 2 minutes.</div>
+        <button class="copy-btn" onclick="copyPrompt('pt9',this)">
+          <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          Copy Prompt
+        </button>
+        <div class="prompt-tip"><strong>Pro tip:</strong> Send every Friday before 5PM. Consistency builds trust — stakeholders stop asking for updates because they know it is coming.</div>
+      </div>
+    </div>
+
+    <div class="prompt-card" id="p10">
+      <div class="prompt-card-header" onclick="togglePrompt('p10')">
+        <span class="prompt-num">10</span>
+        <div class="prompt-info">
+          <div class="prompt-title">Write an executive summary for leadership</div>
+          <div class="prompt-what">Translates project details into business language for executives</div>
+        </div>
+        <div class="prompt-expand"><svg fill="none" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></div>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-label">Prompt</div>
+        <div class="prompt-text" id="pt10">Write an executive summary for a senior leader who wants the big picture — not the details.
+
+Project: [PROJECT NAME]
+Audience: [TITLE OF EXECUTIVE — e.g. CEO, VP Operations]
+Project status: [ON TRACK / AT RISK / DELAYED]
+Original deadline: [DATE]
+Current forecast: [DATE]
+
+Business context: [WHY THIS PROJECT MATTERS TO THE BUSINESS]
+
+Key facts:
+- Budget: [STATUS]
+- Timeline: [STATUS]
+- Key risk: [ONE SENTENCE]
+- Decision needed from leadership: [OR "none at this time"]
+
+Write 3 short paragraphs maximum. No jargon. No technical detail. Lead with business impact. Executives read the first sentence of each paragraph and skip the rest — make those sentences count.</div>
+        <button class="copy-btn" onclick="copyPrompt('pt10',this)">
+          <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          Copy Prompt
+        </button>
+        <div class="prompt-tip"><strong>Pro tip:</strong> The rule for executive communication: answer the question they have not asked yet. That question is always "should I be worried?"</div>
+      </div>
+    </div>
+
+    <div class="prompt-card" id="p11">
+      <div class="prompt-card-header" onclick="togglePrompt('p11')">
+        <span class="prompt-num">11</span>
+        <div class="prompt-info">
+          <div class="prompt-title">Project health check — RAG status assessment</div>
+          <div class="prompt-what">Assesses Red/Amber/Green status across all project dimensions</div>
+        </div>
+        <div class="prompt-expand"><svg fill="none" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></div>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-label">Prompt</div>
+        <div class="prompt-text" id="pt11">Assess the health of my project and provide a RAG (Red/Amber/Green) status report.
+
+Project: [PROJECT NAME]
+Current week: [WEEK X of Y]
+
+Here is the current situation:
+- Schedule: [AHEAD / ON TRACK / BEHIND — by how much?]
+- Budget: [AMOUNT SPENT vs BUDGET]
+- Scope: [ANY CHANGES SINCE START?]
+- Team: [ANY RESOURCE ISSUES?]
+- Risks: [LIST ACTIVE RISKS]
+- Stakeholder satisfaction: [HIGH / MEDIUM / LOW]
+- Quality of deliverables: [ANY CONCERNS?]
+
+For each dimension, assign RED / AMBER / GREEN with a one-sentence justification.
+
+Then give me:
+1. Overall project RAG status with reasoning
+2. Top 3 actions to take this week to improve the health score
+3. What I should communicate to my sponsor today</div>
+        <button class="copy-btn" onclick="copyPrompt('pt11',this)">
+          <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          Copy Prompt
+        </button>
+        <div class="prompt-tip"><strong>Pro tip:</strong> Run this every Monday morning. Takes 3 minutes. Gives you a clear picture of where to focus energy for the week.</div>
+      </div>
+    </div>
+
+    <div class="prompt-card" id="p12">
+      <div class="prompt-card-header" onclick="togglePrompt('p12')">
+        <span class="prompt-num">12</span>
+        <div class="prompt-info">
+          <div class="prompt-title">Milestone update announcement</div>
+          <div class="prompt-what">Celebrates a completed milestone professionally — builds team morale and stakeholder confidence</div>
+        </div>
+        <div class="prompt-expand"><svg fill="none" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></div>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-label">Prompt</div>
+        <div class="prompt-text" id="pt12">Write a milestone completion announcement to send to the project team and stakeholders.
+
+Project: [PROJECT NAME]
+Milestone completed: [MILESTONE NAME]
+Completion date: [DATE]
+Originally planned for: [ORIGINAL DATE]
+Who delivered it: [TEAM/PERSON RESPONSIBLE]
+Business impact: [WHAT THIS MILESTONE ENABLES OR UNLOCKS]
+Next milestone: [NAME AND DATE]
+
+Write this as a short, professional announcement. Acknowledge the team's work specifically. Communicate what this milestone means for the project. Create momentum toward the next milestone. Keep it under 150 words.</div>
+        <button class="copy-btn" onclick="copyPrompt('pt12',this)">
+          <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          Copy Prompt
+        </button>
+        <div class="prompt-tip"><strong>Pro tip:</strong> Never skip milestone announcements. Celebrating progress publicly keeps teams motivated through the difficult middle stages of any project.</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════
+     CATEGORY 4 — SCOPE & RISK
+═══════════════════════════ -->
+<div class="category" data-cat="scope">
+  <div class="cat-header">
+    <div class="cat-icon"><svg fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+    <div class="cat-title">Scope & Risk</div>
+    <div class="cat-count">4 prompts</div>
+  </div>
+  <div class="prompts-grid">
+
+    <div class="prompt-card" id="p13">
+      <div class="prompt-card-header" onclick="togglePrompt('p13')">
+        <span class="prompt-num">13</span>
+        <div class="prompt-info">
+          <div class="prompt-title">Detect scope creep in a change request</div>
+          <div class="prompt-what">Evaluates whether a new request is scope creep or legitimate change</div>
+        </div>
+        <div class="prompt-expand"><svg fill="none" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></div>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-label">Prompt</div>
+        <div class="prompt-text" id="pt13">Evaluate the following change request and tell me if it is scope creep, a legitimate change, or a clarification of existing scope.
+
+Project name: [PROJECT NAME]
+Original scope statement: [PASTE YOUR ORIGINAL SCOPE OR KEY DELIVERABLES]
+Change requested: [DESCRIBE THE CHANGE REQUEST IN DETAIL]
+Requested by: [STAKEHOLDER NAME/ROLE]
+Reason given: [WHY THEY ARE REQUESTING IT]
+
+Assess:
+1. Is this within, outside, or on the edge of the agreed scope?
+2. What is the estimated impact on timeline? (rough estimate)
+3. What is the estimated impact on budget? (rough estimate)
+4. Should this be approved, declined, or deferred to next phase?
+5. What is the one question I should ask before making a decision?
+
+Be direct. I need to respond to this stakeholder today.</div>
+        <button class="copy-btn" onclick="copyPrompt('pt13',this)">
+          <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          Copy Prompt
+        </button>
+        <div class="prompt-tip"><strong>Pro tip:</strong> Run every change request through this before saying yes or no. Saying "let me assess the impact" is professional. Saying yes immediately is how budgets blow out.</div>
+      </div>
+    </div>
+
+    <div class="prompt-card" id="p14">
+      <div class="prompt-card-header" onclick="togglePrompt('p14')">
+        <span class="prompt-num">14</span>
+        <div class="prompt-info">
+          <div class="prompt-title">Full project risk assessment</div>
+          <div class="prompt-what">Identifies risks you have not thought of yet — before they happen</div>
+        </div>
+        <div class="prompt-expand"><svg fill="none" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></div>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-label">Prompt</div>
+        <div class="prompt-text" id="pt14">Conduct a risk assessment for my project and identify risks I may not have considered.
+
+Project: [PROJECT NAME]
+Type of project: [e.g. software launch, office relocation, marketing campaign, process change]
+Team size: [NUMBER] people across [DEPARTMENTS]
+Timeline: [X weeks]
+Budget: [$AMOUNT]
+Key dependencies: [LIST EXTERNAL VENDORS, APPROVALS, OR TEAMS YOU DEPEND ON]
+Known risks already logged: [LIST ANY RISKS YOU ALREADY KNOW ABOUT]
+
+Identify the top 8 risks across these categories:
+- Schedule risks
+- Resource risks
+- Scope risks
+- Stakeholder risks
+- Technical or vendor risks
+- External / environmental risks
+
+For each risk provide:
+- Risk description
+- Likelihood (Low/Medium/High)
+- Impact if it occurs (Low/Medium/High)
+- Recommended mitigation action
+- Suggested owner</div>
+        <button class="copy-btn" onclick="copyPrompt('pt14',this)">
+          <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          Copy Prompt
+        </button>
+        <div class="prompt-tip"><strong>Pro tip:</strong> Run this at project kickoff AND at the midpoint. Risks change as projects evolve. A risk assessment done only once is a false sense of security.</div>
+      </div>
+    </div>
+
+    <div class="prompt-card" id="p15">
+      <div class="prompt-card-header" onclick="togglePrompt('p15')">
+        <span class="prompt-num">15</span>
+        <div class="prompt-info">
+          <div class="prompt-title">Stakeholder communication plan</div>
+          <div class="prompt-what">Builds a tailored communication plan for each stakeholder type</div>
+        </div>
+        <div class="prompt-expand"><svg fill="none" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></div>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-label">Prompt</div>
+        <div class="prompt-text" id="pt15">Create a stakeholder communication plan for my project.
+
+Project: [PROJECT NAME]
+Duration: [X weeks]
+
+Stakeholders:
+1. [NAME/ROLE] — [Their main concern in one sentence]
+2. [NAME/ROLE] — [Their main concern in one sentence]
+3. [NAME/ROLE] — [Their main concern in one sentence]
+4. [NAME/ROLE] — [Their main concern in one sentence]
+
+For each stakeholder, recommend:
+- What to communicate (level of detail — summary vs full detail)
+- How often to communicate (daily / weekly / milestone only)
+- Best channel (email / meeting / instant message / formal report)
+- What NOT to include (what would overwhelm or confuse them)
+- The one thing they most want to know at each update
+
+Format as a simple table I can use as a reference throughout the project.</div>
+        <button class="copy-btn" onclick="copyPrompt('pt15',this)">
+          <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          Copy Prompt
+        </button>
+        <div class="prompt-tip"><strong>Pro tip:</strong> Build this in week 1. Most communication problems on projects come from treating all stakeholders the same. They are not.</div>
+      </div>
+    </div>
+
+    <div class="prompt-card" id="p16">
+      <div class="prompt-card-header" onclick="togglePrompt('p16')">
+        <span class="prompt-num">16</span>
+        <div class="prompt-info">
+          <div class="prompt-title">Difficult stakeholder message</div>
+          <div class="prompt-what">Writes the uncomfortable message — bad news, delays, budget overruns</div>
+        </div>
+        <div class="prompt-expand"><svg fill="none" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></div>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-label">Prompt</div>
+        <div class="prompt-text" id="pt16">Help me write a difficult message to a stakeholder about a project problem.
+
+Recipient: [NAME AND ROLE]
+Relationship: [DIRECT MANAGER / SPONSOR / CLIENT / PEER]
+The situation: [DESCRIBE WHAT HAPPENED — delay, budget issue, scope problem, missed deadline]
+What I have already done to address it: [ACTIONS TAKEN SO FAR]
+What I am proposing to do next: [YOUR RECOVERY PLAN]
+What I need from them: [DECISION / APPROVAL / INFORMATION / JUST AWARENESS]
+
+Write this message with:
+- Direct acknowledgment of the situation (no softening or burying the lead)
+- Brief explanation without excuses
+- Clear statement of what is being done about it
+- Specific ask (if any)
+- Professional, confident tone — not apologetic or panicked
+
+This person needs to trust me after reading this. Write accordingly.</div>
+        <button class="copy-btn" onclick="copyPrompt('pt16',this)">
+          <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          Copy Prompt
+        </button>
+        <div class="prompt-tip"><strong>Pro tip:</strong> Never bury bad news. The longer you wait and the more you soften it, the worse the stakeholder's reaction. Direct and early always lands better than indirect and late.</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════
+     CATEGORY 5 — CLOSEOUT
+═══════════════════════════ -->
+<div class="category" data-cat="closeout">
+  <div class="cat-header">
+    <div class="cat-icon"><svg fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+    <div class="cat-title">Project Closeout</div>
+    <div class="cat-count">4 prompts</div>
+  </div>
+  <div class="prompts-grid">
+
+    <div class="prompt-card" id="p17">
+      <div class="prompt-card-header" onclick="togglePrompt('p17')">
+        <span class="prompt-num">17</span>
+        <div class="prompt-info">
+          <div class="prompt-title">Lessons learned document</div>
+          <div class="prompt-what">Captures lessons in 30 minutes — not a two-day retrospective</div>
+        </div>
+        <div class="prompt-expand"><svg fill="none" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></div>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-label">Prompt</div>
+        <div class="prompt-text" id="pt17">Create a lessons learned document for a completed project.
+
+Project: [PROJECT NAME]
+Duration: [START DATE to END DATE]
+Delivered on time: [YES / NO — if no, by how long?]
+Delivered on budget: [YES / NO — if no, by how much?]
+Team size: [NUMBER]
+
+What went well:
+[LIST 3-5 THINGS THAT WORKED]
+
+What did not go well:
+[LIST 3-5 THINGS THAT CAUSED PROBLEMS]
+
+What surprised us:
+[LIST ANYTHING UNEXPECTED — positive or negative]
+
+What we would do differently:
+[YOUR OWN REFLECTION]
+
+Create a professional lessons learned document with:
+1. Executive summary (3 sentences)
+2. What worked — with specific recommendations to repeat
+3. What did not work — with specific recommendations to avoid or change
+4. Process improvements for the next project
+5. A one-page summary suitable for the project archive
+
+Make this useful for the next PM who runs a similar project — not just a formality.</div>
+        <button class="copy-btn" onclick="copyPrompt('pt17',this)">
+          <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          Copy Prompt
+        </button>
+        <div class="prompt-tip"><strong>Pro tip:</strong> Do this within 48 hours of project close — while it is still fresh. A lessons learned document written 3 weeks later is a fiction.</div>
+      </div>
+    </div>
+
+    <div class="prompt-card" id="p18">
+      <div class="prompt-card-header" onclick="togglePrompt('p18')">
+        <span class="prompt-num">18</span>
+        <div class="prompt-info">
+          <div class="prompt-title">Final project report for stakeholders</div>
+          <div class="prompt-what">Professional close-out report that builds your reputation</div>
+        </div>
+        <div class="prompt-expand"><svg fill="none" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></div>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-label">Prompt</div>
+        <div class="prompt-text" id="pt18">Write a final project completion report to send to all stakeholders.
+
+Project: [PROJECT NAME]
+PM: [YOUR NAME]
+Start date: [DATE] — End date: [DATE]
+Original deadline: [DATE] — Actual delivery: [DATE]
+Original budget: [$AMOUNT] — Final cost: [$AMOUNT]
+
+Deliverables completed:
+[LIST EACH DELIVERABLE AND ITS STATUS]
+
+Key outcomes achieved:
+[LIST MEASURABLE BUSINESS RESULTS]
+
+Challenges overcome:
+[BRIEFLY DESCRIBE 2-3 CHALLENGES AND HOW THEY WERE RESOLVED]
+
+Team members to acknowledge:
+[LIST NAMES AND THEIR CONTRIBUTION]
+
+Write a professional completion report that:
+- Leads with what was achieved for the business
+- States timeline and budget performance clearly
+- Acknowledges the team
+- Closes the project formally
+- Leaves a positive lasting impression with all stakeholders</div>
+        <button class="copy-btn" onclick="copyPrompt('pt18',this)">
+          <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          Copy Prompt
+        </button>
+        <div class="prompt-tip"><strong>Pro tip:</strong> A well-written final report is one of the most powerful reputation-builders available to a PM. Do not skip it.</div>
+      </div>
+    </div>
+
+    <div class="prompt-card" id="p19">
+      <div class="prompt-card-header" onclick="togglePrompt('p19')">
+        <span class="prompt-num">19</span>
+        <div class="prompt-info">
+          <div class="prompt-title">Team release and thank-you message</div>
+          <div class="prompt-what">Formally closes the project for your team — leaves a lasting impression</div>
+        </div>
+        <div class="prompt-expand"><svg fill="none" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></div>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-label">Prompt</div>
+        <div class="prompt-text" id="pt19">Write a team release and thank-you message for the end of a project.
+
+Project: [PROJECT NAME]
+Duration: [X weeks/months]
+Team members: [LIST NAMES AND ROLES]
+Specific contributions to mention:
+- [PERSON]: [WHAT THEY DID THAT DESERVES SPECIFIC MENTION]
+- [PERSON]: [WHAT THEY DID THAT DESERVES SPECIFIC MENTION]
+Project outcome: [DELIVERED ON TIME / LATE / EARLY — and the key result]
+Tone: [WARM AND PERSONAL / PROFESSIONAL / CELEBRATORY]
+
+Write a message that:
+- Formally releases team members from project responsibilities
+- Acknowledges specific contributions (not generic praise)
+- States what was accomplished together
+- Closes the project psychologically for the team
+- Leaves every person feeling their work mattered
+
+Keep it under 200 words. Genuine, not corporate.</div>
+        <button class="copy-btn" onclick="copyPrompt('pt19',this)">
+          <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          Copy Prompt
+        </button>
+        <div class="prompt-tip"><strong>Pro tip:</strong> Specific acknowledgment ("James — your API solution saved us two weeks") is worth ten times more than generic praise ("great work everyone").</div>
+      </div>
+    </div>
+
+    <div class="prompt-card" id="p20">
+      <div class="prompt-card-header" onclick="togglePrompt('p20')">
+        <span class="prompt-num">20</span>
+        <div class="prompt-info">
+          <div class="prompt-title">Project archive summary</div>
+          <div class="prompt-what">One-page archive document — for future PMs running similar projects</div>
+        </div>
+        <div class="prompt-expand"><svg fill="none" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></div>
+      </div>
+      <div class="prompt-body">
+        <div class="prompt-label">Prompt</div>
+        <div class="prompt-text" id="pt20">Create a one-page project archive summary for our project knowledge base.
+
+Project: [PROJECT NAME]
+Type: [TYPE OF PROJECT]
+Duration: [DATES]
+Team: [SIZE AND DEPARTMENTS]
+Budget: [FINAL COST]
+Outcome: [SUCCESS / PARTIAL SUCCESS / CANCELLED — brief reason]
+
+Key facts:
+- Biggest challenge: [ONE SENTENCE]
+- Biggest success: [ONE SENTENCE]
+- Technology/tools used: [LIST]
+- Vendors/suppliers involved: [LIST]
+- Stakeholders: [LIST ROLES — not names]
+
+Top 3 recommendations for anyone running a similar project:
+[YOUR TOP 3 PIECES OF ADVICE]
+
+Top 3 things to avoid:
+[YOUR TOP 3 WARNINGS]
+
+Format as a clean one-page document. Someone should be able to read this in 2 minutes and understand everything they need to know before starting a similar project.</div>
+        <button class="copy-btn" onclick="copyPrompt('pt20',this)">
+          <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          Copy Prompt
+        </button>
+        <div class="prompt-tip"><strong>Pro tip:</strong> This is the document you wish existed when you started this project. Write it for that person.</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- FOOTER CTA -->
+<div class="footer-cta">
+  <div style="font-family:'DM Serif Display',Georgia,serif;font-size:22px;font-weight:700;color:#fff;margin-bottom:8px">Want the full PM system?</div>
+  <div style="font-size:13px;color:rgba(255,255,255,.55);margin-bottom:20px;line-height:1.6">Get all 5 free tools — Sprint Calculator, Scope Lock Workbook, these 20 prompts, Progress Dashboard, and Recovery Checklist.</div>
+  <a href="https://projectmanagement.arniefelicilda.com/pm-toolkit.html" style="display:inline-block;background:#1D6FA4;color:#fff;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;padding:12px 28px;border-radius:8px;text-decoration:none">Get the Free PM Toolkit →</a>
+</div>
+
+</div>
+
+<script>
+function togglePrompt(id){
+  const card = document.getElementById(id);
+  card.classList.toggle('open');
+}
+
+function copyPrompt(textId, btn){
+  const text = document.getElementById(textId).textContent;
+  navigator.clipboard.writeText(text).then(() => {
+    btn.innerHTML = '<svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12l5 5L19 7"/></svg> Copied!';
+    btn.classList.add('copied');
+    setTimeout(() => {
+      btn.innerHTML = '<svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Copy Prompt';
+      btn.classList.remove('copied');
+    }, 2500);
+  });
+}
+
+function filterCat(cat, btn){
+  document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.category').forEach(c => {
+    if(cat === 'all' || c.dataset.cat === cat){
+      c.style.display = 'block';
+    } else {
+      c.style.display = 'none';
+    }
+  });
+}
+
+function submitCTA(){
+  var emailEl=document.getElementById('ctaEmail');
+  if(!emailEl){return;}
+  var emailVal=emailEl.value;
+  if(!emailVal||!emailVal.includes('@')){alert('Please enter a valid email.');return;}
+  var form=document.createElement('form');
+  form.method='post';form.action='https://app.kit.com/forms/9449931/subscriptions';form.target='_blank';
+  var inp=document.createElement('input');inp.type='hidden';inp.name='email_address';inp.value=emailVal;
+  form.appendChild(inp);document.body.appendChild(form);form.submit();
+}
+
+</script>
+</body>
+</html>

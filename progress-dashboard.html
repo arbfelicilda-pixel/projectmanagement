@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Weekly Project Progress Dashboard — Arnie Rose Felicilda</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{padding-top:0;font-family:'DM Sans',sans-serif;background:#FFFFFF;color:#374151}
+
+.topbar{background:#1D6FA4;padding:10px 0;text-align:center}
+.topbar p{font-size:12px;font-weight:500;color:#fff;letter-spacing:.04em}
+
+.header{background:#111111;padding:40px 24px 32px;text-align:center;position:relative;overflow:hidden}
+.header::before{content:'';position:absolute;right:-60px;top:-60px;width:300px;height:300px;border:1px solid rgba(29,111,164,.08);border-radius:50%;pointer-events:none}
+.header-badge{display:inline-block;background:rgba(29,111,164,.18);border:1px solid rgba(29,111,164,.3);color:#90c4e8;font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:4px 14px;border-radius:20px;margin-bottom:14px}
+.header h1{font-family:'DM Serif Display',Georgia,serif;font-size:clamp(26px,4vw,38px);font-weight:700;color:#fff;line-height:1.15;margin-bottom:8px}
+.header h1 em{font-style:italic;color:#90c4e8}
+.header p{font-size:13px;color:rgba(255,255,255,.5);max-width:480px;margin:0 auto;line-height:1.7}
+
+/* TABS */
+.tabs-wrap{background:#fff;border-bottom:1px solid #E5E7EB;position:sticky;top:0;z-index:100}
+.tabs{max-width:900px;margin:0 auto;display:flex;padding:0 24px}
+.tab{padding:14px 20px;font-size:13px;font-weight:500;color:#6B7280;border-bottom:2px solid transparent;cursor:pointer;transition:all .2s;white-space:nowrap}
+.tab:hover{color:#1D6FA4}
+.tab.active{color:#1D6FA4;border-bottom-color:#1D6FA4}
+
+/* MAIN */
+.main{max-width:900px;margin:0 auto;padding:32px 24px 80px}
+.tab-panel{display:none}
+.tab-panel.active{display:block}
+
+/* SECTION */
+.section{margin-bottom:28px}
+.section-title{font-size:13px;font-weight:600;color:#374151;letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.section-title::after{content:'';flex:1;height:1px;background:#F3F4F6}
+
+/* PROJECT INFO */
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:520px){.info-grid{grid-template-columns:1fr}}
+.field label{display:block;font-size:11px;font-weight:600;color:#374151;letter-spacing:.06em;text-transform:uppercase;margin-bottom:5px}
+.field input,.field select,.field textarea{width:100%;border:1px solid #E5E7EB;border-radius:6px;padding:9px 12px;font-family:'DM Sans',sans-serif;font-size:14px;color:#111827;background:#fff;outline:none;transition:border-color .2s}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:#1D6FA4;box-shadow:0 0 0 3px rgba(29,111,164,.1)}
+
+/* HEALTH NUMBERS */
+.health-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px}
+@media(max-width:520px){.health-cards{grid-template-columns:1fr}}
+.health-card{background:#fff;border:1px solid #E5E7EB;border-radius:10px;padding:16px;text-align:center}
+.health-card-label{font-size:10px;font-weight:600;color:#6B7280;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px}
+.health-card-num{font-family:'DM Serif Display',Georgia,serif;font-size:36px;font-weight:700;color:#1D6FA4;line-height:1;margin-bottom:8px}
+.health-card input{border:none;border-bottom:2px solid #E5E7EB;border-radius:0;text-align:center;font-family:'DM Serif Display',Georgia,serif;font-size:28px;font-weight:700;color:#1D6FA4;padding:4px 0;background:transparent}
+.health-card input:focus{border-bottom-color:#1D6FA4;box-shadow:none}
+
+/* RAG STATUS */
+.rag-table{width:100%;border-collapse:collapse}
+.rag-table th{background:#111111;color:#fff;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:10px 14px;text-align:left}
+.rag-table th:first-child{border-radius:6px 0 0 0}
+.rag-table th:last-child{border-radius:0 6px 0 0}
+.rag-table td{padding:8px 10px;border-bottom:1px solid #F3F4F6;vertical-align:middle}
+.rag-table tr:last-child td{border-bottom:none}
+.rag-area{font-size:13px;font-weight:500;color:#111827}
+.rag-select{border:1px solid #E5E7EB;border-radius:6px;padding:6px 10px;font-family:'DM Sans',sans-serif;font-size:13px;color:#111827;outline:none;cursor:pointer;background:#fff;width:120px}
+.rag-select.green{background:#DCFCE7;border-color:#10B981;color:#065F46}
+.rag-select.amber{background:#FEF9C3;border-color:#F59E0B;color:#78350F}
+.rag-select.red{background:#FEE2E2;border-color:#EF4444;color:#7F1D1D}
+.rag-notes input{border:1px solid #E5E7EB;border-radius:6px;padding:6px 10px;font-family:'DM Sans',sans-serif;font-size:12px;color:#374151;width:100%;outline:none}
+.rag-notes input:focus{border-color:#1D6FA4}
+
+/* PRIORITIES TABLE */
+.priorities-table{width:100%;border-collapse:collapse}
+.priorities-table th{background:#111111;color:#fff;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:10px 14px;text-align:left}
+.priorities-table th:first-child{border-radius:6px 0 0 0}
+.priorities-table th:last-child{border-radius:0 6px 0 0}
+.priorities-table td{padding:8px 8px;border-bottom:1px solid #F3F4F6}
+.priorities-table td input{border:1px solid #E5E7EB;border-radius:4px;padding:7px 10px;font-family:'DM Sans',sans-serif;font-size:13px;color:#111827;width:100%;outline:none}
+.priorities-table td input:focus{border-color:#1D6FA4}
+.priorities-table td select{border:1px solid #E5E7EB;border-radius:4px;padding:7px 10px;font-family:'DM Sans',sans-serif;font-size:13px;color:#111827;width:100%;outline:none;background:#fff}
+
+/* WEEKLY LOG */
+.log-entry{background:#fff;border:1px solid #E5E7EB;border-radius:10px;padding:20px;margin-bottom:12px;position:relative}
+.log-entry-header{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.log-week-num{width:32px;height:32px;border-radius:50%;background:#1D6FA4;color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.log-date input{border:1px solid #E5E7EB;border-radius:6px;padding:7px 12px;font-family:'DM Sans',sans-serif;font-size:13px;color:#111827;outline:none}
+.log-date input:focus{border-color:#1D6FA4}
+.log-pct{margin-left:auto;display:flex;align-items:center;gap:8px;font-size:12px;color:#6B7280}
+.log-pct input{width:70px;border:1px solid #E5E7EB;border-radius:6px;padding:6px 10px;font-family:'DM Sans',sans-serif;font-size:13px;color:#1D6FA4;font-weight:600;text-align:center;outline:none}
+.log-pct input:focus{border-color:#1D6FA4}
+.log-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:520px){.log-grid{grid-template-columns:1fr}}
+.log-field label{display:block;font-size:10px;font-weight:600;color:#6B7280;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px}
+.log-field textarea{width:100%;border:1px solid #E5E7EB;border-radius:6px;padding:8px 10px;font-family:'DM Sans',sans-serif;font-size:12px;color:#111827;resize:vertical;min-height:70px;outline:none}
+.log-field textarea:focus{border-color:#1D6FA4}
+.delete-btn{position:absolute;top:12px;right:12px;width:24px;height:24px;border-radius:50%;background:#FEE2E2;border:none;color:#EF4444;font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-weight:700}
+.delete-btn:hover{background:#EF4444;color:#fff}
+.add-btn{display:flex;align-items:center;gap:8px;background:none;border:1px dashed #D1D5DB;border-radius:8px;padding:12px 20px;font-family:'DM Sans',sans-serif;font-size:13px;color:#6B7280;cursor:pointer;width:100%;justify-content:center;transition:all .2s;margin-top:8px}
+.add-btn:hover{border-color:#1D6FA4;color:#1D6FA4;background:#F0FDF9}
+
+/* RISK REGISTER */
+.risk-row{background:#fff;border:1px solid #E5E7EB;border-radius:8px;padding:14px;margin-bottom:8px;display:grid;grid-template-columns:2fr 100px 1fr 1fr 80px;gap:8px;align-items:center;position:relative}
+@media(max-width:680px){.risk-row{grid-template-columns:1fr}}
+.risk-row input{border:1px solid #E5E7EB;border-radius:4px;padding:7px 10px;font-family:'DM Sans',sans-serif;font-size:12px;color:#111827;width:100%;outline:none}
+.risk-row input:focus{border-color:#1D6FA4}
+.risk-level-sel{border:1px solid #E5E7EB;border-radius:4px;padding:7px 8px;font-family:'DM Sans',sans-serif;font-size:12px;color:#111827;width:100%;outline:none;background:#fff;cursor:pointer}
+.risk-level-sel.low{background:#DCFCE7;border-color:#10B981;color:#065F46}
+.risk-level-sel.med{background:#FEF9C3;border-color:#F59E0B;color:#78350F}
+.risk-level-sel.high{background:#FEE2E2;border-color:#EF4444;color:#7F1D1D}
+.risk-status-sel{border:1px solid #E5E7EB;border-radius:4px;padding:7px 8px;font-family:'DM Sans',sans-serif;font-size:12px;color:#111827;width:100%;outline:none;background:#fff}
+.risk-delete{width:28px;height:28px;border-radius:50%;background:#FEE2E2;border:none;color:#EF4444;font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;justify-self:center}
+.risk-delete:hover{background:#EF4444;color:#fff}
+
+/* ACTION BUTTONS */
+.action-bar{display:flex;gap:10px;margin-bottom:24px;flex-wrap:wrap}
+.btn-primary{background:#1D6FA4;color:#fff;border:none;border-radius:8px;padding:10px 20px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;cursor:pointer;transition:background .2s}
+.btn-primary:hover{background:#155a87}
+.btn-outline{background:#fff;color:#1D6FA4;border:2px solid #1D6FA4;border-radius:8px;padding:10px 20px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;cursor:pointer;transition:all .2s}
+.btn-outline:hover{background:#F0FDF9}
+.btn-ghost{background:#fff;color:#6B7280;border:1px solid #E5E7EB;border-radius:8px;padding:10px 20px;font-family:'DM Sans',sans-serif;font-size:13px;cursor:pointer;transition:all .2s}
+.btn-ghost:hover{border-color:#EF4444;color:#EF4444}
+
+/* OVERVIEW SUMMARY */
+.overview-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:20px}
+@media(max-width:520px){.overview-cards{grid-template-columns:1fr}}
+.ov-card{background:#fff;border:1px solid #E5E7EB;border-radius:10px;padding:16px}
+.ov-card-label{font-size:10px;font-weight:600;color:#6B7280;letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px}
+.ov-card-val{font-size:18px;font-weight:600;color:#111827}
+.ov-card-sub{font-size:11px;color:#9CA3AF;margin-top:2px}
+
+@media print{
+  .topbar,.tabs-wrap,.action-bar{display:none!important}
+  .header{background:#111111!important;-webkit-print-color-adjust:exact;print-color-adjust:exact;padding:20px}
+  .tab-panel{display:block!important}
+  body{background:#fff}
+}
+</style>
+</head>
+<body>
+<nav style="position:fixed;top:0;left:0;right:0;z-index:200;background:#111111;border-bottom:1px solid rgba(255,255,255,0.08);padding:0 40px;height:52px;display:flex;align-items:center;justify-content:space-between;">
+  <a href="/" style="font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#fff;text-decoration:none;">Arnie Rose <span style="color:#1D6FA4;">·</span> Project Management</a>
+  <a href="/" style="font-family:'DM Sans',sans-serif;font-size:12px;color:rgba(255,255,255,0.4);text-decoration:none;">← Back to Tools</a>
+</nav>
+<div style="height:52px;"></div>
+
+
+<div class="topbar">
+  <p>Free Tool · The Accidental Project Manager · Arnie Rose Felicilda, M.A.Ed</p>
+</div>
+
+<div class="header">
+  <div class="header-badge">Free Tool · Book 01</div>
+  <h1>Weekly Project<br><em>Progress Dashboard</em></h1>
+  <p>Track project health in 3 numbers. Log weekly progress. Manage risks. Print anytime.</p>
+</div>
+
+<!-- TABS -->
+<div class="tabs-wrap">
+  <div class="tabs">
+    <div class="tab active" onclick="switchTab('dashboard',this)">Dashboard</div>
+    <div class="tab" onclick="switchTab('weekly',this)">Weekly Log</div>
+    <div class="tab" onclick="switchTab('risks',this)">Risk Register</div>
+  </div>
+</div>
+
+<div class="main">
+
+<!-- ═══════════════════════════
+     TAB 1 — DASHBOARD
+═══════════════════════════ -->
+<div class="tab-panel active" id="tab-dashboard">
+
+  <div class="action-bar">
+    <button class="btn-primary" onclick="window.print()">Print / Save PDF</button>
+    <button class="btn-outline" onclick="saveAll()">Save Progress</button>
+    <button class="btn-ghost" onclick="resetAll()">Reset</button>
+  </div>
+
+  <!-- PROJECT INFO -->
+  <div class="section">
+    <div class="section-title">Project Information</div>
+    <div class="info-grid">
+      <div class="field"><label>Project Name</label><input type="text" id="proj-name" placeholder="e.g. Q3 Product Launch" oninput="saveAll()"/></div>
+      <div class="field"><label>Project Manager</label><input type="text" id="proj-pm" placeholder="Your name" oninput="saveAll()"/></div>
+      <div class="field"><label>Start Date</label><input type="date" id="proj-start" oninput="saveAll()"/></div>
+      <div class="field"><label>Target Deadline</label><input type="date" id="proj-deadline" oninput="saveAll()"/></div>
+      <div class="field"><label>Project Sponsor</label><input type="text" id="proj-sponsor" placeholder="Name + title" oninput="saveAll()"/></div>
+      <div class="field"><label>Current Week</label><input type="text" id="proj-week" placeholder="e.g. Week 4 of 12" oninput="saveAll()"/></div>
+    </div>
+  </div>
+
+  <!-- HEALTH NUMBERS -->
+  <div class="section">
+    <div class="section-title">The 3 Health Numbers</div>
+    <div class="health-cards">
+      <div class="health-card">
+        <div class="health-card-label">% Complete</div>
+        <input type="text" id="h-complete" placeholder="0%" oninput="saveAll()"/>
+        <div style="font-size:11px;color:#9CA3AF;margin-top:6px">Overall project completion</div>
+      </div>
+      <div class="health-card">
+        <div class="health-card-label">Risks Open</div>
+        <input type="text" id="h-risks" placeholder="0" oninput="saveAll()"/>
+        <div style="font-size:11px;color:#9CA3AF;margin-top:6px">Active unresolved risks</div>
+      </div>
+      <div class="health-card">
+        <div class="health-card-label">Decisions Pending</div>
+        <input type="text" id="h-decisions" placeholder="0" oninput="saveAll()"/>
+        <div style="font-size:11px;color:#9CA3AF;margin-top:6px">Awaiting stakeholder decision</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RAG STATUS -->
+  <div class="section">
+    <div class="section-title">Project Health — RAG Status</div>
+    <table class="rag-table">
+      <thead>
+        <tr>
+          <th style="width:20%">Area</th>
+          <th style="width:18%">Status</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="rag-area">Schedule</td>
+          <td><select class="rag-select green" id="rag-schedule" onchange="updateRag(this);saveAll()"><option>GREEN</option><option>AMBER</option><option>RED</option></select></td>
+          <td class="rag-notes"><input type="text" id="rag-schedule-note" placeholder="e.g. On track for Q3 deadline" oninput="saveAll()"/></td>
+        </tr>
+        <tr>
+          <td class="rag-area">Budget</td>
+          <td><select class="rag-select green" id="rag-budget" onchange="updateRag(this);saveAll()"><option>GREEN</option><option>AMBER</option><option>RED</option></select></td>
+          <td class="rag-notes"><input type="text" id="rag-budget-note" placeholder="e.g. 20% of budget used, on track" oninput="saveAll()"/></td>
+        </tr>
+        <tr>
+          <td class="rag-area">Scope</td>
+          <td><select class="rag-select green" id="rag-scope" onchange="updateRag(this);saveAll()"><option>GREEN</option><option>AMBER</option><option>RED</option></select></td>
+          <td class="rag-notes"><input type="text" id="rag-scope-note" placeholder="e.g. No scope changes this week" oninput="saveAll()"/></td>
+        </tr>
+        <tr>
+          <td class="rag-area">Team</td>
+          <td><select class="rag-select green" id="rag-team" onchange="updateRag(this);saveAll()"><option>GREEN</option><option>AMBER</option><option>RED</option></select></td>
+          <td class="rag-notes"><input type="text" id="rag-team-note" placeholder="e.g. Full team available" oninput="saveAll()"/></td>
+        </tr>
+        <tr>
+          <td class="rag-area">Stakeholders</td>
+          <td><select class="rag-select green" id="rag-stakeholders" onchange="updateRag(this);saveAll()"><option>GREEN</option><option>AMBER</option><option>RED</option></select></td>
+          <td class="rag-notes"><input type="text" id="rag-stakeholders-note" placeholder="e.g. Sponsor updated weekly" oninput="saveAll()"/></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- THIS WEEK PRIORITIES -->
+  <div class="section">
+    <div class="section-title">This Week's Top 3 Priorities</div>
+    <table class="priorities-table">
+      <thead>
+        <tr>
+          <th style="width:8%">#</th>
+          <th style="width:42%">Priority</th>
+          <th style="width:22%">Owner</th>
+          <th style="width:20%">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="text-align:center;font-weight:700;color:#1D6FA4">1</td>
+          <td><input type="text" id="p1" placeholder="Most critical task this week" oninput="saveAll()"/></td>
+          <td><input type="text" id="p1o" placeholder="Owner" oninput="saveAll()"/></td>
+          <td><select id="p1s" onchange="saveAll()"><option>Not started</option><option>In progress</option><option>Blocked</option><option>Done</option></select></td>
+        </tr>
+        <tr>
+          <td style="text-align:center;font-weight:700;color:#1D6FA4">2</td>
+          <td><input type="text" id="p2" placeholder="Second priority" oninput="saveAll()"/></td>
+          <td><input type="text" id="p2o" placeholder="Owner" oninput="saveAll()"/></td>
+          <td><select id="p2s" onchange="saveAll()"><option>Not started</option><option>In progress</option><option>Blocked</option><option>Done</option></select></td>
+        </tr>
+        <tr>
+          <td style="text-align:center;font-weight:700;color:#1D6FA4">3</td>
+          <td><input type="text" id="p3" placeholder="Third priority" oninput="saveAll()"/></td>
+          <td><input type="text" id="p3o" placeholder="Owner" oninput="saveAll()"/></td>
+          <td><select id="p3s" onchange="saveAll()"><option>Not started</option><option>In progress</option><option>Blocked</option><option>Done</option></select></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+<!-- ═══════════════════════════
+     TAB 2 — WEEKLY LOG
+═══════════════════════════ -->
+<div class="tab-panel" id="tab-weekly">
+
+  <div class="action-bar">
+    <button class="btn-primary" onclick="addWeekEntry()">+ Add This Week's Entry</button>
+    <button class="btn-outline" onclick="saveAll()">Save Progress</button>
+  </div>
+
+  <div id="weekly-log-container">
+    <!-- entries added dynamically -->
+  </div>
+
+  <div style="background:#F0FDF9;border:1px solid #e8f2fa;border-left:4px solid #1D6FA4;border-radius:0 8px 8px 0;padding:14px 18px;margin-top:16px">
+    <p style="font-size:13px;color:#155a87;line-height:1.6"><strong>How to use:</strong> Add one entry per week every Friday. Fill in what was completed, what is planned, and any blockers. This becomes your project history.</p>
+  </div>
+
+</div>
+
+<!-- ═══════════════════════════
+     TAB 3 — RISK REGISTER
+═══════════════════════════ -->
+<div class="tab-panel" id="tab-risks">
+
+  <div class="action-bar">
+    <button class="btn-primary" onclick="addRiskRow()">+ Add Risk</button>
+    <button class="btn-outline" onclick="saveAll()">Save Progress</button>
+  </div>
+
+  <div style="display:grid;grid-template-columns:2fr 100px 1fr 1fr 80px;gap:8px;padding:10px 14px;background:#111111;border-radius:6px 6px 0 0;margin-bottom:0">
+    <div style="font-size:11px;font-weight:600;color:#fff;letter-spacing:.08em;text-transform:uppercase">Risk Description</div>
+    <div style="font-size:11px;font-weight:600;color:#fff;letter-spacing:.08em;text-transform:uppercase">Level</div>
+    <div style="font-size:11px;font-weight:600;color:#fff;letter-spacing:.08em;text-transform:uppercase">Mitigation</div>
+    <div style="font-size:11px;font-weight:600;color:#fff;letter-spacing:.08em;text-transform:uppercase">Owner</div>
+    <div style="font-size:11px;font-weight:600;color:#fff;letter-spacing:.08em;text-transform:uppercase">Status</div>
+  </div>
+  <div id="risk-container">
+    <!-- rows added dynamically -->
+  </div>
+
+  <div style="background:#F0FDF9;border:1px solid #e8f2fa;border-left:4px solid #1D6FA4;border-radius:0 8px 8px 0;padding:14px 18px;margin-top:16px">
+    <p style="font-size:13px;color:#155a87;line-height:1.6"><strong>Rule:</strong> Review this list every Monday. Any risk marked HIGH with no mitigation plan needs your attention before anything else.</p>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<div style="background:#111111;border-radius:12px;padding:24px;text-align:center;margin-top:40px">
+  <div style="font-family:'DM Serif Display',Georgia,serif;font-size:20px;font-weight:700;color:#fff;margin-bottom:6px">Want all 5 free PM tools?</div>
+  <div style="font-size:13px;color:rgba(255,255,255,.5);margin-bottom:16px">Sprint Calculator · Scope Lock Workbook · AI Prompts · This Dashboard · Recovery Checklist</div>
+  <a href="https://projectmanagement.arniefelicilda.com/pm-toolkit.html" style="display:inline-block;background:#1D6FA4;color:#fff;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;padding:12px 28px;border-radius:8px;text-decoration:none">Get the Free PM Toolkit →</a>
+</div>
+
+</div>
+
+<script>
+// ── TABS ──────────────────────────────────────────
+function switchTab(id, btn){
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('tab-'+id).classList.add('active');
+  btn.classList.add('active');
+}
+
+// ── RAG COLORS ────────────────────────────────────
+function updateRag(sel){
+  sel.className = 'rag-select ' + sel.value.toLowerCase();
+}
+
+// ── WEEKLY LOG ────────────────────────────────────
+let weekCount = 0;
+function addWeekEntry(){
+  weekCount++;
+  const container = document.getElementById('weekly-log-container');
+  const entry = document.createElement('div');
+  entry.className = 'log-entry';
+  entry.id = 'week-'+weekCount;
+  entry.innerHTML = `
+    <button class="delete-btn" onclick="deleteEntry('week-${weekCount}')">×</button>
+    <div class="log-entry-header">
+      <div class="log-week-num">${weekCount}</div>
+      <div class="log-date"><input type="date" placeholder="Week ending"/></div>
+      <div class="log-pct">
+        <span>% Complete:</span>
+        <input type="text" placeholder="0%"/>
+      </div>
+    </div>
+    <div class="log-grid">
+      <div class="log-field">
+        <label>Completed this week</label>
+        <textarea placeholder="What was delivered or completed this week?"></textarea>
+      </div>
+      <div class="log-field">
+        <label>Planned next week</label>
+        <textarea placeholder="What is planned for next week?"></textarea>
+      </div>
+      <div class="log-field">
+        <label>Blockers</label>
+        <textarea placeholder="Any blockers or issues that came up?" style="min-height:50px"></textarea>
+      </div>
+      <div class="log-field">
+        <label>Notes</label>
+        <textarea placeholder="Any other notes or observations?" style="min-height:50px"></textarea>
+      </div>
+    </div>`;
+  container.appendChild(entry);
+  entry.scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+function deleteEntry(id){
+  if(confirm('Delete this entry?')){
+    document.getElementById(id)?.remove();
+  }
+}
+
+// ── RISK REGISTER ─────────────────────────────────
+let riskCount = 0;
+function addRiskRow(){
+  riskCount++;
+  const container = document.getElementById('risk-container');
+  const row = document.createElement('div');
+  row.className = 'risk-row';
+  row.id = 'risk-'+riskCount;
+  row.innerHTML = `
+    <input type="text" placeholder="Describe the risk..."/>
+    <select class="risk-level-sel low" onchange="updateRiskLevel(this)">
+      <option>Low</option>
+      <option>Medium</option>
+      <option>High</option>
+    </select>
+    <input type="text" placeholder="Mitigation plan"/>
+    <input type="text" placeholder="Owner"/>
+    <button class="risk-delete" onclick="deleteRisk('risk-${riskCount}')">×</button>`;
+  container.appendChild(row);
+}
+
+function updateRiskLevel(sel){
+  const map = {'Low':'low','Medium':'med','High':'high'};
+  sel.className = 'risk-level-sel ' + (map[sel.value]||'low');
+}
+
+function deleteRisk(id){
+  document.getElementById(id)?.remove();
+}
+
+// ── SAVE / LOAD ────────────────────────────────────
+function saveAll(){
+  const data = {};
+  document.querySelectorAll('input[id], select[id], textarea[id]').forEach(el => {
+    if(el.id) data[el.id] = el.value;
+  });
+  try{ localStorage.setItem('pm-dashboard', JSON.stringify(data)); } catch(e){}
+}
+
+function loadAll(){
+  try{
+    const saved = localStorage.getItem('pm-dashboard');
+    if(saved){
+      const data = JSON.parse(saved);
+      Object.keys(data).forEach(id => {
+        const el = document.getElementById(id);
+        if(el){ el.value = data[id]; if(el.tagName==='SELECT') updateRag(el); }
+      });
+    }
+  } catch(e){}
+}
+
+function resetAll(){
+  if(confirm('Reset all data? This cannot be undone.')){
+    localStorage.removeItem('pm-dashboard');
+    document.querySelectorAll('input[id], select[id], textarea[id]').forEach(el => {
+      el.value = el.tagName==='SELECT' ? el.options[0].value : '';
+    });
+    document.getElementById('weekly-log-container').innerHTML = '';
+    document.getElementById('risk-container').innerHTML = '';
+    weekCount = 0; riskCount = 0;
+  }
+}
+
+// ── INIT ──────────────────────────────────────────
+window.onload = function(){
+  loadAll();
+  document.querySelectorAll('.rag-select').forEach(sel => updateRag(sel));
+  // Add default first risk row
+  if(document.getElementById('risk-container').children.length === 0){
+    addRiskRow();
+  }
+};
+
+function submitCTA(){
+  var emailEl=document.getElementById('ctaEmail');
+  if(!emailEl){return;}
+  var emailVal=emailEl.value;
+  if(!emailVal||!emailVal.includes('@')){alert('Please enter a valid email.');return;}
+  var form=document.createElement('form');
+  form.method='post';form.action='https://app.kit.com/forms/9449931/subscriptions';form.target='_blank';
+  var inp=document.createElement('input');inp.type='hidden';inp.name='email_address';inp.value=emailVal;
+  form.appendChild(inp);document.body.appendChild(form);form.submit();
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Project Charter & Scope Lock Workbook — Arnie Rose Felicilda</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{padding-top:0;font-family:'DM Sans',sans-serif;background:#FFFFFF;color:#374151}
+
+/* ── TOP BAR ── */
+.topbar{background:#1D6FA4;padding:10px 0;text-align:center}
+.topbar p{font-size:12px;font-weight:500;color:#fff;letter-spacing:.04em}
+
+/* ── HEADER ── */
+.header{background:#111111;padding:48px 24px 40px;text-align:center;position:relative;overflow:hidden}
+.header::before{content:'';position:absolute;right:-60px;top:-60px;width:300px;height:300px;border:1px solid rgba(29,111,164,.08);border-radius:50%;pointer-events:none}
+.header-badge{display:inline-block;background:rgba(29,111,164,.18);border:1px solid rgba(29,111,164,.3);color:#90c4e8;font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:4px 14px;border-radius:20px;margin-bottom:16px}
+.header h1{font-family:'DM Serif Display',Georgia,serif;font-size:clamp(28px,4vw,42px);font-weight:700;color:#fff;line-height:1.15;margin-bottom:10px}
+.header h1 em{font-style:italic;color:#90c4e8}
+.header p{font-size:14px;color:rgba(255,255,255,.55);max-width:500px;margin:0 auto 24px;line-height:1.7}
+.header-stats{display:flex;justify-content:center;gap:32px;flex-wrap:wrap}
+.hstat-n{font-family:'DM Serif Display',Georgia,serif;font-size:24px;font-weight:700;color:#90c4e8;display:block;line-height:1}
+.hstat-l{font-size:10px;color:rgba(255,255,255,.35);letter-spacing:.08em;text-transform:uppercase;margin-top:3px;display:block}
+
+/* ── MAIN ── */
+.main{max-width:800px;margin:0 auto;padding:48px 24px 80px}
+
+/* ── SECTION ── */
+.section{margin-bottom:40px}
+.section-header{display:flex;align-items:center;gap:12px;margin-bottom:20px;padding-bottom:12px;border-bottom:2px solid #1D6FA4}
+.section-num{width:32px;height:32px;border-radius:50%;background:#1D6FA4;color:#fff;font-size:13px;font-weight:600;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.section-title{font-family:'DM Serif Display',Georgia,serif;font-size:20px;font-weight:700;color:#111827}
+.section-sub{font-size:12px;color:#6B7280;margin-left:auto;font-style:italic}
+
+/* ── FIELDS ── */
+.field{margin-bottom:18px}
+.field label{display:block;font-size:12px;font-weight:600;color:#374151;letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px}
+.field .hint{font-size:11px;color:#9CA3AF;margin-bottom:6px;line-height:1.5}
+.field input,.field textarea,.field select{
+  width:100%;border:1px solid #E5E7EB;border-radius:6px;
+  padding:10px 14px;font-family:'DM Sans',sans-serif;
+  font-size:14px;color:#111827;background:#fff;
+  transition:border-color .2s,box-shadow .2s;outline:none;resize:vertical;
+}
+.field input:focus,.field textarea:focus,.field select:focus{border-color:#1D6FA4;box-shadow:0 0 0 3px rgba(29,111,164,.1)}
+.field textarea{min-height:80px}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:560px){.field-row{grid-template-columns:1fr}}
+
+/* ── SCOPE TABLE ── */
+.scope-table{width:100%;border-collapse:collapse;margin-bottom:8px}
+.scope-table th{background:#111111;color:#fff;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:10px 14px;text-align:left}
+.scope-table th:first-child{border-radius:6px 0 0 0}
+.scope-table th:last-child{border-radius:0 6px 0 0}
+.scope-table td{padding:6px 8px;border-bottom:1px solid #F3F4F6}
+.scope-table tr:last-child td{border-bottom:none}
+.scope-table td input{border:1px solid #E5E7EB;border-radius:4px;padding:7px 10px;font-family:'DM Sans',sans-serif;font-size:13px;color:#111827;width:100%;outline:none;transition:border-color .2s}
+.scope-table td input:focus{border-color:#1D6FA4;box-shadow:0 0 0 2px rgba(29,111,164,.1)}
+.scope-table td select{border:1px solid #E5E7EB;border-radius:4px;padding:7px 10px;font-family:'DM Sans',sans-serif;font-size:13px;color:#111827;width:100%;outline:none;background:#fff}
+.add-row-btn{background:none;border:1px dashed #D1D5DB;border-radius:6px;padding:8px 16px;font-family:'DM Sans',sans-serif;font-size:12px;color:#6B7280;cursor:pointer;width:100%;margin-top:6px;transition:all .2s}
+.add-row-btn:hover{border-color:#1D6FA4;color:#1D6FA4;background:#F0FDF9}
+
+/* ── RISK TABLE ── */
+.risk-table{width:100%;border-collapse:collapse;margin-bottom:8px}
+.risk-table th{background:#111111;color:#fff;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:10px 14px;text-align:left}
+.risk-table td{padding:6px 8px;border-bottom:1px solid #F3F4F6}
+.risk-table tr:last-child td{border-bottom:none}
+.risk-table td input{border:1px solid #E5E7EB;border-radius:4px;padding:7px 10px;font-family:'DM Sans',sans-serif;font-size:13px;color:#111827;width:100%;outline:none;transition:border-color .2s}
+.risk-table td input:focus{border-color:#1D6FA4;box-shadow:0 0 0 2px rgba(29,111,164,.1)}
+.risk-level-btn{padding:5px 10px;border-radius:4px;border:1px solid #E5E7EB;font-size:11px;font-weight:500;cursor:pointer;background:#fff;font-family:'DM Sans',sans-serif}
+.risk-level-btn.low{background:#DCFCE7;border-color:#10B981;color:#065F46}
+.risk-level-btn.med{background:#FEF9C3;border-color:#F59E0B;color:#78350F}
+.risk-level-btn.high{background:#FEE2E2;border-color:#EF4444;color:#7F1D1D}
+
+/* ── STAKEHOLDER CARDS ── */
+.stakeholder-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:560px){.stakeholder-grid{grid-template-columns:1fr}}
+.stakeholder-card{background:#fff;border:1px solid #E5E7EB;border-radius:8px;padding:16px;border-top:3px solid #1D6FA4}
+.stakeholder-card.high-power{border-top-color:#EF4444}
+.stakeholder-card.med-power{border-top-color:#F59E0B}
+.stakeholder-label{font-size:10px;font-weight:600;color:#1D6FA4;letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px}
+.stakeholder-card.high-power .stakeholder-label{color:#EF4444}
+.stakeholder-card.med-power .stakeholder-label{color:#F59E0B}
+.stakeholder-card input{width:100%;border:1px solid #E5E7EB;border-radius:4px;padding:7px 10px;font-family:'DM Sans',sans-serif;font-size:13px;color:#111827;outline:none;margin-bottom:8px;transition:border-color .2s}
+.stakeholder-card input:last-child{margin-bottom:0}
+.stakeholder-card input:focus{border-color:#1D6FA4}
+
+/* ── SIGN OFF ── */
+.signoff-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:560px){.signoff-grid{grid-template-columns:1fr}}
+.signoff-card{background:#fff;border:1px solid #E5E7EB;border-radius:8px;padding:16px}
+.signoff-card label{display:block;font-size:11px;font-weight:600;color:#6B7280;letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px}
+.signoff-card input{width:100%;border:none;border-bottom:2px solid #E5E7EB;padding:6px 0;font-family:'DM Sans',sans-serif;font-size:14px;color:#111827;outline:none;background:transparent;transition:border-color .2s}
+.signoff-card input:focus{border-bottom-color:#1D6FA4}
+.sig-line{height:48px;border-bottom:2px solid #E5E7EB;margin:12px 0 6px;display:flex;align-items:flex-end;padding-bottom:4px}
+.sig-label{font-size:10px;color:#9CA3AF;letter-spacing:.06em;text-transform:uppercase}
+
+/* ── CALLOUT ── */
+.callout{background:#F0FDF9;border:1px solid #e8f2fa;border-left:4px solid #1D6FA4;border-radius:0 8px 8px 0;padding:14px 18px;margin-bottom:20px}
+.callout p{font-size:13px;color:#155a87;line-height:1.6}
+.callout strong{font-weight:600}
+
+/* ── PRINT/SAVE BUTTONS ── */
+.action-bar{display:flex;gap:12px;margin-bottom:40px;flex-wrap:wrap}
+.btn-primary{background:#1D6FA4;color:#fff;border:none;border-radius:8px;padding:12px 24px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;transition:background .2s}
+.btn-primary:hover{background:#155a87}
+.btn-outline{background:#fff;color:#1D6FA4;border:2px solid #1D6FA4;border-radius:8px;padding:12px 24px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;transition:all .2s}
+.btn-outline:hover{background:#F0FDF9}
+.btn-reset{background:#fff;color:#6B7280;border:1px solid #E5E7EB;border-radius:8px;padding:12px 24px;font-family:'DM Sans',sans-serif;font-size:14px;cursor:pointer;transition:all .2s}
+.btn-reset:hover{border-color:#EF4444;color:#EF4444}
+
+/* ── PROGRESS ── */
+.progress-wrap{background:#F3F4F6;border-radius:8px;padding:16px 20px;margin-bottom:32px;display:flex;align-items:center;gap:16px}
+.progress-bar{flex:1;height:8px;background:#E5E7EB;border-radius:4px;overflow:hidden}
+.progress-fill{height:100%;background:#1D6FA4;border-radius:4px;transition:width .4s ease;width:0%}
+.progress-label{font-size:13px;font-weight:500;color:#374151;white-space:nowrap}
+.progress-pct{font-size:13px;font-weight:600;color:#1D6FA4;min-width:36px}
+
+/* ── PRINT STYLES ── */
+@media print{
+  .topbar,.action-bar,.progress-wrap,.header-stats,.header-badge{display:none!important}
+  .header{padding:24px;background:#111111!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  body{background:#fff}
+  .main{padding:24px 0}
+  .field input,.field textarea{border:1px solid #ccc!important}
+  .scope-table td input{border:1px solid #ccc!important}
+}
+</style>
+</head>
+<body>
+<nav style="position:fixed;top:0;left:0;right:0;z-index:200;background:#111111;border-bottom:1px solid rgba(255,255,255,0.08);padding:0 40px;height:52px;display:flex;align-items:center;justify-content:space-between;">
+  <a href="/" style="font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#fff;text-decoration:none;">Arnie Rose <span style="color:#1D6FA4;">·</span> Project Management</a>
+  <a href="/" style="font-family:'DM Sans',sans-serif;font-size:12px;color:rgba(255,255,255,0.4);text-decoration:none;">← Back to Tools</a>
+</nav>
+<div style="height:52px;"></div>
+
+
+<div class="topbar">
+  <p>Free Tool · The Accidental Project Manager · Arnie Rose Felicilda, M.A.Ed</p>
+</div>
+
+<div class="header">
+  <div class="header-badge">Free Workbook · Book 01</div>
+  <h1>Project Charter &<br><em>Scope Lock</em> Workbook</h1>
+  <p>Define scope, lock deliverables, and get stakeholder sign-off before a single task begins. Prevents the 27% budget overrun.</p>
+  <div class="header-stats">
+    <div><span class="hstat-n">27%</span><span class="hstat-l">Budget Overrun Prevented</span></div>
+    <div><span class="hstat-n">5 min</span><span class="hstat-l">To Fill In</span></div>
+    <div><span class="hstat-n">Print</span><span class="hstat-l">Or Save as PDF</span></div>
+  </div>
+</div>
+
+<div class="main">
+
+  <!-- PROGRESS -->
+  <div class="progress-wrap">
+    <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+    <span class="progress-label">Completion</span>
+    <span class="progress-pct" id="progressPct">0%</span>
+  </div>
+
+  <!-- ACTION BUTTONS -->
+  <div class="action-bar">
+    <button class="btn-primary" onclick="window.print()">Print / Save as PDF</button>
+    <button class="btn-outline" onclick="saveData()">Save Progress</button>
+    <button class="btn-reset" onclick="resetForm()">Reset Form</button>
+  </div>
+
+  <!-- SECTION 1: PROJECT OVERVIEW -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">1</div>
+      <div class="section-title">Project Overview</div>
+      <div class="section-sub">Fill in before kickoff</div>
+    </div>
+    <div class="callout">
+      <p><strong>The one question that changes everything:</strong> What does done look like — specifically — to each person who has a stake in it?</p>
+    </div>
+    <div class="field">
+      <label>Project Name</label>
+      <input type="text" id="proj-name" placeholder="e.g. Q3 Product Launch — BrightFlow SaaS" oninput="updateProgress()"/>
+    </div>
+    <div class="field-row">
+      <div class="field">
+        <label>Project Sponsor</label>
+        <input type="text" id="proj-sponsor" placeholder="Name + title" oninput="updateProgress()"/>
+      </div>
+      <div class="field">
+        <label>Project Manager (You)</label>
+        <input type="text" id="proj-pm" placeholder="Your name" oninput="updateProgress()"/>
+      </div>
+    </div>
+    <div class="field-row">
+      <div class="field">
+        <label>Start Date</label>
+        <input type="date" id="proj-start" oninput="updateProgress()"/>
+      </div>
+      <div class="field">
+        <label>Target End Date</label>
+        <input type="date" id="proj-end" oninput="updateProgress()"/>
+      </div>
+    </div>
+    <div class="field">
+      <label>Project Objective</label>
+      <div class="hint">One sentence. What business outcome does this project deliver?</div>
+      <textarea id="proj-objective" placeholder="e.g. Launch the Q3 product update to 80% of existing customers by September 30, improving retention by 15%." oninput="updateProgress()"></textarea>
+    </div>
+    <div class="field">
+      <label>Business Justification — Why now?</label>
+      <div class="hint">What happens if this project does NOT get done?</div>
+      <textarea id="proj-why" placeholder="e.g. Competitors launched similar features in Q2. Delay risks 20% churn among enterprise clients." oninput="updateProgress()"></textarea>
+    </div>
+  </div>
+
+  <!-- SECTION 2: SCOPE -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">2</div>
+      <div class="section-title">Scope Definition</div>
+      <div class="section-sub">What is IN and what is OUT</div>
+    </div>
+    <div class="callout">
+      <p><strong>Every undocumented assumption becomes a scope creep opportunity.</strong> Defining what you are NOT building is as important as defining what you are.</p>
+    </div>
+
+    <div class="field" style="margin-bottom:8px">
+      <label>Deliverables — What will be produced?</label>
+      <div class="hint">List each specific deliverable. Be measurable. "Better UX" is not a deliverable. "Redesigned onboarding flow with 5 steps and automated welcome email" is.</div>
+    </div>
+    <table class="scope-table">
+      <thead>
+        <tr>
+          <th style="width:40%">Deliverable</th>
+          <th style="width:20%">Owner</th>
+          <th style="width:20%">Due Date</th>
+          <th style="width:20%">Status</th>
+        </tr>
+      </thead>
+      <tbody id="deliverables-body">
+        <tr>
+          <td><input type="text" placeholder="e.g. Redesigned onboarding flow"/></td>
+          <td><input type="text" placeholder="Product"/></td>
+          <td><input type="date"/></td>
+          <td>
+            <select>
+              <option>Not started</option>
+              <option>In progress</option>
+              <option>Complete</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td><input type="text" placeholder="e.g. Launch email campaign"/></td>
+          <td><input type="text" placeholder="Marketing"/></td>
+          <td><input type="date"/></td>
+          <td>
+            <select>
+              <option>Not started</option>
+              <option>In progress</option>
+              <option>Complete</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td><input type="text" placeholder="e.g. In-app tutorial (3 core features)"/></td>
+          <td><input type="text" placeholder="Engineering"/></td>
+          <td><input type="date"/></td>
+          <td>
+            <select>
+              <option>Not started</option>
+              <option>In progress</option>
+              <option>Complete</option>
+            </select>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <button class="add-row-btn" onclick="addDeliverableRow()">+ Add deliverable</button>
+
+    <div class="field" style="margin-top:24px">
+      <label>Explicitly OUT of Scope</label>
+      <div class="hint">What will NOT be done in this project? Name it clearly to prevent scope creep.</div>
+      <textarea id="out-of-scope" placeholder="e.g. Mobile app redesign is NOT in scope for this project. Legacy system migration is NOT included. Multilingual support will be addressed in Q4." oninput="updateProgress()"></textarea>
+    </div>
+
+    <div class="field">
+      <label>Constraints</label>
+      <div class="hint">Budget limits, resource restrictions, technical limitations, regulatory requirements.</div>
+      <textarea id="constraints" placeholder="e.g. Budget cap: $50,000. Engineering team available 3 days/week only. Must comply with GDPR." oninput="updateProgress()"></textarea>
+    </div>
+
+    <div class="field">
+      <label>Assumptions</label>
+      <div class="hint">What are you assuming to be true? Unstated assumptions become risks.</div>
+      <textarea id="assumptions" placeholder="e.g. Vendor API will be available by week 3. Stakeholder sign-off within 48 hours of review. Marketing copy ready by August 1." oninput="updateProgress()"></textarea>
+    </div>
+  </div>
+
+  <!-- SECTION 3: STAKEHOLDERS -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">3</div>
+      <div class="section-title">Stakeholder Map</div>
+      <div class="section-sub">Who needs what</div>
+    </div>
+    <div class="callout">
+      <p><strong>Every project has 6 perspectives.</strong> Managing all 6 reduces approval delays by 50%.</p>
+    </div>
+    <div class="stakeholder-grid">
+      <div class="stakeholder-card high-power">
+        <div class="stakeholder-label">Project Sponsor (High Power)</div>
+        <input type="text" placeholder="Name + title"/>
+        <input type="text" placeholder="What they care about most"/>
+        <input type="text" placeholder="How often to update them"/>
+      </div>
+      <div class="stakeholder-card high-power">
+        <div class="stakeholder-label">Functional Manager (High Power)</div>
+        <input type="text" placeholder="Name + title"/>
+        <input type="text" placeholder="Team members involved"/>
+        <input type="text" placeholder="% of their team's time needed"/>
+      </div>
+      <div class="stakeholder-card">
+        <div class="stakeholder-label">Key Team Member</div>
+        <input type="text" placeholder="Name + role"/>
+        <input type="text" placeholder="Primary responsibility"/>
+        <input type="text" placeholder="Hours per week committed"/>
+      </div>
+      <div class="stakeholder-card">
+        <div class="stakeholder-label">Key Team Member</div>
+        <input type="text" placeholder="Name + role"/>
+        <input type="text" placeholder="Primary responsibility"/>
+        <input type="text" placeholder="Hours per week committed"/>
+      </div>
+      <div class="stakeholder-card med-power">
+        <div class="stakeholder-label">End User / Customer</div>
+        <input type="text" placeholder="Who they are"/>
+        <input type="text" placeholder="Their definition of success"/>
+        <input type="text" placeholder="How to get their feedback"/>
+      </div>
+      <div class="stakeholder-card med-power">
+        <div class="stakeholder-label">Risk / PMO Contact</div>
+        <input type="text" placeholder="Name + role"/>
+        <input type="text" placeholder="Their key concern"/>
+        <input type="text" placeholder="Escalation trigger"/>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 4: RISK LOG -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">4</div>
+      <div class="section-title">Risk Log</div>
+      <div class="section-sub">Name them before they cost you</div>
+    </div>
+    <div class="callout">
+      <p><strong>A risk named on Monday costs nothing.</strong> The same risk, unnamed, left until Thursday's status call, has already started burning.</p>
+    </div>
+    <table class="risk-table">
+      <thead>
+        <tr>
+          <th style="width:35%">Risk Description</th>
+          <th style="width:15%">Level</th>
+          <th style="width:25%">Mitigation Plan</th>
+          <th style="width:25%">Owner</th>
+        </tr>
+      </thead>
+      <tbody id="risk-body">
+        <tr>
+          <td><input type="text" placeholder="e.g. Engineering team unavailable week 4"/></td>
+          <td><button class="risk-level-btn high" onclick="cycleRisk(this)">High</button></td>
+          <td><input type="text" placeholder="e.g. Pre-assign backup dev now"/></td>
+          <td><input type="text" placeholder="e.g. Engineering Lead"/></td>
+        </tr>
+        <tr>
+          <td><input type="text" placeholder="e.g. Vendor API delay"/></td>
+          <td><button class="risk-level-btn med" onclick="cycleRisk(this)">Medium</button></td>
+          <td><input type="text" placeholder="e.g. Build mock API for testing"/></td>
+          <td><input type="text" placeholder="e.g. Tech Lead"/></td>
+        </tr>
+        <tr>
+          <td><input type="text" placeholder="e.g. Stakeholder approval delay"/></td>
+          <td><button class="risk-level-btn low" onclick="cycleRisk(this)">Low</button></td>
+          <td><input type="text" placeholder="e.g. Send review 3 days early"/></td>
+          <td><input type="text" placeholder="e.g. Project Manager"/></td>
+        </tr>
+      </tbody>
+    </table>
+    <button class="add-row-btn" onclick="addRiskRow()">+ Add risk</button>
+  </div>
+
+  <!-- SECTION 5: CHANGE REQUEST PROCESS -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">5</div>
+      <div class="section-title">Change Request Process</div>
+      <div class="section-sub">How scope changes are handled</div>
+    </div>
+    <div class="field">
+      <label>Who can approve scope changes?</label>
+      <div class="hint">Name one person only. If it takes a committee, changes never get approved — or they get approved without proper review.</div>
+      <input type="text" id="change-approver" placeholder="e.g. Director Chen — Project Sponsor" oninput="updateProgress()"/>
+    </div>
+    <div class="field">
+      <label>Change Request Steps</label>
+      <div class="hint">What must happen before a change is approved? Keep it simple — 3 steps maximum.</div>
+      <textarea id="change-process" placeholder="1. Submitter fills in Change Request Form (what, why, impact on time/budget)&#10;2. PM reviews and assesses impact within 48 hours&#10;3. Sponsor approves or declines in writing" oninput="updateProgress()"></textarea>
+    </div>
+    <div class="field">
+      <label>What is automatically OUT of scope without approval?</label>
+      <input type="text" id="auto-out" placeholder="e.g. Any work that adds more than 8 hours or $500 to the project" oninput="updateProgress()"/>
+    </div>
+  </div>
+
+  <!-- SECTION 6: DEFINITION OF DONE -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">6</div>
+      <div class="section-title">Definition of Done</div>
+      <div class="section-sub">What does success look like?</div>
+    </div>
+    <div class="callout">
+      <p><strong>This is the most important section.</strong> Every stakeholder must agree on what "done" means before work begins. Disagreement here is the #1 cause of project failure.</p>
+    </div>
+    <div class="field">
+      <label>Success Criteria — How will we measure success?</label>
+      <div class="hint">Specific, measurable outcomes. Not "better user experience." What numbers, percentages, or milestones define success?</div>
+      <textarea id="success-criteria" placeholder="e.g.&#10;• Product shipped to 80% of existing customers by Sept 30&#10;• Zero critical bugs in first 14 days post-launch&#10;• 500 qualified leads from launch campaign&#10;• Customer churn below 2% in first 30 days" oninput="updateProgress()"></textarea>
+    </div>
+    <div class="field">
+      <label>Project Closeout Criteria</label>
+      <div class="hint">What must be true for this project to be formally closed?</div>
+      <textarea id="closeout" placeholder="e.g. All deliverables accepted by sponsor in writing, lessons learned documented, team formally released, final budget reconciled." oninput="updateProgress()"></textarea>
+    </div>
+  </div>
+
+  <!-- SECTION 7: SIGN OFF -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">7</div>
+      <div class="section-title">Stakeholder Sign-Off</div>
+      <div class="section-sub">Lock it before work begins</div>
+    </div>
+    <div class="callout">
+      <p><strong>This signature is the scope lock.</strong> By signing, each stakeholder confirms they have read, understood, and agreed to the scope, deliverables, and change process above.</p>
+    </div>
+    <div class="signoff-grid">
+      <div class="signoff-card">
+        <label>Project Sponsor</label>
+        <input type="text" placeholder="Full name"/>
+        <div class="sig-line"></div>
+        <div class="sig-label">Signature</div>
+        <input type="date" style="margin-top:8px;border:none;border-bottom:2px solid #E5E7EB;padding:6px 0;font-family:'DM Sans',sans-serif;font-size:13px;color:#374151;background:transparent;outline:none;width:100%"/>
+      </div>
+      <div class="signoff-card">
+        <label>Project Manager</label>
+        <input type="text" placeholder="Full name"/>
+        <div class="sig-line"></div>
+        <div class="sig-label">Signature</div>
+        <input type="date" style="margin-top:8px;border:none;border-bottom:2px solid #E5E7EB;padding:6px 0;font-family:'DM Sans',sans-serif;font-size:13px;color:#374151;background:transparent;outline:none;width:100%"/>
+      </div>
+      <div class="signoff-card">
+        <label>Functional Manager 1</label>
+        <input type="text" placeholder="Full name + department"/>
+        <div class="sig-line"></div>
+        <div class="sig-label">Signature</div>
+        <input type="date" style="margin-top:8px;border:none;border-bottom:2px solid #E5E7EB;padding:6px 0;font-family:'DM Sans',sans-serif;font-size:13px;color:#374151;background:transparent;outline:none;width:100%"/>
+      </div>
+      <div class="signoff-card">
+        <label>Functional Manager 2</label>
+        <input type="text" placeholder="Full name + department"/>
+        <div class="sig-line"></div>
+        <div class="sig-label">Signature</div>
+        <input type="date" style="margin-top:8px;border:none;border-bottom:2px solid #E5E7EB;padding:6px 0;font-family:'DM Sans',sans-serif;font-size:13px;color:#374151;background:transparent;outline:none;width:100%"/>
+      </div>
+    </div>
+  </div>
+
+  <!-- FINAL ACTION -->
+  <div style="background:#111111;border-radius:12px;padding:28px;text-align:center;margin-top:40px">
+    <div style="font-family:'DM Serif Display',Georgia,serif;font-size:22px;font-weight:700;color:#fff;margin-bottom:8px">Scope is locked. Work can begin.</div>
+    <div style="font-size:13px;color:rgba(255,255,255,.55);margin-bottom:20px;line-height:1.6">Print this document, collect physical signatures, and file it as your project baseline.<br>Any changes to scope must go through the change request process above.</div>
+    <button class="btn-primary" onclick="window.print()" style="margin-right:12px">Print / Save as PDF</button>
+    <a href="https://projectmanagement.arniefelicilda.com/pm-toolkit.html" style="display:inline-block;background:rgba(29,111,164,.2);border:1px solid rgba(29,111,164,.4);color:#90c4e8;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;padding:12px 24px;border-radius:8px;text-decoration:none">Get All 5 Free Tools →</a>
+  </div>
+
+</div>
+
+<script>
+// ── PROGRESS ──────────────────────────────────────
+function updateProgress(){
+  const fields = ['proj-name','proj-sponsor','proj-pm','proj-start','proj-end',
+    'proj-objective','proj-why','out-of-scope','constraints','assumptions',
+    'change-approver','change-process','auto-out','success-criteria','closeout'];
+  const filled = fields.filter(id => {
+    const el = document.getElementById(id);
+    return el && el.value.trim().length > 0;
+  }).length;
+  const pct = Math.round((filled / fields.length) * 100);
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressPct').textContent = pct + '%';
+}
+
+// ── ADD ROWS ──────────────────────────────────────
+function addDeliverableRow(){
+  const tbody = document.getElementById('deliverables-body');
+  const tr = document.createElement('tr');
+  tr.innerHTML = `
+    <td><input type="text" placeholder="Deliverable description"/></td>
+    <td><input type="text" placeholder="Owner"/></td>
+    <td><input type="date"/></td>
+    <td><select><option>Not started</option><option>In progress</option><option>Complete</option></select></td>`;
+  tbody.appendChild(tr);
+}
+
+function addRiskRow(){
+  const tbody = document.getElementById('risk-body');
+  const tr = document.createElement('tr');
+  tr.innerHTML = `
+    <td><input type="text" placeholder="Risk description"/></td>
+    <td><button class="risk-level-btn low" onclick="cycleRisk(this)">Low</button></td>
+    <td><input type="text" placeholder="Mitigation plan"/></td>
+    <td><input type="text" placeholder="Owner"/></td>`;
+  tbody.appendChild(tr);
+}
+
+// ── RISK LEVEL CYCLE ──────────────────────────────
+function cycleRisk(btn){
+  const levels = ['Low','Medium','High'];
+  const classes = ['low','med','high'];
+  const current = levels.indexOf(btn.textContent);
+  const next = (current + 1) % 3;
+  btn.textContent = levels[next];
+  btn.className = 'risk-level-btn ' + classes[next];
+}
+
+// ── SAVE / LOAD ────────────────────────────────────
+function saveData(){
+  const data = {};
+  document.querySelectorAll('input[id], textarea[id]').forEach(el => {
+    if(el.id) data[el.id] = el.value;
+  });
+  localStorage.setItem('project-charter', JSON.stringify(data));
+  const btn = event.target;
+  btn.textContent = 'Saved!';
+  btn.style.background = '#1D6FA4';
+  btn.style.color = '#fff';
+  setTimeout(() => {
+    btn.textContent = 'Save Progress';
+    btn.style.background = '';
+    btn.style.color = '';
+  }, 2000);
+}
+
+function loadData(){
+  const saved = localStorage.getItem('project-charter');
+  if(saved){
+    const data = JSON.parse(saved);
+    Object.keys(data).forEach(id => {
+      const el = document.getElementById(id);
+      if(el) el.value = data[id];
+    });
+    updateProgress();
+  }
+}
+
+function resetForm(){
+  if(confirm('Reset all fields? This cannot be undone.')){
+    document.querySelectorAll('input[id], textarea[id]').forEach(el => el.value = '');
+    localStorage.removeItem('project-charter');
+    updateProgress();
+  }
+}
+
+// Load saved data on page open
+window.onload = function(){
+  loadData();
+  updateProgress();
+};
+
+function submitCTA(){
+  var emailEl=document.getElementById('ctaEmail');
+  if(!emailEl){return;}
+  var emailVal=emailEl.value;
+  if(!emailVal||!emailVal.includes('@')){alert('Please enter a valid email.');return;}
+  var form=document.createElement('form');
+  form.method='post';form.action='https://app.kit.com/forms/9449931/subscriptions';form.target='_blank';
+  var inp=document.createElement('input');inp.type='hidden';inp.name='email_address';inp.value=emailVal;
+  form.appendChild(inp);document.body.appendChild(form);form.submit();
+}
+
+</script>
+</body>
+</html>

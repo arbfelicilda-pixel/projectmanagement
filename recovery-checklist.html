@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Project Recovery Checklist — Arnie Rose Felicilda</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{padding-top:0;font-family:'DM Sans',sans-serif;background:#FFFFFF;color:#374151}
+
+.topbar{background:#1D6FA4;padding:10px 0;text-align:center}
+.topbar p{font-size:12px;font-weight:500;color:#fff;letter-spacing:.04em}
+
+.header{background:#111111;padding:48px 24px 40px;text-align:center;position:relative;overflow:hidden}
+.header::before{content:'';position:absolute;right:-60px;top:-60px;width:300px;height:300px;border:1px solid rgba(29,111,164,.08);border-radius:50%;pointer-events:none}
+.header-badge{display:inline-block;background:rgba(29,111,164,.18);border:1px solid rgba(29,111,164,.3);color:#90c4e8;font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:4px 14px;border-radius:20px;margin-bottom:16px}
+.header h1{font-family:'DM Serif Display',Georgia,serif;font-size:clamp(28px,4vw,42px);font-weight:700;color:#fff;line-height:1.15;margin-bottom:10px}
+.header h1 em{font-style:italic;color:#90c4e8}
+.header p{font-size:14px;color:rgba(255,255,255,.55);max-width:500px;margin:0 auto 24px;line-height:1.7}
+.header-stats{display:flex;justify-content:center;gap:32px;flex-wrap:wrap}
+.hstat-n{font-family:'DM Serif Display',Georgia,serif;font-size:24px;font-weight:700;color:#90c4e8;display:block;line-height:1}
+.hstat-l{font-size:10px;color:rgba(255,255,255,.35);letter-spacing:.08em;text-transform:uppercase;margin-top:3px;display:block}
+
+.main{max-width:760px;margin:0 auto;padding:48px 24px 80px}
+
+/* PROGRESS */
+.progress-wrap{background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:20px 24px;margin-bottom:32px}
+.progress-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.progress-title{font-size:14px;font-weight:600;color:#111827}
+.progress-pct{font-size:24px;font-weight:700;color:#1D6FA4;font-family:'DM Serif Display',Georgia,serif}
+.progress-bar{height:10px;background:#F3F4F6;border-radius:5px;overflow:hidden;margin-bottom:8px}
+.progress-fill{height:100%;background:#1D6FA4;border-radius:5px;transition:width .5s ease;width:0%}
+.progress-status{font-size:12px;color:#6B7280}
+.progress-status.complete{color:#155a87;font-weight:600}
+
+/* PHASE HEADERS */
+.phase{margin-bottom:36px}
+.phase-header{display:flex;align-items:center;gap:14px;margin-bottom:16px;padding:16px 20px;border-radius:10px}
+.phase-header.phase1{background:#FEF2F2;border:1px solid #FCA5A5}
+.phase-header.phase2{background:#FEF9C3;border:1px solid #F59E0B}
+.phase-header.phase3{background:#F0FDF9;border:1px solid #1D6FA4}
+.phase-icon{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'DM Serif Display',Georgia,serif;font-size:18px;font-weight:700}
+.phase1 .phase-icon{background:#EF4444;color:#fff}
+.phase2 .phase-icon{background:#F59E0B;color:#fff}
+.phase3 .phase-icon{background:#1D6FA4;color:#fff}
+.phase-info{}
+.phase-name{font-size:16px;font-weight:700;color:#111827}
+.phase1 .phase-name{color:#991B1B}
+.phase2 .phase-name{color:#78350F}
+.phase3 .phase-name{color:#155a87}
+.phase-desc{font-size:12px;color:#6B7280;margin-top:2px}
+.phase-time{margin-left:auto;font-size:11px;font-weight:600;padding:4px 12px;border-radius:20px;white-space:nowrap}
+.phase1 .phase-time{background:#FEE2E2;color:#991B1B}
+.phase2 .phase-time{background:#FEF9C3;color:#78350F}
+.phase3 .phase-time{background:#e8f2fa;color:#155a87}
+
+/* CHECKLIST ITEMS */
+.checklist{display:flex;flex-direction:column;gap:10px}
+.check-item{
+  background:#fff;border:1px solid #E5E7EB;
+  border-radius:10px;padding:16px 18px;
+  display:flex;align-items:flex-start;gap:14px;
+  cursor:pointer;transition:all .25s;
+  position:relative;
+}
+.check-item:hover{border-color:#1D6FA4;box-shadow:0 2px 8px rgba(29,111,164,.1)}
+.check-item.checked{background:#F0FDF9;border-color:#1D6FA4}
+.check-item.checked .check-text{text-decoration:line-through;color:#9CA3AF}
+.check-item.checked .check-title{color:#9CA3AF}
+.check-box{
+  width:24px;height:24px;border-radius:6px;
+  border:2px solid #D1D5DB;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;transition:all .2s;margin-top:1px;
+}
+.check-item.checked .check-box{background:#1D6FA4;border-color:#1D6FA4}
+.check-tick{opacity:0;transition:opacity .2s}
+.check-item.checked .check-tick{opacity:1}
+.check-content{flex:1}
+.check-title{font-size:14px;font-weight:600;color:#111827;margin-bottom:3px;transition:color .2s}
+.check-text{font-size:12px;color:#6B7280;line-height:1.6;transition:all .2s}
+.check-tag{display:inline-block;font-size:10px;font-weight:500;padding:2px 8px;border-radius:10px;margin-top:6px}
+.tag-urgent{background:#FEE2E2;color:#991B1B}
+.tag-important{background:#FEF9C3;color:#78350F}
+.tag-action{background:#F0FDF9;color:#155a87}
+
+/* NOTES SECTION */
+.notes-section{background:#fff;border:1px solid #E5E7EB;border-radius:10px;padding:20px;margin-bottom:24px}
+.notes-label{font-size:12px;font-weight:600;color:#374151;letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px}
+.notes-section textarea{width:100%;border:1px solid #E5E7EB;border-radius:6px;padding:10px 14px;font-family:'DM Sans',sans-serif;font-size:14px;color:#111827;resize:vertical;min-height:100px;outline:none;transition:border-color .2s}
+.notes-section textarea:focus{border-color:#1D6FA4;box-shadow:0 0 0 3px rgba(29,111,164,.1)}
+
+/* ACTION BAR */
+.action-bar{display:flex;gap:12px;margin-bottom:32px;flex-wrap:wrap}
+.btn-primary{background:#1D6FA4;color:#fff;border:none;border-radius:8px;padding:12px 24px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;transition:background .2s}
+.btn-primary:hover{background:#155a87}
+.btn-outline{background:#fff;color:#1D6FA4;border:2px solid #1D6FA4;border-radius:8px;padding:12px 24px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;transition:all .2s}
+.btn-outline:hover{background:#F0FDF9}
+.btn-reset{background:#fff;color:#6B7280;border:1px solid #E5E7EB;border-radius:8px;padding:12px 24px;font-family:'DM Sans',sans-serif;font-size:14px;cursor:pointer;transition:all .2s}
+.btn-reset:hover{border-color:#EF4444;color:#EF4444}
+
+/* CALLOUT */
+.callout{background:#F0FDF9;border:1px solid #e8f2fa;border-left:4px solid #1D6FA4;border-radius:0 8px 8px 0;padding:14px 18px;margin-bottom:24px}
+.callout p{font-size:13px;color:#155a87;line-height:1.6}
+
+/* COMPLETION BANNER */
+.completion-banner{display:none;background:#1D6FA4;border-radius:12px;padding:28px;text-align:center;margin-top:32px}
+.completion-banner.visible{display:block;animation:fadeIn .5s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.completion-banner h3{font-family:'DM Serif Display',Georgia,serif;font-size:24px;font-weight:700;color:#fff;margin-bottom:8px}
+.completion-banner p{font-size:14px;color:rgba(255,255,255,.75);margin-bottom:16px;line-height:1.6}
+
+/* PROJECT INFO */
+.proj-info{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:32px}
+@media(max-width:520px){.proj-info{grid-template-columns:1fr}}
+.proj-field label{display:block;font-size:11px;font-weight:600;color:#374151;letter-spacing:.06em;text-transform:uppercase;margin-bottom:5px}
+.proj-field input{width:100%;border:1px solid #E5E7EB;border-radius:6px;padding:10px 14px;font-family:'DM Sans',sans-serif;font-size:14px;color:#111827;outline:none;transition:border-color .2s;background:#fff}
+.proj-field input:focus{border-color:#1D6FA4;box-shadow:0 0 0 3px rgba(29,111,164,.1)}
+
+@media print{
+  .topbar,.action-bar,.header-stats,.header-badge{display:none!important}
+  .header{padding:20px;background:#111111!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  body{background:#fff}
+  .check-item{break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<nav style="position:fixed;top:0;left:0;right:0;z-index:200;background:#111111;border-bottom:1px solid rgba(255,255,255,0.08);padding:0 40px;height:52px;display:flex;align-items:center;justify-content:space-between;">
+  <a href="/" style="font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#fff;text-decoration:none;">Arnie Rose <span style="color:#1D6FA4;">·</span> Project Management</a>
+  <a href="/" style="font-family:'DM Sans',sans-serif;font-size:12px;color:rgba(255,255,255,0.4);text-decoration:none;">← Back to Tools</a>
+</nav>
+<div style="height:52px;"></div>
+
+
+<div class="topbar">
+  <p>Free Tool · The Accidental Project Manager · Arnie Rose Felicilda, M.A.Ed</p>
+</div>
+
+<div class="header">
+  <div class="header-badge">Free Tool · Book 01</div>
+  <h1>Project Recovery<br><em>Checklist</em></h1>
+  <p>When a project derails — and they do — this 3-step system gets you back on track in 48 hours. No blame. No two-day retrospective.</p>
+  <div class="header-stats">
+    <div><span class="hstat-n">48 hrs</span><span class="hstat-l">Back on Track</span></div>
+    <div><span class="hstat-n">3 Steps</span><span class="hstat-l">Pause · Assess · Re-scope</span></div>
+    <div><span class="hstat-n">0</span><span class="hstat-l">Blame Required</span></div>
+  </div>
+</div>
+
+<div class="main">
+
+  <!-- PROJECT INFO -->
+  <div class="proj-info">
+    <div class="proj-field">
+      <label>Project Name</label>
+      <input type="text" id="proj-name" placeholder="e.g. Q3 Product Launch"/>
+    </div>
+    <div class="proj-field">
+      <label>Date of Recovery</label>
+      <input type="date" id="recovery-date"/>
+    </div>
+    <div class="proj-field">
+      <label>Project Manager</label>
+      <input type="text" id="pm-name" placeholder="Your name"/>
+    </div>
+    <div class="proj-field">
+      <label>Original Deadline</label>
+      <input type="date" id="original-deadline"/>
+    </div>
+  </div>
+
+  <!-- PROGRESS -->
+  <div class="progress-wrap">
+    <div class="progress-top">
+      <span class="progress-title">Recovery Progress</span>
+      <span class="progress-pct" id="progressPct">0%</span>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+    <div class="progress-status" id="progressStatus">Complete all 3 steps to recover your project.</div>
+  </div>
+
+  <!-- ACTION BAR -->
+  <div class="action-bar">
+    <button class="btn-primary" onclick="window.print()">Print Checklist</button>
+    <button class="btn-outline" onclick="saveProgress()">Save Progress</button>
+    <button class="btn-reset" onclick="resetAll()">Reset</button>
+  </div>
+
+  <div class="callout">
+    <p><strong>Rule before you start:</strong> The goal of recovery is not to find who is at fault. It is to find what needs to change. Keep every conversation focused on systems and solutions — not people.</p>
+  </div>
+
+  <!-- PHASE 1: PAUSE -->
+  <div class="phase">
+    <div class="phase-header phase1">
+      <div class="phase-icon">1</div>
+      <div class="phase-info">
+        <div class="phase-name">PAUSE — Stop the bleeding</div>
+        <div class="phase-desc">Before anything else, create space to assess clearly.</div>
+      </div>
+      <span class="phase-time">Day 1 · Morning</span>
+    </div>
+    <div class="checklist">
+      <div class="check-item" onclick="toggleCheck(this)">
+        <div class="check-box"><svg class="check-tick" width="14" height="14" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12l5 5L19 7"/></svg></div>
+        <div class="check-content">
+          <div class="check-title">Call a project pause — no new tasks start today</div>
+          <div class="check-text">Send a brief message to your team: "We are taking 24 hours to assess the project before moving forward. No new work starts until we realign."</div>
+          <span class="check-tag tag-urgent">Do this first</span>
+        </div>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <div class="check-box"><svg class="check-tick" width="14" height="14" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12l5 5L19 7"/></svg></div>
+        <div class="check-content">
+          <div class="check-title">Notify your project sponsor immediately</div>
+          <div class="check-text">Do not wait. Sponsors who find out about problems from someone other than you lose trust permanently. One sentence: "We have a situation I need to brief you on — can we speak in the next 2 hours?"</div>
+          <span class="check-tag tag-urgent">Before lunch</span>
+        </div>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <div class="check-box"><svg class="check-tick" width="14" height="14" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12l5 5L19 7"/></svg></div>
+        <div class="check-content">
+          <div class="check-title">Write down what you know right now — without judgment</div>
+          <div class="check-text">List what has been completed, what has not, what is blocked, and what the current status is. Facts only. No analysis yet.</div>
+          <span class="check-tag tag-urgent">Take 20 minutes</span>
+        </div>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <div class="check-box"><svg class="check-tick" width="14" height="14" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12l5 5L19 7"/></svg></div>
+        <div class="check-content">
+          <div class="check-title">Identify when the project actually went off track</div>
+          <div class="check-text">Not when you noticed it — when it actually happened. This is usually 1-2 weeks earlier than when people first raise the alarm.</div>
+          <span class="check-tag tag-urgent">Be honest</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="notes-section" style="margin-top:16px">
+      <div class="notes-label">Pause Notes — What happened?</div>
+      <textarea placeholder="Write what you know right now. What is complete? What is blocked? What went wrong and when?"></textarea>
+    </div>
+  </div>
+
+  <!-- PHASE 2: ASSESS -->
+  <div class="phase">
+    <div class="phase-header phase2">
+      <div class="phase-icon">2</div>
+      <div class="phase-info">
+        <div class="phase-name">ASSESS — Understand the real problem</div>
+        <div class="phase-desc">Diagnose before prescribing. Most recovery efforts fail because they fix symptoms.</div>
+      </div>
+      <span class="phase-time">Day 1 · Afternoon</span>
+    </div>
+    <div class="checklist">
+      <div class="check-item" onclick="toggleCheck(this)">
+        <div class="check-box"><svg class="check-tick" width="14" height="14" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12l5 5L19 7"/></svg></div>
+        <div class="check-content">
+          <div class="check-title">Run a 30-minute assessment call with key team members</div>
+          <div class="check-text">Three questions only: What is blocking you right now? What do you need that you do not have? What have you been waiting on? Listen without defending.</div>
+          <span class="check-tag tag-important">No blame zone</span>
+        </div>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <div class="check-box"><svg class="check-tick" width="14" height="14" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12l5 5L19 7"/></svg></div>
+        <div class="check-content">
+          <div class="check-title">Identify the root cause — not the symptom</div>
+          <div class="check-text">Ask "why" five times. "We are behind on deliverables" is a symptom. "Scope was added in week 3 without adjusting the timeline or budget" is the root cause.</div>
+          <span class="check-tag tag-important">Ask why 5 times</span>
+        </div>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <div class="check-box"><svg class="check-tick" width="14" height="14" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12l5 5L19 7"/></svg></div>
+        <div class="check-content">
+          <div class="check-title">Assess what is salvageable vs what needs to be cut</div>
+          <div class="check-text">List every deliverable and mark it: Complete / On Track / At Risk / Cut. Be ruthless about what gets cut. A smaller scope delivered is better than full scope missed.</div>
+          <span class="check-tag tag-important">Be ruthless</span>
+        </div>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <div class="check-box"><svg class="check-tick" width="14" height="14" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12l5 5L19 7"/></svg></div>
+        <div class="check-content">
+          <div class="check-title">Determine the real new timeline</div>
+          <div class="check-text">Build it from the remaining work up — not from the old deadline down. Add 20% buffer to every estimate. The number will be uncomfortable. That is reality.</div>
+          <span class="check-tag tag-important">Add 20% buffer</span>
+        </div>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <div class="check-box"><svg class="check-tick" width="14" height="14" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12l5 5L19 7"/></svg></div>
+        <div class="check-content">
+          <div class="check-title">Identify what additional resources or decisions are needed</div>
+          <div class="check-text">Who needs to make a decision for this project to move? What resource, approval, or information is the single biggest unlock right now?</div>
+          <span class="check-tag tag-important">One unlock</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="notes-section" style="margin-top:16px">
+      <div class="notes-label">Assessment Notes — Root cause + what is salvageable</div>
+      <textarea placeholder="Root cause:&#10;&#10;Deliverables to keep:&#10;&#10;Deliverables to cut:&#10;&#10;New realistic timeline:&#10;&#10;Critical decision needed from:"></textarea>
+    </div>
+  </div>
+
+  <!-- PHASE 3: RE-SCOPE -->
+  <div class="phase">
+    <div class="phase-header phase3">
+      <div class="phase-icon">3</div>
+      <div class="phase-info">
+        <div class="phase-name">RE-SCOPE — Build the recovery plan</div>
+        <div class="phase-desc">A new baseline everyone has agreed to. Written. Signed if needed.</div>
+      </div>
+      <span class="phase-time">Day 2 · Morning</span>
+    </div>
+    <div class="checklist">
+      <div class="check-item" onclick="toggleCheck(this)">
+        <div class="check-box"><svg class="check-tick" width="14" height="14" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12l5 5L19 7"/></svg></div>
+        <div class="check-content">
+          <div class="check-title">Write a revised scope document — one page maximum</div>
+          <div class="check-text">What is still in scope. What has been cut and why. The new deadline. The new budget (if changed). Keep it short enough that everyone will actually read it.</div>
+          <span class="check-tag tag-action">One page only</span>
+        </div>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <div class="check-box"><svg class="check-tick" width="14" height="14" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12l5 5L19 7"/></svg></div>
+        <div class="check-content">
+          <div class="check-title">Get sponsor approval on the revised plan in writing</div>
+          <div class="check-text">An email confirmation is enough. "I approve the revised scope and new deadline of [date]." Without this, the recovery plan is just a wish.</div>
+          <span class="check-tag tag-action">Email confirmation</span>
+        </div>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <div class="check-box"><svg class="check-tick" width="14" height="14" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12l5 5L19 7"/></svg></div>
+        <div class="check-content">
+          <div class="check-title">Communicate the recovery plan to all stakeholders</div>
+          <div class="check-text">One message. Be direct: what happened, what changed, what the new plan is, and what you need from them. Do not over-explain or over-apologise.</div>
+          <span class="check-tag tag-action">Be direct</span>
+        </div>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <div class="check-box"><svg class="check-tick" width="14" height="14" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12l5 5L19 7"/></svg></div>
+        <div class="check-content">
+          <div class="check-title">Reset the daily sprint — implement 15-minute morning check-ins</div>
+          <div class="check-text">From today, every morning: 3 priorities, 1 risk flag, 1 proactive update. No exceptions. This is how you prevent the next derailment.</div>
+          <span class="check-tag tag-action">Start tomorrow</span>
+        </div>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <div class="check-box"><svg class="check-tick" width="14" height="14" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12l5 5L19 7"/></svg></div>
+        <div class="check-content">
+          <div class="check-title">Schedule a lessons-learned session for after project close</div>
+          <div class="check-text">Not now — after delivery. Put it in the calendar today so it actually happens. 30 minutes. Three questions: what worked, what did not, what changes next time.</div>
+          <span class="check-tag tag-action">Book it now</span>
+        </div>
+      </div>
+      <div class="check-item" onclick="toggleCheck(this)">
+        <div class="check-box"><svg class="check-tick" width="14" height="14" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12l5 5L19 7"/></svg></div>
+        <div class="check-content">
+          <div class="check-title">Acknowledge the team — then move forward</div>
+          <div class="check-text">A brief, genuine acknowledgment that the team worked hard through a difficult situation. Then close the conversation about what went wrong and redirect energy to delivery.</div>
+          <span class="check-tag tag-action">Close the loop</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="notes-section" style="margin-top:16px">
+      <div class="notes-label">Recovery Plan — New scope, timeline, and commitments</div>
+      <textarea placeholder="Revised scope summary:&#10;&#10;What was cut:&#10;&#10;New deadline:&#10;&#10;Sponsor approval received: Yes / No / Date:&#10;&#10;Next daily sprint starts:"></textarea>
+    </div>
+  </div>
+
+  <!-- COMPLETION BANNER -->
+  <div class="completion-banner" id="completionBanner">
+    <h3>Project recovered. Back on track.</h3>
+    <p>All 15 recovery steps complete. Your revised scope is approved, your team is realigned, and your daily sprint is running. This project is recoverable.</p>
+    <a href="https://projectmanagement.arniefelicilda.com/pm-toolkit.html" style="display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);color:#fff;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;padding:12px 24px;border-radius:8px;text-decoration:none;margin-top:8px">Get All 5 Free Tools →</a>
+  </div>
+
+  <!-- FOOTER CTA -->
+  <div style="background:#111111;border-radius:12px;padding:28px;text-align:center;margin-top:40px">
+    <div style="font-family:'DM Serif Display',Georgia,serif;font-size:20px;font-weight:700;color:#fff;margin-bottom:8px">Want the full PM system?</div>
+    <div style="font-size:13px;color:rgba(255,255,255,.55);margin-bottom:20px;line-height:1.6">Get all 5 free tools — Sprint Calculator, Scope Lock Workbook, AI Prompts, Progress Dashboard, and this checklist.</div>
+    <a href="https://projectmanagement.arniefelicilda.com/pm-toolkit.html" style="display:inline-block;background:#1D6FA4;color:#fff;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;padding:12px 28px;border-radius:8px;text-decoration:none">Get the Free PM Toolkit →</a>
+  </div>
+
+</div>
+
+<script>
+let totalItems = 0;
+let checkedItems = 0;
+
+function toggleCheck(item){
+  item.classList.toggle('checked');
+  checkedItems = document.querySelectorAll('.check-item.checked').length;
+  totalItems = document.querySelectorAll('.check-item').length;
+  updateProgress();
+}
+
+function updateProgress(){
+  totalItems = document.querySelectorAll('.check-item').length;
+  checkedItems = document.querySelectorAll('.check-item.checked').length;
+  const pct = Math.round((checkedItems / totalItems) * 100);
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressPct').textContent = pct + '%';
+  const status = document.getElementById('progressStatus');
+  if(pct === 0) status.textContent = 'Complete all 3 steps to recover your project.';
+  else if(pct < 35) status.textContent = 'Step 1 in progress — pausing the project.';
+  else if(pct < 67) status.textContent = 'Step 2 in progress — assessing the situation.';
+  else if(pct < 100) status.textContent = 'Step 3 in progress — building the recovery plan.';
+  else {
+    status.textContent = 'All steps complete. Project is recovered.';
+    status.className = 'progress-status complete';
+    document.getElementById('completionBanner').classList.add('visible');
+  }
+}
+
+function saveProgress(){
+  const checked = [];
+  document.querySelectorAll('.check-item').forEach((item, i) => {
+    if(item.classList.contains('checked')) checked.push(i);
+  });
+  localStorage.setItem('recovery-checklist', JSON.stringify(checked));
+  const btn = event.target;
+  btn.textContent = 'Saved!';
+  btn.style.background = '#1D6FA4';
+  btn.style.color = '#fff';
+  setTimeout(() => { btn.textContent = 'Save Progress'; btn.style.background = ''; btn.style.color = ''; }, 2000);
+}
+
+function resetAll(){
+  if(confirm('Reset all checkboxes?')){
+    document.querySelectorAll('.check-item').forEach(item => item.classList.remove('checked'));
+    localStorage.removeItem('recovery-checklist');
+    document.getElementById('completionBanner').classList.remove('visible');
+    updateProgress();
+  }
+}
+
+window.onload = function(){
+  const saved = localStorage.getItem('recovery-checklist');
+  if(saved){
+    const checked = JSON.parse(saved);
+    const items = document.querySelectorAll('.check-item');
+    checked.forEach(i => { if(items[i]) items[i].classList.add('checked'); });
+  }
+  updateProgress();
+};
+
+function submitCTA(){
+  var emailEl=document.getElementById('ctaEmail');
+  if(!emailEl){return;}
+  var emailVal=emailEl.value;
+  if(!emailVal||!emailVal.includes('@')){alert('Please enter a valid email.');return;}
+  var form=document.createElement('form');
+  form.method='post';form.action='https://app.kit.com/forms/9449931/subscriptions';form.target='_blank';
+  var inp=document.createElement('input');inp.type='hidden';inp.name='email_address';inp.value=emailVal;
+  form.appendChild(inp);document.body.appendChild(form);form.submit();
+}
+
+</script>
+</body>
+</html>
