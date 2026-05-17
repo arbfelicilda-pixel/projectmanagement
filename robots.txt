@@ -8,10 +8,5 @@ Disallow: /scope-creep-checker.html
 Disallow: /stakeholder-planner.html
 Disallow: /meeting-roi-calculator.html
 Disallow: /budget-variance-tracker.html
-Disallow: /calculator.html
-Disallow: /progress-dashboard.html
-Disallow: /project-charter.html
-Disallow: /recovery-checklist.html
-Disallow: /ai-prompts.html
 
 Sitemap: https://projectmanagement.arniefelicilda.com/sitemap.xml
