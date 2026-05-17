@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What Is Critical Path in a Project?</title>
+<meta name="description" content="The critical path is the longest sequence of dependent tasks in your project. It determines the earliest possible finish date. Any delay to any task on the">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Arnie Rose Felicilda">
+<link rel="canonical" href="https://projectmanagement.arniefelicilda.com/what-is-critical-path.html">
+<meta property="og:title" content="What Is Critical Path in a Project?">
+<meta property="og:description" content="The critical path is the longest sequence of dependent tasks in your project. It determines the earliest possible finish date. Any delay to any task on the">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://projectmanagement.arniefelicilda.com/what-is-critical-path.html">
+<meta property="og:image" content="https://projectmanagement.arniefelicilda.com/pm-18-what-is-critical-path.png">
+<meta property="og:image:width" content="1000">
+<meta property="og:image:height" content="1500">
+<meta property="og:site_name" content="Arnie Rose - Project Management">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="What Is Critical Path in a Project?">
+<meta name="twitter:description" content="The critical path is the longest sequence of dependent tasks in your project. It determines the earliest possible finish date. Any delay to any task on the">
+<meta name="twitter:image" content="https://projectmanagement.arniefelicilda.com/pm-18-what-is-critical-path.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--black:#111111;--white:#FFFFFF;--gray-light:#F5F5F5;--gray-mid:#E5E5E5;--gray-text:#666666;--blue:#1D6FA4;--blue-dark:#155a87;--heading:'DM Serif Display',Georgia,serif;--body:'DM Sans',sans-serif;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);background:var(--white);color:var(--black);-webkit-font-smoothing:antialiased}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--white);border-bottom:1px solid var(--gray-mid);padding:0 60px;height:60px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:var(--body);font-size:13px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--black);text-decoration:none}
+.nav-logo span{color:var(--blue)}
+.nav-back{font-family:var(--body);font-size:13px;font-weight:400;color:var(--gray-text);text-decoration:none;transition:color 0.2s}
+.nav-back:hover{color:var(--black)}
+.post-hero{padding:100px 60px 48px;max-width:800px;margin:0 auto}
+.post-eyebrow{font-family:var(--body);font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--blue);margin-bottom:20px;display:flex;align-items:center;gap:10px}
+.post-eyebrow::before{content:'';display:block;width:20px;height:1.5px;background:var(--blue)}
+.post-title{font-family:var(--heading);font-size:clamp(30px,4.5vw,52px);font-weight:400;line-height:1.1;color:var(--black);margin-bottom:20px}
+.post-meta{font-family:var(--body);font-size:13px;font-weight:300;color:var(--gray-text);display:flex;gap:20px}
+.post-image{max-width:800px;margin:36px auto 0;padding:0 60px}
+.post-image img{width:100%;height:auto;display:block}
+.pin-row{max-width:800px;margin:16px auto 0;padding:0 60px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.pin-btn{display:inline-flex;align-items:center;font-family:var(--body);font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;background:#E60023;color:#fff;padding:9px 16px;text-decoration:none;transition:background 0.2s}
+.pin-btn:hover{background:#ad081b}
+.share-btn{display:inline-flex;align-items:center;font-family:var(--body);font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;background:#1877F2;color:#fff;padding:9px 16px;text-decoration:none;transition:background 0.2s}
+.share-btn:hover{background:#0f5bb5}
+.x-btn{display:inline-flex;align-items:center;font-family:var(--body);font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;background:#000;color:#fff;padding:9px 16px;text-decoration:none;transition:opacity 0.2s}
+.x-btn:hover{opacity:0.75}
+.li-btn{display:inline-flex;align-items:center;font-family:var(--body);font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;background:#0A66C2;color:#fff;padding:9px 16px;text-decoration:none;transition:background 0.2s}
+.li-btn:hover{background:#084d94}
+.post-body{max-width:720px;margin:48px auto 0;padding:0 60px 80px}
+.post-body p{font-family:var(--body);font-size:17px;font-weight:300;line-height:1.85;color:#333333;margin-bottom:28px}
+.post-body p:first-child{font-size:19px;font-weight:400;color:var(--black)}
+.post-body h2{font-family:var(--heading);font-size:28px;font-weight:400;color:var(--black);margin:48px 0 20px;line-height:1.2}
+.post-divider{width:40px;height:2px;background:var(--blue);margin:40px 0}
+.callout{background:var(--gray-light);border-left:3px solid var(--blue);padding:20px 24px;margin:32px 0}
+.callout p{font-family:var(--body);font-size:15px;font-weight:400;color:var(--black);line-height:1.7;margin:0}
+.step-list{margin:32px 0;display:flex;flex-direction:column;gap:36px}
+.step-item{display:flex;gap:20px;align-items:flex-start}
+.step-num{font-family:var(--heading);font-size:36px;font-weight:400;color:var(--blue);line-height:1;flex-shrink:0;min-width:36px}
+.step-content h3{font-family:var(--body);font-size:17px;font-weight:600;color:var(--black);margin:0 0 10px}
+.step-content p{font-family:var(--body);font-size:15px;font-weight:300;color:#444;line-height:1.8;margin:0 0 12px}
+.step-content p:last-child{margin-bottom:0}
+.internal-link{color:var(--blue);text-decoration:none;border-bottom:1px solid rgba(29,111,164,0.3);transition:border-color 0.2s}
+.internal-link:hover{border-color:var(--blue)}
+.book-cta{background:var(--black);padding:40px 48px;margin:56px 0}
+.book-cta-label{font-family:var(--body);font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:12px}
+.book-cta h3{font-family:var(--heading);font-size:26px;font-weight:400;color:var(--white);margin-bottom:10px;line-height:1.2}
+.book-cta p{font-family:var(--body);font-size:14px;font-weight:300;color:rgba(255,255,255,0.55);line-height:1.7;margin-bottom:24px}
+.book-cta a{display:inline-block;font-family:var(--body);font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--white);background:var(--blue);padding:12px 28px;text-decoration:none;transition:background 0.2s}
+.book-cta a:hover{background:var(--blue-dark)}
+.email-section{background:var(--black);padding:72px 60px;text-align:center}
+.email-eyebrow{font-family:var(--body);font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:20px;display:flex;align-items:center;justify-content:center;gap:10px}
+.email-eyebrow::before,.email-eyebrow::after{content:'';display:block;width:24px;height:1px;background:rgba(255,255,255,0.2)}
+.email-heading{font-family:var(--heading);font-size:clamp(26px,3.5vw,38px);font-weight:400;color:var(--white);margin-bottom:10px;line-height:1.2}
+.email-sub{font-family:var(--body);font-size:15px;font-weight:300;color:rgba(255,255,255,0.5);margin-bottom:32px;max-width:420px;margin-left:auto;margin-right:auto;line-height:1.6}
+.kit-wrapper{max-width:480px;margin:0 auto}
+footer{background:var(--black);padding:48px 60px 32px;border-top:1px solid rgba(255,255,255,0.08)}
+.footer-inner{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;padding-bottom:32px;border-bottom:1px solid rgba(255,255,255,0.08)}
+.footer-copy{font-family:var(--body);font-size:12px;font-weight:300;color:rgba(255,255,255,0.25)}
+.footer-links{display:flex;gap:24px}
+.footer-links a{font-family:var(--body);font-size:13px;font-weight:300;color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.2s}
+.footer-links a:hover{color:var(--white)}
+@media(max-width:768px){nav{padding:0 20px}.post-hero,.post-image,.pin-row{padding-left:24px;padding-right:24px}.post-body{padding:40px 24px 60px}.email-section{padding:56px 24px}footer{padding:40px 24px 28px}.book-cta{padding:32px 24px}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="/" class="nav-logo">Arnie Rose <span>·</span> Project Management</a>
+  <a href="blog.html" class="nav-back">- Blog Archive</a>
+</nav>
+<div class="post-hero">
+  <p class="post-eyebrow">Project Planning</p>
+  <h1 class="post-title">What Is Critical Path in a Project?</h1>
+  <div class="post-meta"><span>By Arnie Rose Felicilda</span><span>6 min read</span></div>
+</div>
+<div class="post-image">
+  <img src="pm-18-what-is-critical-path.png" alt="What Is Critical Path in a Project?" loading="eager">
+</div>
+<div class="pin-row">
+  <a href="https://pinterest.com/pin/create/button/?url=https://projectmanagement.arniefelicilda.com/what-is-critical-path.html&media=https://projectmanagement.arniefelicilda.com/pm-18-what-is-critical-path.png&description=What+Is+Critical+Path+in+a+Project?" target="_blank" rel="noopener" class="pin-btn">Save to Pinterest</a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https://projectmanagement.arniefelicilda.com/what-is-critical-path.html" target="_blank" rel="noopener" class="share-btn">Share on Facebook</a>
+  <a href="https://twitter.com/intent/tweet?url=https://projectmanagement.arniefelicilda.com/what-is-critical-path.html&text=What+Is+Critical+Path+in+a+Project?" target="_blank" rel="noopener" class="x-btn">Share on X</a>
+  <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://projectmanagement.arniefelicilda.com/what-is-critical-path.html" target="_blank" rel="noopener" class="li-btn">Share on LinkedIn</a>
+</div>
+<div class="post-body">
+  <p>Understanding the critical path changes how you prioritize. Not every task deserves equal attention. A task on the critical path that is one day late moves your delivery date by one day. A task off the critical path can be weeks late without affecting delivery at all, as long as it completes before it becomes a dependency for something that is on the path.</p>
+  <div class="post-divider"></div>
+  <h2>Float and Why It Matters</h2>
+  <p>Tasks not on the critical path have float - a buffer of time they can slip without delaying the project. A task with five days of float can finish up to five days late before it affects delivery. Float is your flexibility. The critical path is where you have none.</p>
+  <div class="callout"><p>Protecting the critical path means protecting your delivery date. Every hour spent accelerating a non-critical task is an hour that could have been spent protecting a critical one.</p></div>
+  <h2>How to Find Your Critical Path</h2>
+  <div class="step-list">
+    <div class="step-item">
+      <span class="step-num">1</span>
+      <div class="step-content">
+        <h3>List All Tasks With Their Durations</h3>
+        <p>Every task in the project with an estimated duration in days. Include only tasks that have a defined end point - not ongoing activities. If you cannot estimate the duration, that is a sign the task needs to be broken down further.</p>
+      </div>
+    </div>
+    <div class="step-item">
+      <span class="step-num">2</span>
+      <div class="step-content">
+        <h3>Map the Dependencies</h3>
+        <p>For each task, identify which other tasks must be complete before it can start. These are the dependencies. Draw the connections. Some tasks have no dependencies - they can start immediately. Some cannot start until several other tasks are complete.</p>
+      </div>
+    </div>
+    <div class="step-item">
+      <span class="step-num">3</span>
+      <div class="step-content">
+        <h3>Find the Longest Path From Start to Finish</h3>
+        <p>Add up the durations along every possible sequence from the project start to the project end. The longest total duration is the critical path. In a project with many parallel workstreams, there may be several paths that are close in length. The longest one controls delivery.</p>
+      </div>
+    </div>
+    <div class="step-item">
+      <span class="step-num">4</span>
+      <div class="step-content">
+        <h3>Mark Every Task on the Critical Path</h3>
+        <p>These tasks get priority attention in every status review. When resources are scarce and two tasks are competing for attention, the critical path task wins. When a critical path task is behind, everything else becomes secondary until it is recovered.</p>
+      </div>
+    </div>
+    <div class="step-item">
+      <span class="step-num">5</span>
+      <div class="step-content">
+        <h3>Recalculate When Scope Changes</h3>
+        <p>Adding or removing tasks changes the dependencies and potentially changes which path is longest. Every time a significant change is made to the project, recalculate the critical path. A change that appears to only affect a non-critical task can shift the critical path if the change adds enough duration.</p>
+      </div>
+    </div>
+  </div>
+  <div class="post-divider"></div>
+  <h2>When Critical Path Analysis Is Not Worth Doing</h2>
+  <p>For short projects with few dependencies, a full critical path analysis adds more overhead than value. If your project has fewer than 15 tasks and runs for less than two months, a milestone list with dates achieves the same outcome with far less analysis effort.</p>
+
+  <div class="post-divider"></div>
+  <p>For more on this topic, read <a href="what-is-a-gantt-chart.html" class="internal-link">What Is a Gantt Chart and Do You Need One?</a>. You may also find <a href="what-is-a-project-milestone.html" class="internal-link">What Is a Project Milestone and How to Set One</a> useful as a next step.</p>
+  <div class="post-divider"></div>
+  <div class="book-cta">
+    <p class="book-cta-label">Available Now</p>
+    <h3>The Accidental Project Manager</h3>
+    <p>For the person who was handed a project and told to figure it out. The 15-minute daily system, scope lock framework, and AI prompts that get any project back on track. No certification required.</p>
+    <a href="https://arfelicilda.gumroad.com/l/accidentalprojectmanager" target="_blank" rel="noopener">Get the Book on Gumroad</a>
+  </div>
+</div>
+<div class="email-section" id="email">
+  <p class="email-eyebrow">Free Tools and Updates</p>
+  <h2 class="email-heading">Free tools for project managers.</h2>
+  <p class="email-sub">Templates, dashboards, and frameworks for managers running real projects without formal training.</p>
+  <div class="kit-wrapper">
+    <script src="https://f.convertkit.com/ckjs/ck.5.js"></script>
+    <form action="https://app.kit.com/forms/9449931/subscriptions" class="seva-form formkit-form" method="post" data-sv-form="9449931" data-format="inline" data-version="5">
+      <div data-style="full">
+        <div data-element="fields" data-stacked="false" class="seva-fields formkit-fields" style="display:flex;gap:0;max-width:480px;margin:0 auto">
+          <div class="formkit-field" style="flex:1">
+            <input class="formkit-input" name="email_address" style="width:100%;padding:14px 16px;font-family:'DM Sans',sans-serif;font-size:14px;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.06);color:#fff;outline:none;" aria-label="Email Address" placeholder="Your email address" required type="email">
+          </div>
+          <button data-element="submit" class="formkit-submit" style="background:#1D6FA4;color:#fff;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;padding:14px 24px;border:none;cursor:pointer;white-space:nowrap;"><span>Subscribe</span></button>
+        </div>
+      </div>
+    </form>
+    <p style="font-family:'DM Sans',sans-serif;font-size:11px;color:rgba(255,255,255,0.25);margin-top:14px;">No spam. Unsubscribe anytime.</p>
+  </div>
+</div>
+<footer>
+  <div class="footer-inner">
+    <span class="footer-copy">2026 Arnie Rose Felicilda. Keystone Books.</span>
+    <div class="footer-links">
+      <a href="https://arniefelicilda.com">Author Site</a>
+      <a href="https://supplychain.arniefelicilda.com">Supply Chain</a>
+      <a href="https://youwereneverseries.arniefelicilda.com">YWN Series</a>
+      <a href="blog.html">Blog Archive</a>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
