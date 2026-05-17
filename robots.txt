@@ -8,5 +8,4 @@ Disallow: /scope-creep-checker.html
 Disallow: /stakeholder-planner.html
 Disallow: /meeting-roi-calculator.html
 Disallow: /budget-variance-tracker.html
-
 Sitemap: https://projectmanagement.arniefelicilda.com/sitemap.xml
