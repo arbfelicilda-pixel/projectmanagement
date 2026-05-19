@@ -2,188 +2,183 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
   <url>
-    <loc>https://projectmanagement.arniefelicilda.com/</loc>
+    <loc>https://supplychain.arniefelicilda.com/</loc>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
 
   <!-- BATCH 1 — 10 BLOGS -->
   <url>
-    <loc>https://projectmanagement.arniefelicilda.com/what-is-scope-creep.html</loc>
+    <loc>https://supplychain.arniefelicilda.com/5-inventory-metrics-ops-managers.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://projectmanagement.arniefelicilda.com/manage-projects-without-pmp.html</loc>
+    <loc>https://supplychain.arniefelicilda.com/5-inventory-kpis-that-actually-matter.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://projectmanagement.arniefelicilda.com/what-is-a-project-charter.html</loc>
+    <loc>https://supplychain.arniefelicilda.com/your-inventory-is-cash-in-disguise.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://projectmanagement.arniefelicilda.com/how-to-track-project-progress.html</loc>
+    <loc>https://supplychain.arniefelicilda.com/abc-analysis-find-your-money.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://projectmanagement.arniefelicilda.com/what-is-stakeholder-management.html</loc>
+    <loc>https://supplychain.arniefelicilda.com/you-dont-know-your-true-inventory-cost.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://projectmanagement.arniefelicilda.com/how-to-recover-delayed-project.html</loc>
+    <loc>https://supplychain.arniefelicilda.com/total-landed-cost-calculator.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://projectmanagement.arniefelicilda.com/project-status-meeting-15-minutes.html</loc>
+    <loc>https://supplychain.arniefelicilda.com/supply-chain-risk-assessment.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://projectmanagement.arniefelicilda.com/what-is-project-risk.html</loc>
+    <loc>https://supplychain.arniefelicilda.com/why-cheapest-supplier-most-expensive.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://projectmanagement.arniefelicilda.com/how-to-use-ai-project-management.html</loc>
+    <loc>https://supplychain.arniefelicilda.com/classify-skus-abc-analysis.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://projectmanagement.arniefelicilda.com/15-minute-daily-sprint-system.html</loc>
+    <loc>https://supplychain.arniefelicilda.com/inventory-carrying-cost.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <!-- BATCH 2 — 20 BLOGS -->
   <url>
-    <loc>https://projectmanagement.arniefelicilda.com/how-to-write-a-project-plan.html</loc>
+    <loc>https://supplychain.arniefelicilda.com/how-to-reduce-inventory-costs-without-cutting-stock.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://projectmanagement.arniefelicilda.com/what-is-a-project-kickoff-meeting.html</loc>
+    <loc>https://supplychain.arniefelicilda.com/what-is-a-purchase-order.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://projectmanagement.arniefelicilda.com/how-to-manage-a-remote-project-team.html</loc>
+    <loc>https://supplychain.arniefelicilda.com/how-to-find-a-reliable-supplier.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://projectmanagement.arniefelicilda.com/what-is-a-project-budget.html</loc>
+    <loc>https://supplychain.arniefelicilda.com/what-is-safety-stock.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://projectmanagement.arniefelicilda.com/how-to-say-no-to-a-stakeholder.html</loc>
+    <loc>https://supplychain.arniefelicilda.com/how-to-reduce-freight-costs.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://projectmanagement.arniefelicilda.com/what-is-a-project-milestone.html</loc>
+    <loc>https://supplychain.arniefelicilda.com/what-is-a-bill-of-materials.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://projectmanagement.arniefelicilda.com/how-to-write-a-project-status-report.html</loc>
+    <loc>https://supplychain.arniefelicilda.com/how-to-handle-late-supplier-delivery.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://projectmanagement.arniefelicilda.com/what-is-an-action-item.html</loc>
+    <loc>https://supplychain.arniefelicilda.com/what-is-lead-time.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://projectmanagement.arniefelicilda.com/how-to-run-a-project-with-no-budget.html</loc>
+    <loc>https://supplychain.arniefelicilda.com/how-to-negotiate-payment-terms-with-suppliers.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://projectmanagement.arniefelicilda.com/what-is-a-gantt-chart.html</loc>
+    <loc>https://supplychain.arniefelicilda.com/what-is-just-in-time-inventory.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://projectmanagement.arniefelicilda.com/how-to-close-a-project-properly.html</loc>
+    <loc>https://supplychain.arniefelicilda.com/how-to-set-up-simple-inventory-system.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://projectmanagement.arniefelicilda.com/what-is-a-raci-chart.html</loc>
+    <loc>https://supplychain.arniefelicilda.com/what-is-a-stockout.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://projectmanagement.arniefelicilda.com/how-to-get-stakeholder-buy-in.html</loc>
+    <loc>https://supplychain.arniefelicilda.com/how-to-read-a-commercial-invoice.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://projectmanagement.arniefelicilda.com/what-is-change-management.html</loc>
+    <loc>https://supplychain.arniefelicilda.com/what-is-demand-forecasting.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://projectmanagement.arniefelicilda.com/how-to-handle-a-team-member-not-delivering.html</loc>
+    <loc>https://supplychain.arniefelicilda.com/how-to-build-a-backup-supplier-plan.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://projectmanagement.arniefelicilda.com/what-is-a-lessons-learned-meeting.html</loc>
+    <loc>https://supplychain.arniefelicilda.com/what-is-economic-order-quantity.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://projectmanagement.arniefelicilda.com/how-to-manage-multiple-projects.html</loc>
+    <loc>https://supplychain.arniefelicilda.com/how-to-track-supplier-performance.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://projectmanagement.arniefelicilda.com/what-is-critical-path.html</loc>
+    <loc>https://supplychain.arniefelicilda.com/what-tariffs-mean-for-your-supply-chain.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://projectmanagement.arniefelicilda.com/how-to-build-a-project-communication-plan.html</loc>
+    <loc>https://supplychain.arniefelicilda.com/how-to-cut-warehouse-costs.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://projectmanagement.arniefelicilda.com/what-is-agile-project-management.html</loc>
+    <loc>https://supplychain.arniefelicilda.com/what-is-a-3pl.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <!-- FREE TOOLS -->
   <url>
-    <loc>https://projectmanagement.arniefelicilda.com/calculator.html</loc>
+    <loc>https://supplychain.arniefelicilda.com/inventory-health-calculator.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://projectmanagement.arniefelicilda.com/progress-dashboard.html</loc>
+    <loc>https://supplychain.arniefelicilda.com/supplier-scorecard.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://projectmanagement.arniefelicilda.com/project-charter.html</loc>
+    <loc>https://supplychain.arniefelicilda.com/landed-cost-calculator.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://projectmanagement.arniefelicilda.com/recovery-checklist.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://projectmanagement.arniefelicilda.com/ai-prompts.html</loc>
+    <loc>https://supplychain.arniefelicilda.com/stockout-risk-checker.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
