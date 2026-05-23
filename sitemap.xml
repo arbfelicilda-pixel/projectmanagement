@@ -7,116 +7,24 @@
     <priority>1.0</priority>
   </url>
 
-  <!-- BATCH 1 — 10 BLOGS -->
-  <url>
-    <loc>https://projectmanagement.arniefelicilda.com/what-is-scope-creep.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://projectmanagement.arniefelicilda.com/manage-projects-without-pmp.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://projectmanagement.arniefelicilda.com/what-is-a-project-charter.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://projectmanagement.arniefelicilda.com/how-to-track-project-progress.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://projectmanagement.arniefelicilda.com/what-is-stakeholder-management.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://projectmanagement.arniefelicilda.com/how-to-recover-delayed-project.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://projectmanagement.arniefelicilda.com/project-status-meeting-15-minutes.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://projectmanagement.arniefelicilda.com/what-is-project-risk.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://projectmanagement.arniefelicilda.com/how-to-use-ai-project-management.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
+  <!-- BLOGS — 30 pages -->
   <url>
     <loc>https://projectmanagement.arniefelicilda.com/15-minute-daily-sprint-system.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
-  <!-- BATCH 2 — 20 BLOGS -->
   <url>
-    <loc>https://projectmanagement.arniefelicilda.com/how-to-write-a-project-plan.html</loc>
+    <loc>https://projectmanagement.arniefelicilda.com/how-to-build-communication-plan.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://projectmanagement.arniefelicilda.com/what-is-a-project-kickoff-meeting.html</loc>
+    <loc>https://projectmanagement.arniefelicilda.com/how-to-build-project-budget.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://projectmanagement.arniefelicilda.com/how-to-manage-a-remote-project-team.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://projectmanagement.arniefelicilda.com/what-is-a-project-budget.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://projectmanagement.arniefelicilda.com/how-to-say-no-to-a-stakeholder.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://projectmanagement.arniefelicilda.com/what-is-a-project-milestone.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://projectmanagement.arniefelicilda.com/how-to-write-a-project-status-report.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://projectmanagement.arniefelicilda.com/what-is-an-action-item.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://projectmanagement.arniefelicilda.com/how-to-run-a-project-with-no-budget.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://projectmanagement.arniefelicilda.com/what-is-a-gantt-chart.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://projectmanagement.arniefelicilda.com/how-to-close-a-project-properly.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://projectmanagement.arniefelicilda.com/what-is-a-raci-chart.html</loc>
+    <loc>https://projectmanagement.arniefelicilda.com/how-to-close-a-project.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -126,17 +34,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://projectmanagement.arniefelicilda.com/what-is-change-management.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://projectmanagement.arniefelicilda.com/how-to-handle-a-team-member-not-delivering.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://projectmanagement.arniefelicilda.com/what-is-a-lessons-learned-meeting.html</loc>
+    <loc>https://projectmanagement.arniefelicilda.com/how-to-handle-team-member-not-delivering.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -146,12 +44,82 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://projectmanagement.arniefelicilda.com/what-is-critical-path.html</loc>
+    <loc>https://projectmanagement.arniefelicilda.com/how-to-manage-remote-project-team.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://projectmanagement.arniefelicilda.com/how-to-build-a-project-communication-plan.html</loc>
+    <loc>https://projectmanagement.arniefelicilda.com/how-to-recover-delayed-project.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://projectmanagement.arniefelicilda.com/how-to-run-lessons-learned-meeting.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://projectmanagement.arniefelicilda.com/how-to-run-project-kickoff-meeting.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://projectmanagement.arniefelicilda.com/how-to-run-project-no-budget.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://projectmanagement.arniefelicilda.com/how-to-say-no-to-stakeholder.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://projectmanagement.arniefelicilda.com/how-to-track-project-progress.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://projectmanagement.arniefelicilda.com/how-to-use-ai-project-management.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://projectmanagement.arniefelicilda.com/how-to-write-a-project-plan.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://projectmanagement.arniefelicilda.com/how-to-write-project-status-report.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://projectmanagement.arniefelicilda.com/manage-projects-without-pmp.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://projectmanagement.arniefelicilda.com/project-status-meeting-15-minutes.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://projectmanagement.arniefelicilda.com/what-is-a-gantt-chart.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://projectmanagement.arniefelicilda.com/what-is-a-project-charter.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://projectmanagement.arniefelicilda.com/what-is-a-project-milestone.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://projectmanagement.arniefelicilda.com/what-is-a-raci-chart.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -160,8 +128,43 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://projectmanagement.arniefelicilda.com/what-is-an-action-item.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://projectmanagement.arniefelicilda.com/what-is-change-management.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://projectmanagement.arniefelicilda.com/what-is-critical-path.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://projectmanagement.arniefelicilda.com/what-is-project-risk.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://projectmanagement.arniefelicilda.com/what-is-scope-creep.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://projectmanagement.arniefelicilda.com/what-is-stakeholder-management.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 
-  <!-- FREE TOOLS -->
+  <!-- FREE TOOLS — 5 pages -->
+  <url>
+    <loc>https://projectmanagement.arniefelicilda.com/ai-prompts.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
   <url>
     <loc>https://projectmanagement.arniefelicilda.com/calculator.html</loc>
     <changefreq>monthly</changefreq>
@@ -179,11 +182,6 @@
   </url>
   <url>
     <loc>https://projectmanagement.arniefelicilda.com/recovery-checklist.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://projectmanagement.arniefelicilda.com/ai-prompts.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
